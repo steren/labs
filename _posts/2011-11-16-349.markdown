@@ -1,0 +1,23 @@
+---
+author: steren
+comments: true
+date: 2011-11-16 00:14:26+00:00
+layout: post
+link: http://labs.steren.fr/2011/11/16/349/
+slug: '349'
+title: Maldives documentary
+wordpress_id: 349
+categories:
+- Misc.
+tags:
+- blender
+- dive
+- video
+---
+
+A friend of mine is working on two or three documentaries about marine life. He is a very passionate diver and really loves to share his passion. You can watch his previous videos on his [Dailymotion Channel](http://www.dailymotion.com/franckfranck2A#videoId=xkvg95).
+
+His first trip is to the Maldives, where he will be filming Manta Rays. I worked using [Blender](http://www.blender.org/) on a shot that explains the travel and the location.
+
+You can see on the following video, various iterations of this shot:
+[youtube=http://www.youtube.com/watch?v=ny7Y4trB6Pc]

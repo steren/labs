@@ -1,0 +1,34 @@
+---
+author: steren
+comments: true
+date: 2011-09-15 15:45:49+00:00
+layout: post
+link: http://labs.steren.fr/2011/09/15/anydance/
+slug: anydance
+title: AnyDance
+wordpress_id: 346
+categories:
+- Multi-Device game
+tags:
+- dance game
+- game
+- nodejs
+- socketio
+---
+
+I've been hacking on a little project during the summer. The idea is to use the phone as a remote controller for a game displaying on a screen. I'm building a dance game, where the players' goal is to follow a dance seen live in a video.
+
+I'm using the accelerometers of the phone to record the movement of the players. Then I compare this to the reference movement of this video. If the movement match, the player earn points. The best dancer win at the end of the game.
+Technically, the main challenges are the processing of the accelerometer data and communicating in real time.
+
+**Accelerometer data from the phone**: I could use the native APIs and build a native app, but Phonegap is providing an [accelerometer API](http://docs.phonegap.com/en/1.0.0/phonegap_accelerometer_accelerometer.md.html), so I could build my app once and use it on many platforms.
+
+**Data comparison**: I have to use well thinked descriptors to compare the recorded data to the reference. I will start by detecting the "bumps", their direction and their amplitude.
+
+**Live communication**: I'm using some real time technology to make all the device communicating with a server in real time: my choice is to use [node.js](http://nodejs.org/) and the [socket.io](http://socket.io/) library (and to ideally use web sockets).
+
+**Data store**: the library of dances will be stored in a no-SQL database. My choice is to use [mongoDB](http://www.mongodb.org/).
+
+**Record a dance**: one last challenge is to record the reference dance for a given video. I will try to use some simple machine learning algorithms to extract the reference from a set of records.
+
+You can follow the development on [my github](https://github.com/Steren/anydance). 
