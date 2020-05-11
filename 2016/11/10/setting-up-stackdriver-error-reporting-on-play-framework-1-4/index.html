@@ -47,7 +47,7 @@
     <p>I use the very simple Stackdriver Error Reporting <a href="https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report">report API</a>: just send error stack traces using an HTTP POST request and an API key.</p>
     <p>After creating a project and getting an API key in the <a href="https://console.cloud.google.com/">Google Cloud Console</a>, I instrumented my Play Framework application to catch all exceptions, format them in the expected structure and POST them to Stackdriver.  (make sure you are using at least JDK v1.7)</p>
     <p>Here is the code I added to my main application controller:</p>
-    <p>TODO gist: 9753aa84d6a3059a360f7a77a20e2999</p>
+    <script src="https://gist.github.com/steren/9753aa84d6a3059a360f7a77a20e2999.js"></script>
     <p>A short amount of time after deploying this code, I started receiving alerts that new errors were occurring in my production application:</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-939">
       <img src="../../screen-shot-2016-11-10-at-1-04-09-pm.png%3Fw=1200" alt="screen-shot-2016-11-10-at-1-04-09-pm"/>
