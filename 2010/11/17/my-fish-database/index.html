@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My fish database</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="My fish database">
+  <meta name="twitter:image" content="https://labs.steren.fr/2010/11/17/my-fish-database/../../fish-database.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="My fish database">
+  <meta property="og:image" content="https://labs.steren.fr/2010/11/17/my-fish-database/../../fish-database.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "My fish database"
+    "image": "https://labs.steren.fr/2010/11/17/my-fish-database/../../fish-database.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">My fish database</h2>
+      <span href="index.html">
+        <time datetime="2010-11-17T18:31:13+02:00">2010/11/17</time>
+      </span>
+    </header>
+    <img src="../../fish-database.png%3Fw=960&amp;h=720&amp;crop=1" alt=""/>
+    <p>For my diving project, I will need a small fish database.</p>
+    <ul>
+      <li>I don’t want an exhaustive database (most common fishes will be OK).</li>
+      <li>I don’t want to replicate an existing database, if it exists, then I should pull data from it.</li>
+      <li>If my database is built collaboratively, I don’t want this process to be hard to do.</li>
+      <li>I’m a Wikipedia enthusiast, and I want people to contribute to Wikipedia.</li>
+      <li>My website is internationalized, however, I want a fishes to be shared between languages.</li>
+    </ul>
+    <p>So I think a great system would be:</p>
+    <ol>
+      <li>Is the fish in my database ? If yes, use it.</li>
+      <li>If no, look for its wikipedia page. If you find it, then create the fish in my database using this Wikipedia URL, and go to 1.</li>
+      <li>If the wikipedia page doesn’t exist, create it, then go to 2.</li>
+    </ol>
+    <p>Let’s analyse this system:</p>
+    <p>Pros:</p>
+    <ul>
+      <li>enrich Wikipedia</li>
+      <li>do not duplicate the information</li>
+      <li>a lot of data already exists</li>
+    </ul>
+    <p>Cons:</p>
+    <ul>
+      <li>Wikipedia pages are text and do not provide an easily callable API for entity properties (but fish pages contain a <em>Taxobox</em>, which would facilitate the parsing)<em><br/></em></li>
+    </ul>
+    <p>So far, I have to investigate:</p>
+    <ul>
+      <li>Wikipedia: how to get the page content ?</li>
+      <li>Freebase: is it not too much ?</li>
+      <li>dbpedia: API ? fishes ?</li>
+      <li>fishbase.org : license ? API ?</li>
+    </ul>
+    <p>And if I use a third party website (such as Freebase, dbpedia), then a problem is that I would have to wait for their database to be updated.</p>
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Setting up Stackdriver Error Reporting on Play Framework 1.4</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Setting up Stackdriver Error Reporting on Play Framework 1.4">
+  <meta name="twitter:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Setting up Stackdriver Error Reporting on Play Framework 1.4">
+  <meta property="og:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Setting up Stackdriver Error Reporting on Play Framework 1.4"
+    "image": "https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Setting up Stackdriver Error Reporting on Play Framework 1.4</h2>
+      <span href="index.html">
+        <time datetime="2016-11-10T14:13:44+02:00">2016/11/10</time>
+      </span>
+    </header>
+    <img src="../../play-error-reporting-1.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>Here is how I setup <a href="https://cloud.google.com/error-reporting/">Stackdriver Error Reporting</a> for my application running <a href="https://www.playframework.com">Play Framework</a> 1.4:</p>
+    <p>My goal was to capture any Java exception in my production application and report it to Stackdriver Error Reporting for automatic exception monitoring and alerting.</p>
+    <p>I use the very simple Stackdriver Error Reporting <a href="https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report">report API</a>: just send error stack traces using an HTTP POST request and an API key.</p>
+    <p>After creating a project and getting an API key in the <a href="https://console.cloud.google.com/">Google Cloud Console</a>, I instrumented my Play Framework application to catch all exceptions, format them in the expected structure and POST them to Stackdriver.  (make sure you are using at least JDK v1.7)</p>
+    <p>Here is the code I added to my main application controller:</p>
+    <p>TODO gist: 9753aa84d6a3059a360f7a77a20e2999</p>
+    <p>A short amount of time after deploying this code, I started receiving alerts that new errors were occurring in my production application:</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-939">
+      <img src="../../screen-shot-2016-11-10-at-1-04-09-pm.png%3Fw=1200" alt="screen-shot-2016-11-10-at-1-04-09-pm"/>
+      <figcaption>Screenshot of Stackdriver Error Reporting: 2 different errors occurred in my Play Framework app in the last 6 hours. The first one happened 42 times.</figcaption>
+    </figure>
+    <p>I was not aware of these application errors, now I have better visibility into their impact and will be able to prioritize what to fix.</p>
+    <p>My website (<a href="http://cadeaux-entre-nous.fr">Cadeaux entre nous</a>, to organize Secret Santas), has been running on Heroku for years and has huge usage spikes around christmas. This will help me make it more stable.</p>
+    <p>
+      <em>Disclaimer: I am a Product Manager at Google, working on Stackdriver</em>
+    </p>
+  </article>
+</main>
+</body>
+</html>

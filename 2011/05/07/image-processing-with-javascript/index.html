@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image processing with Javascript</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Image processing with Javascript">
+  <meta name="twitter:image" content="https://labs.steren.fr/2011/05/07/image-processing-with-javascript/../../js-image.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Image processing with Javascript">
+  <meta property="og:image" content="https://labs.steren.fr/2011/05/07/image-processing-with-javascript/../../js-image.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Image processing with Javascript"
+    "image": "https://labs.steren.fr/2011/05/07/image-processing-with-javascript/../../js-image.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Image processing with Javascript</h2>
+      <span href="index.html">
+        <time datetime="2011-05-07T15:11:53+02:00">2011/05/07</time>
+      </span>
+    </header>
+    <img src="../../js-image.png%3Fw=960&amp;h=720&amp;crop=1" alt=""/>
+    <p>I’m used to do image processing using Matlab or OpenCV. But today, I prefer using web technologies because sharing and debugging is easier.</p>
+    <p>How to do image processing using Javascript ?</p>
+    <p>The <a href="https://developer.mozilla.org/en/html/canvas">canvas API</a> is good to manipulate pixels, however, a library with the most common operations would be great.<br/>
+I spotted two libraries: <a href="https://github.com/mezzoblue/PaintbrushJS">PaintbrushJS</a> and <a href="https://github.com/jseidelin/pixastic">Pixastic</a>.</p>
+    <ul>
+      <li>PaintbrushJS simply allows to apply filters to images on the page, that’s it.</li>
+      <li>Pixastic is more flexible, offers more filters and features. And you can easily call a filter in your Javascript code.</li>
+    </ul>
+    <p>But because of its simplicity when reading the code, I started some experimentations using PaintbrushJS.</p>
+    <p>After a few minutes, I noticed that the matrix convolution operation was not correct in this library. So I fixed it in <a href="https://github.com/Steren/PaintbrushJS">my branch</a>. Feel free to use it.</p>
+  </article>
+</main>
+</body>
+</html>

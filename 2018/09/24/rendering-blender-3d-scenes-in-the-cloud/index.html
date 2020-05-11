@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Rendering Blender 3D scenes in the cloud</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Rendering Blender 3D scenes in the cloud">
+  <meta name="twitter:image" content="https://labs.steren.fr/2018/09/24/rendering-blender-3d-scenes-in-the-cloud/../../download.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rendering Blender 3D scenes in the cloud">
+  <meta property="og:image" content="https://labs.steren.fr/2018/09/24/rendering-blender-3d-scenes-in-the-cloud/../../download.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Rendering Blender 3D scenes in the cloud"
+    "image": "https://labs.steren.fr/2018/09/24/rendering-blender-3d-scenes-in-the-cloud/../../download.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Rendering Blender 3D scenes in the cloud</h2>
+      <span href="index.html">
+        <time datetime="2018-09-24T02:26:30+02:00">2018/09/24</time>
+      </span>
+    </header>
+    <img src="../../download.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>I created a simple app that renders a <a href="https://www.blender.org/">Blender</a> 3D scene in the cloud: users can customize the displayed message by changing an URL parameter, and the app will return the 3D rendered image.  <a href="https://render-fu4lqx2yaq-uc.a.run.app/?scene=outrun-filter&amp;text=OUTRUN">Give it a try here</a>.</p>
+    <p>The code is a very simple <a href="https://github.com/steren/render/blob/master/function.py">Python function</a> that invokes the Blender open source software. It uses the <a href="https://docs.blender.org/api/">Blender API</a> in order to dynamically change the value of a Text object. The function is then simply <a href="https://github.com/steren/render/blob/master/invoker.py">wrapped</a> in a basic <a href="http://flask.pocoo.org/">Flask</a> application in order to respond to HTTP requests. Because Blender needs to be installed, I am using a <a href="https://github.com/steren/render/blob/master/Dockerfile">Dockerfile</a> that runs “apt-get install blender”.</p>
+    <p>Find the <a href="https://github.com/steren/render">code on GitHub</a>.</p>
+    <p>This app was created to showcase the upcoming “serverless containers” product of the Google Cloud Platform. It allows to run any container “in a serverless way”: developers are able to deploy and run any language or library they want, and only pay for actual resources used when it receives requests. I demoed the feature during the <a href="https://youtu.be/XiGBWpxc6Lc?t=37m">Cloud Next 2018 keynote</a> and <a href="https://youtu.be/iPQUdb0kssE?t=27m15s">other</a><a href="https://youtu.be/Y1sRy0Q2qig?t=35m26s">sessions</a>. sign up for early access at <a href="http://g.co/serverlesscontainers">g.co/serverlesscontainers</a></p>
+  </article>
+</main>
+</body>
+</html>

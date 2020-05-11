@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Colourful intermediate results</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Colourful intermediate results">
+  <meta name="twitter:image" content="https://labs.steren.fr/2014/03/20/colourful-intermediate-results/../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Colourful intermediate results">
+  <meta property="og:image" content="https://labs.steren.fr/2014/03/20/colourful-intermediate-results/../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Colourful intermediate results"
+    "image": "https://labs.steren.fr/2014/03/20/colourful-intermediate-results/../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Colourful intermediate results</h2>
+      <span href="index.html">
+        <time datetime="2014-03-20T01:24:20+02:00">2014/03/20</time>
+      </span>
+    </header>
+    <img src="../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>While killing time in the train, we worked with Anne on a small maze generation algorithm. But what started to be a way to visualise the results, turned into a result in itself (run it yourself <a href="http://steren.fr/labyrinth/#colors">here</a>, be patient):</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-429">
+      <a href="../../screen-shot-2014-03-16-at-22-56-59.png">
+        <img src="../../screen-shot-2014-03-16-at-22-56-59.png%3Fw=1024&amp;h=1024" alt="Screen Shot 2014-03-16 at 22.56.59"/>
+      </a>
+      <figcaption>It all started with a way to visualise the distance of each square in a maze. From start to end, it uses the entire color hue.</figcaption>
+    </figure>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-428">
+      <a href="../../screen-shot-2014-03-08-at-01-06-39.png">
+        <img src="../../screen-shot-2014-03-08-at-01-06-39.png%3Fw=1200" alt=""/>
+      </a>
+      <figcaption>Decreasing the wall size was very pleasant visually.</figcaption>
+    </figure>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-432">
+      <a href="../../screen-shot-2014-03-17-at-00-01-09.png">
+        <img src="../../screen-shot-2014-03-17-at-00-01-09.png%3Fw=1024&amp;h=581" alt="Screen Shot 2014-03-17 at 00.01.09"/>
+      </a>
+      <figcaption>Visualising the progress of the construction is also very nice, like a growing organism.</figcaption>
+    </figure>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-434">
+      <a href="../../screen-shot-2014-03-17-at-00-29-25.png">
+        <img src="../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1024&amp;h=577" alt="Screen Shot 2014-03-17 at 00.29.25"/>
+      </a>
+      <figcaption>Forgetting about the initial goal, here is a very nice colourful render.</figcaption>
+    </figure>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-457">
+      <a href="../../../04/screen-shot-2014-03-17-at-23-55-00.png">
+        <img src="../../../04/screen-shot-2014-03-17-at-23-55-00.png%3Fw=1024&amp;h=511" alt="Playing with colours, adding depth"/>
+      </a>
+      <figcaption>Playing with a colour palette, adding depth by changing the color luminosity</figcaption>
+    </figure>
+    <p>Technically, the rendering is done using HTML canvas. I will detail the maze generation algorithm itself in a future post.</p>
+    <p>This led me to notice that using the HSL notation when drawing on a canvas was 3 times slower than using other color notation. (I created <a href="http://jsperf.com/fillstyle-css-color-value-hex-vs-rgb-vs-hsl">this JSperf</a>). I filled <a href="https://code.google.com/p/chromium/issues/detail?id=353761">a bug report</a> on the Chromium bug tracker, let’s hope it will be addressed in the future.</p>
+    <p>The colourful visualisation is published online, you can run <a href="http://steren.fr/labyrinth/#colors">it here</a>.</p>
+  </article>
+</main>
+</body>
+</html>

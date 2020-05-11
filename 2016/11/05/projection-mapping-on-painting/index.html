@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Projection mapping on painting</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Projection mapping on painting">
+  <meta name="twitter:image" content="https://labs.steren.fr/2016/11/05/projection-mapping-on-painting/../../img_20161101_144424.jpg%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Projection mapping on painting">
+  <meta property="og:image" content="https://labs.steren.fr/2016/11/05/projection-mapping-on-painting/../../img_20161101_144424.jpg%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Projection mapping on painting"
+    "image": "https://labs.steren.fr/2016/11/05/projection-mapping-on-painting/../../img_20161101_144424.jpg%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Projection mapping on painting</h2>
+      <span href="index.html">
+        <time datetime="2016-11-05T19:15:48+02:00">2016/11/05</time>
+      </span>
+    </header>
+    <img src="../../img_20161101_144424.jpg%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p><a href="https://twitter.com/xdoremus">Xavier</a> has an overhead projector which points toward a painting on a wall. So obviously, we had to project on it  🙂</p>
+    <p>After a bit of calibration to make sure we were projecting black outside of the painting, we tries different things:</p>
+    <p>The first thing was to feed the painting into the <a href="http://deepdreamgenerator.com/generator">Deep Dream algorithms</a>, in order to create those <a href="https://en.wikipedia.org/wiki/DeepDream">trippy pictures</a> from neural networks. Sadly, once projected, the result was not noticeable enough.</p>
+    <p>So I tried something different: <a href="http://deepdreamgenerator.com/generator-style">style transfer</a>. This is an algorithm, also using machine learning, that can transfer the artistic style of an image to another. Take a look at this gallery:</p>
+    <p>TODO: Gallery</p>
+    <p>I also worked on animations, using Adobe After effects: The painting usually represents a boring winter scene, so I created 3 different compositions, to layer on top of the original style, that represent the scene under different weather: summer, rain and snow. Each of them are color graded and animated: summer has a slowly moving trees and blue sky, I simulated raindrops and a snowfall. See the video below (sadly, the rain or snow do not render well in the recorded video):</p>
+    <span>
+      <iframe src="https://www.youtube.com/embed/fFoC8iNgIgw?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true"/>
+    </span>
+    <p>Adobe After Effects easily allows to display the current composition on a second screen, in my case the projector. This allowed real time visualization of the effects, which is always better when working on something visual, especially when the computer screen is not the final medium:</p>
+    <p>
+      <img src="../../img_20161029_192125.jpg%3Fw=768&amp;h=1024" alt="img_20161029_192125"/>
+    </p>
+  </article>
+</main>
+</body>
+</html>

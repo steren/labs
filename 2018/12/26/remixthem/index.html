@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Open sourcing Remixthem, my first Android app</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Open sourcing Remixthem, my first Android app">
+  <meta name="twitter:image" content="https://labs.steren.fr/2018/12/26/remixthem/../../large-icon.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Open sourcing Remixthem, my first Android app">
+  <meta property="og:image" content="https://labs.steren.fr/2018/12/26/remixthem/../../large-icon.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Open sourcing Remixthem, my first Android app"
+    "image": "https://labs.steren.fr/2018/12/26/remixthem/../../large-icon.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Open sourcing Remixthem, my first Android app</h2>
+      <span href="index.html">
+        <time datetime="2018-12-26T18:28:05+02:00">2018/12/26</time>
+      </span>
+    </header>
+    <img src="../../large-icon.png%3Fw=512&amp;h=512&amp;crop=1" alt=""/>
+    <p>10 years ago, the iPhone re-defined what a mobile phone could be. But because I was an open source enthusiast, invested into the Google ecosystem and knew Java, I bought an <a href="https://en.wikipedia.org/wiki/HTC_Magic">HTC Magic</a>, the second Android phone in the market. I was at the time an intern in Paris working on 3D software, and I had some free time in the evenings. This is when I decided to dive into Android development. </p>
+    <figure>
+      <img src="../../phone.png%3Fw=270" alt=""/>
+    </figure>
+    <p>I downloaded the Android SDK, started some samples and read the docs, which, from what I remember, were quite good. I learnt about a few fundamental concepts of the Android OS: <a href="https://developer.android.com/reference/android/content/Intent">Intents</a>, <a href="https://developer.android.com/reference/android/app/Activity">Activity</a>, <a href="https://developer.android.com/guide/topics/resources/providing-resources">resources</a> (and <a href="https://developer.android.com/guide/topics/resources/providing-resources#AlternativeResources">alternative resources</a>), <a href="https://developer.android.com/guide/topics/ui/declaring-layout">UI layouts</a>, <a href="https://developer.android.com/reference/android/graphics/drawable/Drawable">Drawables</a>…</p>
+    <p>At the same time, Google launched the second <a href="https://en.wikipedia.org/wiki/Android_Developer_Challenge#Android_Developers_Challenge_II">Android Developer Challenge</a>, promising some large amount of money to winners of each category. This was, in my opinion, a great way to bootstrap the Android app ecosystem, and was for me an ideal target to get started on a real app.</p>
+    <h2>The app</h2>
+    <p>I previously used Photoshop (or more likely <a href="https://www.gimp.org/">GIMP</a>) to blend two faces together for fun. This was quite tedious to do by hand, and I always believed the process could be automated. “<em><a href="http://remixthem.steren.fr">Remixthem</a></em>” was born. The purpose was simple: the user would snap pictures of two faces and the app would blend them into one. I later realized that it was also fun to edit the features of a single face, so I added this mode.</p>
+    <ul>
+      <li>
+        <figure>
+          <img src="../../obama.png%3Fw=320" alt=""/>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="../../sarkozy.png%3Fw=320" alt=""/>
+        </figure>
+      </li>
+      <li>
+        <figure>
+          <img src="../../menu.png%3Fw=320" alt=""/>
+        </figure>
+      </li>
+    </ul>
+    <p>At the time, there were not a lot of resources online and GitHub was barely launched, I remember using Google Code Search to look for relevant examples inside the source code of Android itself. The app uses the built-in <a href="https://developer.android.com/reference/android/media/FaceDetector">face detection API</a> to <a href="https://github.com/steren/remixthem/blob/master/Android/src/fr/steren/remixthem/market/BackgroundFace.java#L33-L62">get the location of the eyes</a> in both pictures. Then it uses some <a href="https://github.com/steren/remixthem/blob/master/Android/res/drawable/alphamask_eyes.png">alpha masks</a> to extract these features and later blend them. The user can also edit each part manually. I had fun drawing the graphics, in particular, I remember how aweful were the guidelines fro Android icons at the time (a very strange 3D perspective).</p>
+    <p>Technically, I learnt a lot. Of course, I learnt about Android application development, but also about the Java programming language and generic image manipulation techniques. </p>
+    <h2>Mistakes</h2>
+    <p>I also learnt a lot about what it takes to make a “product” from start to finish. In retrospect, here are the mistakes I did with Remixthem. I realized these quite early after launching the app, but never found the time (or maybe the motivation) to fix them. </p>
+    <ul>
+      <li><strong>Bad UX</strong>: <ul><li>Overall, I think I simply did not do enough user testing. I just gave the app to 2 or 3 friends asking for feedback.</li><li>Forcing users to press the device’s physical “menu button” to access actions hurt discoverability of these features.  I remember that somebody explicitly told me that the actions were not discoverable, but I discarded this feedback, based on the fact that this was at the time an “officially recommended pattern for Android apps”.</li><li>The flow of screens also needed improvement: Instead of landing the user on a main view, I could have opted in for a more direct experience, which bring me to the next point</li><li>The value statement was not clear: the fact that I used iconography to convey the purpose of the app did not help to understand what it was really doing. Users had to do multiple steps to get a result, instead, I could have conveyed the value statement with an example using familiar faces</li></ul></li>
+      <li><strong>No marketing or growth strategy</strong>: I built the app, published it and … waited :). I realized that just “publishing an app” does not mean users will discover it. To raise awareness of the app, I could have: shared more about the creation process on developer forums, presented it at local meetups, seek to be featured on blogs or website (at the time, there were very few Android apps). To make it grow, I could have pushed users to share results on  social media (with a “Remixthem” watermark) or better integrate with the Facebook API.</li>
+      <li><strong>Branding and verticals</strong>: Instead of “allowing users to remix faces”, I could have launched apps based on the same engine, but addressing particular verticals, for example: “baby’s face”, “doll face”, “ugly face”, or simply “adding hats and mustache”… </li>
+      <li><strong>iOS version</strong>: At the time, Android had low penetration, if my goal was adoption among mobile users, an iOS version would have had a larger potential user base.</li>
+      <li><strong>Not solving a big problem:</strong> Overall, the app was fun, but not really solving a user problem. Everything still had to be invented on mobile at the time, I could have picked an idea that people actually needed 🙂</li>
+    </ul>
+    <p>10 years later many apps implement this feature, and in a very impressive way: Snapchat does it in real time for example.</p>
+    <h2>Get it</h2>
+    <p>The code is very old, but there is no reason to keep it private. Find the <a href="https://github.com/steren/remixthem">source code on GitHub</a>.</p>
+    <p>The app is published (without any guarantee) <a href="https://play.google.com/store/apps/details?id=fr.steren.remixthem.market">on Google Play.</a></p>
+  </article>
+</main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cloud cup: a multiplayer set of mini games for web and Android</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Cloud cup: a multiplayer set of mini games for web and Android">
+  <meta name="twitter:image" content="https://labs.steren.fr/2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/../../screenshot.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cloud cup: a multiplayer set of mini games for web and Android">
+  <meta property="og:image" content="https://labs.steren.fr/2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/../../screenshot.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Cloud cup: a multiplayer set of mini games for web and Android"
+    "image": "https://labs.steren.fr/2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/../../screenshot.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Cloud cup: a multiplayer set of mini games for web and Android</h2>
+      <span href="index.html">
+        <time datetime="2015-03-12T00:52:33+02:00">2015/03/12</time>
+      </span>
+    </header>
+    <img src="../../screenshot.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>I’m glad to present the work of a week-long hackathon I did last November with three other googlers.</p>
+    <p>I’ve been having for a long time the idea of a real time game using phones as controller and a big screen as the main game screen. You may recall a previous blog post about a <a href="../../../../2011/09/15/anydance/index.html">first prototype</a>. A few years later, I could pitch the idea at an internal hackathon and gather a team around the concept. While I initially wanted to build a dancing game, I realized that this was <a href="http://www.justdancenow.com/">already done</a>, so we decided to go towards mini games, an idea very compatible with a hackathon timeframe.</p>
+    <p>Realizing after a day that we would not be able to have a reliable and scalable real time architecture and a fun game after just five days using regular backend technologies, we decided to focus on the game itself and to use <a href="https://www.firebase.com">Firebase</a> to handle the real time and backend parts of our system. It allowed us to get familiar with this very interesting technology. I already <a href="../../../../2014/05/05/indoor-climbing-tracker/index.html">used Parse in the past</a>, while they both fall into the <a href="https://en.wikipedia.org/wiki/Mobile_Backend_as_a_service">Backend as a Service (MBaaS) category</a>, I could notice with pleasure that Firebase was able to perform as well as Parse for the regular MBaaS features (and even better to my taste, by providing an <a href="https://www.firebase.com/docs/web/libraries/angular/index.html">Angukar</a> SDK) but that it also provides impressive real time capabilities.</p>
+    <p>After a single day, we had a functional prototype of our game: Android phones were interacting in real time with an Angular application in a “Shake” game. The next three days were spent creating other mini games and streamlining the game mechanism.</p>
+    <p>And we won the Fun category!</p>
+    <p>While the hackathon was internal, it was not a problem at all for Google to let us open source and release our work to the public. You can find the sources on GitHub: <a href="https://github.com/google/cloud-cup-android">Android</a> and <a href="https://github.com/google/cloud-cup">Web</a>. Firebase <a href="https://www.firebase.com/blog/2015-03-11-cloud-cup-cross-platform-demo.html">showcased the project</a> on its official blog.</p>
+    <p><strong>Try it now: <a href="https://play.google.com/store/apps/details?id=fr.steren.cloudcup">Install the Android app</a></strong>, and visit <strong><a href="https://cloud-cup.firebaseapp.com">cloudcup.firebaseapp.com</a></strong> to start a game.</p>
+    <p>I hope you like it.</p>
+  </article>
+</main>
+</body>
+</html>

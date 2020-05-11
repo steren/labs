@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Generating a name tag sheet from a list of names</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Generating a name tag sheet from a list of names">
+  <meta name="twitter:image" content="https://labs.steren.fr/2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/../../tags.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Generating a name tag sheet from a list of names">
+  <meta property="og:image" content="https://labs.steren.fr/2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/../../tags.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Generating a name tag sheet from a list of names"
+    "image": "https://labs.steren.fr/2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/../../tags.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Generating a name tag sheet from a list of names</h2>
+      <span href="index.html">
+        <time datetime="2016-06-18T17:09:59+02:00">2016/06/18</time>
+      </span>
+    </header>
+    <img src="../../tags.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>I needed to generate a sheet of images featuring names from a list.</p>
+    <p>So wrote a short code that takes string inputs from a JavaScript array and creates a sheet, ready to be printed. I relied on <a href="http://svgjs.com/">svg.js</a> to programmatically generate the SVG file.</p>
+    <p>See and get the code in <a href="https://gist.github.com/steren/08e7b343dabe7ea93550c9e10fa64e75#file-tags-html">this GitHub gist</a></p>
+    <p>Feel free to use it:</p>
+    <ul>
+      <li>Add your background images into a ‘background folder’</li>
+      <li>Copy the code in an .html file next to this folder, and start a web server here.</li>
+      <li>Convert your list of names into a JavaScript array, you have many ways to do this, for me, I copied my list from a sheet into the <a href="https://atom.io/">Atom text editor</a> and then use the multi-line editing to add the necessary characters.</li>
+      <li>Change parameters to make it yours.</li>
+    </ul>
+  </article>
+</main>
+</body>
+</html>

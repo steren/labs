@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scuba Diving dashboard using Google Data Studio</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Scuba Diving dashboard using Google Data Studio">
+  <meta name="twitter:image" content="https://labs.steren.fr/2017/09/11/scuba-diving-dashboard-using-google-data-studio/../../diveboard.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Scuba Diving dashboard using Google Data Studio">
+  <meta property="og:image" content="https://labs.steren.fr/2017/09/11/scuba-diving-dashboard-using-google-data-studio/../../diveboard.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Scuba Diving dashboard using Google Data Studio"
+    "image": "https://labs.steren.fr/2017/09/11/scuba-diving-dashboard-using-google-data-studio/../../diveboard.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Scuba Diving dashboard using Google Data Studio</h2>
+      <span href="index.html">
+        <time datetime="2017-09-11T06:14:53+02:00">2017/09/11</time>
+      </span>
+    </header>
+    <img src="../../diveboard.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>As a scuba diver, I log all my dives in a dive log. For most divers, this is just a simple notebook, but some years ago, I started to also enter my dive <a href="https://docs.google.com/spreadsheets/d/1kGkM8fpwb3f1q3H9Tf07FXHZ4JM3FFsihbDzytdUEic/edit#gid=0">in a simple Google Sheet.</a></p>
+    <p>After playing a bit with <a href="https://support.google.com/docs/answer/6280499?co=GENIE.Platform%3DDesktop&amp;hl=en">charts and the “Explore” feature of Google sheet</a> to answer questions like “max depth” or “number of dives per regions”, I decided to create a dashboard to better showcase some dive stats and visualizations. While you can put some charts and numbers on a new sheet in Google sheet, I think it is not really designed for this. I preferred to keep Sheet as a database and to pull this data from  somewhere else.</p>
+    <p>Using <a href="https://www.google.com/analytics/data-studio/">Google Data Studio</a>, I could add my dive log sheet as a data source and then put interesting visualizations and stats on a new canvas. Here is what I think make Data Studio a great tool:</p>
+    <ol>
+      <li>It’s free. I would not have paid to build a hobby dashboard.</li>
+      <li>Custom themes and colors</li>
+      <li>Filters: I added interaction by allowing visitors to filter by date, location, dive center…</li>
+      <li>The tool makes it very easy to position things on a 2D canvas.</li>
+    </ol>
+    <p>See my <a href="https://datastudio.google.com/open/0B8FSfdmUGImHVzVRRFhfMERTZXM">dive dashboard and log built on Google Data Studio</a></p>
+    <p>The tool has its limit and will not replace a real dive log. Building a better dive log and dashboard would definitely require some code (a long time ago <a href="../../../../2010/10/19/open-divers-first-screen/index.html">I started but never finished</a>).</p>
+  </article>
+</main>
+</body>
+</html>

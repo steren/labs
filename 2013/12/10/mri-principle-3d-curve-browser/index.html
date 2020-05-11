@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
+  <meta name="twitter:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
+  <meta property="og:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js"
+    "image": "https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js</h2>
+      <span href="index.html">
+        <time datetime="2013-12-10T13:16:22+02:00">2013/12/10</time>
+      </span>
+    </header>
+    <img src="../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966&amp;h=800&amp;crop=1" alt=""/>
+    <p>My partner is defending her thesis today and she needed some help to produce visuals for the presentation. The goal was to illustrate the relaxation of the spin of a proton that received a radio-frequential impulsion in a constant magnetic field, which is the principle at the root of Magnetic Resonance Imagery.</p>
+    <p>The visualisation needed to be animated and in 3D. I thought it would be a good use case for <a href="https://github.com/unconed/MathBox.js/">MathBox.js</a>, a JavaScript library built on top of <a href="http://threejs.org/">three.js</a>, which is built on top of WebGL and developed by <a href="http://acko.net/">Steven Wittens</a>.</p>
+    <p>This library is designed for mathematical visualisations. You focus on curve expressions and not on geometrical primitives, the engine is then evaluating and interpolating them on every frame to draw them. It works in 2D, 3D space and is not restricted to cartesian space.</p>
+    <p>I created a 3 step animation. MathBox allows you to write an animation script: you define for each step what is added, removed or animated.</p>
+    <p>You can load it in your browser at <a href="http://steren.github.io/mri-spin/spin.html">this address</a>.<br/>
+Or simply watch this youtube video:</p>
+    <span>
+      <iframe src="https://www.youtube.com/embed/ygwESjbb3rQ?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true"/>
+    </span>
+    <p>I am also glad to use this animation to illustrate the <a href="https://fr.wikipedia.org/wiki/Imagerie_par_r%C3%A9sonance_magn%C3%A9tique#Rappels_de_RMN">Wikipedia article about MRI and MRN</a>.</p>
+    <p><strong>Using chrome as my code editor</strong><br/>
+I wanted to experiment with something that I think will happen more and more in the future: This short project was entirely developed inside the browser.</p>
+    <p>
+      <a href="../../screen-shot-2013-12-08-at-17-37-17.png">
+        <img src="../../screen-shot-2013-12-08-at-17-37-17.png%3Fw=300&amp;h=191" alt="Code in Chrome dev tools"/>
+      </a>
+    </p>
+    <p>I had to create the local git repository and its submodules, but then I did not use an other editor than the “Source” tab of Chrome’s Dev Tools. This is possible thanks to Chrome’s “<a href="https://developers.google.com/chrome-developer-tools/docs/settings#workspace">Workspaces</a>” that allow it to map the current page source to a specific folder of your computer. It is then possible to edit and save the resources that are usually read-only. This workflow is more streamlined, than the regular workflow of debugging in the Dev Tools, then going back to the editor, find the line to change, save, go back to Chrome and reload. Here, you do not leave the browser’s window and can edit and save the JavaScript file at the same time of debugging.</p>
+    <p>Of course, this is a different approach than using an online IDE such as<a href="https://c9.io/"> cloud9 IDE</a>, that I also appreciate, but both are interesting and we should definitely keep an eye on these new workflows.</p>
+  </article>
+</main>
+</body>
+</html>

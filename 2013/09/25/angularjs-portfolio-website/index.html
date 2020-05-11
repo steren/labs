@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Portfolio written with AngularJS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="My Portfolio written with AngularJS">
+  <meta name="twitter:image" content="https://labs.steren.fr/2013/09/25/angularjs-portfolio-website/../../portfolio.png%3Fw=1124___IMAGE___amp;h=654___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="My Portfolio written with AngularJS">
+  <meta property="og:image" content="https://labs.steren.fr/2013/09/25/angularjs-portfolio-website/../../portfolio.png%3Fw=1124___IMAGE___amp;h=654___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "My Portfolio written with AngularJS"
+    "image": "https://labs.steren.fr/2013/09/25/angularjs-portfolio-website/../../portfolio.png%3Fw=1124___IMAGE___amp;h=654___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">My Portfolio written with AngularJS</h2>
+      <span href="index.html">
+        <time datetime="2013-09-25T20:32:27+02:00">2013/09/25</time>
+      </span>
+    </header>
+    <img src="../../portfolio.png%3Fw=1124&amp;h=654&amp;crop=1" alt=""/>
+    <p>I’ve been working with <a href="http://backbonejs.org/">Backbone.JS</a> for the past two years as front-end JavaScript framework for desktop and mobile web apps. I wanted to try a more structured framework. While I read a lot about <a href="http://www.w3.org/TR/2013/WD-components-intro-20130606/">Web components</a>, that are for me the future of web programming, I had issues using them in a very simple use case. The <a href="http://www.polymer-project.org/">Polymer project</a> (based on them) looks interesting, but is still in very early stage. That is how I selected the <a href="http://angularjs.org/">AngularJS</a> framework.</p>
+    <p>
+      <img src="../../portfolio.png%3Fw=300&amp;h=174" alt="portfolio made with AngularJS"/>
+    </p>
+    <p>A refactoring of my simple portfolio at <a href="http://steren.fr">http://steren.fr</a> was a perfect candidate as a simple project to learn this framework. You can check the <a href="https://github.com/steren/steren.github.com">code on github</a>.</p>
+    <p>I started with Angular’s great <a href="http://docs.angularjs.org/tutorial">getting started tutorial</a> and was then able to start working using the official <a href="http://docs.angularjs.org/guide/">Documentation</a> and the rest of the interweb.</p>
+    <p>The app is very simple :</p>
+    <ul>
+      <li>It contains two Views (described in partials), that are using the same Controller</li>
+      <li>The data comes from a JSON file and accessible from a Service.</li>
+      <li>I had to write a custom Filter to filter works based the checked checkboxes.</li>
+    </ul>
+    <p>What is interesting is that I didn’t needed to code any data-binding or manual refresh, Angular is handling this for me since everything is properly wired. For example: clicking on  the <em>sort radio-button</em> changes the ‘sort’ variable that are linked to the <em>works</em> filters.</p>
+    <p>Read and fork the portfolio <a href="https://github.com/steren/steren.github.com/tree/angular">code on github</a>.</p>
+  </article>
+</main>
+</body>
+</html>

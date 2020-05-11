@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Screenshot as SVG</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Screenshot as SVG">
+  <meta name="twitter:image" content="https://labs.steren.fr/2020/05/08/screenshot-as-svg/../../html-to-svg.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Screenshot as SVG">
+  <meta property="og:image" content="https://labs.steren.fr/2020/05/08/screenshot-as-svg/../../html-to-svg.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Screenshot as SVG"
+    "image": "https://labs.steren.fr/2020/05/08/screenshot-as-svg/../../html-to-svg.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Screenshot as SVG</h2>
+      <span href="index.html">
+        <time datetime="2020-05-08T06:31:15+02:00">2020/05/08</time>
+      </span>
+    </header>
+    <img src="../../html-to-svg.png%3Fw=960&amp;h=720&amp;crop=1" alt=""/>
+    <p>We often need to embed screenshots of web apps in product pages or documentation. If the screenshot resolution is not high enough, this can result to blurry images, notably on high density screens. Using .png file leads to crisp results but heavy files compared to a vector graphic. And lastly, wouldn’t it be cool if the text on the screenshot could be selected? or the screenshot able to adapt to high zoom levels?</p>
+    <p>Since these days webpages and user interfaces have stopped using textures in favor of flat design and vector-based icons and texts, saving screenshots into a vector graphic format like  <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a> would be perfect.</p>
+    <p>So I started looking for a tool that would capture screenshots as <a href="https://developer.mozilla.org/en-US/docs/Web/SVG">SVG</a>. I couldn’t find anything, and indeed, that’s a hard problem to solve: the tool needs to have knowledge of the structure of what’s on screen in order to generate the SVG structure.</p>
+    <p>But then I realized: Isn’t what Chrome does when it prints to PDF? And then, we can simply convert this PDF into an SVG using <a href="https://inkscape.org/">Inkscape</a>. And indeed, this workflow works quite well:</p>
+    <ol>
+      <li>In Chrome, print the current page and select “Save as PDF”. Make sure to check the “Background graphics” option, in order to capture the background colors. Adjust the paper size and scale for a proper size (I recommend using an A3 paper in portrait)</li>
+      <li>Open the saved PDF using Inkcape. Pick the default importer if you want to </li>
+      <li>Optionally, adjust the viewport and delete unwanted elements</li>
+      <li>Save the file as SVG.</li>
+      <li>Profit</li>
+    </ol>
+    <p>These manual steps work great, but are a few steps too much. So I wrote a web service that given an URL, returns its SVG screenshot.</p>
+    <p>The code uses the same tool as described above : Chrome, manipulated via <a href="https://pptr.dev/">Puppeteer</a> and Inkscape, executed via its <a href="https://inkscape.org/doc/inkscape-man.html">command line</a>. I needed to <a href="https://github.com/as-a-service/html-to-svg/blob/317e9169778f7372bfcd08a52119de6d089f8f3a/htmltosvg.js#L11">add a few line of code</a> to handle the incoming request and orchestrate all this.  I picked Node.js. And then packaged it all into a Docker container, making sure <a href="https://github.com/as-a-service/html-to-svg/blob/317e9169778f7372bfcd08a52119de6d089f8f3a/Dockerfile#L4-L18">fonts and all needed OS packages were installed in it</a>. The container is deployed to Cloud Run as an automatically scales web service. I am paying only when it s processing requests, and I do not have to worry of scaling it up and down to handle the load. </p>
+    <p>Give it a try at <a href="https://html-to-svg.as-a-service.dev/">https://html-to-svg.as-a-service.dev/</a>, pass the URL to screenshot as a parameter, for example: <a href="https://html-to-svg.as-a-service.dev/?url=https://steren.fr">https://html-to-svg.as-a-service.dev/?url=https://steren.fr</a></p>
+    <p>And as always, the <a href="https://github.com/as-a-service/html-to-svg">code is on GitHub</a></p>
+  </article>
+</main>
+</body>
+</html>

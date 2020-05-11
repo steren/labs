@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Call Wikipedia API using jQuery</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Call Wikipedia API using jQuery">
+  <meta name="twitter:image" content="https://labs.steren.fr/2010/11/18/call-wikipedia-api-using-jquery/../../wikipedia-jquery.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Call Wikipedia API using jQuery">
+  <meta property="og:image" content="https://labs.steren.fr/2010/11/18/call-wikipedia-api-using-jquery/../../wikipedia-jquery.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Call Wikipedia API using jQuery"
+    "image": "https://labs.steren.fr/2010/11/18/call-wikipedia-api-using-jquery/../../wikipedia-jquery.png%3Fw=960___IMAGE___amp;h=720___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Call Wikipedia API using jQuery</h2>
+      <span href="index.html">
+        <time datetime="2010-11-18T04:12:05+02:00">2010/11/18</time>
+      </span>
+    </header>
+    <img src="../../wikipedia-jquery.png%3Fw=960&amp;h=720&amp;crop=1" alt=""/>
+    <p>I decided to directly use the data from Wikipedia. Many pages contain a structured “<em>Infobox</em>” that I will use to gather information I need.</p>
+    <p>There is a Wikipedia API (more precisely, MediaWiki, the engine of Wikipedia, has an API). I invite you to <a href="http://www.mediawiki.org/wiki/API">read the documentation</a>.</p>
+    <p>Here are some examples of what can be done using the javascript library jQuery:</p>
+    <ul>
+      <li>get the source of a page (<a href="http://www.mediawiki.org/wiki/API:Query_-_Properties#revisions_.2F_rv">API doc</a>):
+<pre title="">$.getJSON("http://en.wikipedia.org/w/api.php?action=query&amp;amp;format=json&amp;amp;callback=?", {titles:pageName, prop: "revisions", rvprop:"content"}, wikipediaPageResult);</pre></li>
+      <li>get the image names of a page (<a href="http://www.mediawiki.org/wiki/API:Query_-_Properties#images_.2F_im">API doc</a>):
+<pre title="">$.getJSON("http://en.wikipedia.org/w/api.php?action=query&amp;amp;format=json&amp;amp;callback=?", {titles:pageName, prop: "images"}, wikipediaImageResult</pre></li>
+      <li>get the HTML formatted content of a page (<a href="http://www.mediawiki.org/wiki/API:Parsing_wikitext#parse">API doc</a>) (does not follow redirects)
+<pre title="">$.getJSON("http://en.wikipedia.org/w/api.php?action=parse&amp;amp;format=json&amp;amp;callback=?", {page:pageName, prop:"text"}, wikipediaHTMLResult);</pre></li>
+    </ul>
+    <p>It is important to note the needed “&amp;callback=?” in the query (it will tell jQuery to use <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>, a way to do cross-site javascript call), thanks to <a href="http://stackoverflow.com/questions/3873636/no-response-from-mediawiki-api-using-jquery">stackoverflow</a> for this tip.</p>
+    <p>Note that to get the HTML content of a wiki page using javascript from the browser, I cannot use the “action=render” <a href="http://www.mediawiki.org/wiki/Manual:Parameters_to_index.php">parameter of index.php</a> because of the <a href="http://en.wikipedia.org/wiki/Same_origin_policy">Same Origin Policy</a>. I had to use the API to do it client side. I think I will rewrite my system to do this call server-side.</p>
+    <p>In the end, check <a href="https://gist.github.com/704540">my gist on github</a> to get the full code of how to import a Wikipedia Page in javascript.</p>
+  </article>
+</main>
+</body>
+</html>

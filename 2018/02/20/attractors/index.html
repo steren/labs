@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Attractors</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Attractors">
+  <meta name="twitter:image" content="https://labs.steren.fr/2018/02/20/attractors/../../../01/large2.png%3Fw=920___IMAGE___amp;h=680___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Attractors">
+  <meta property="og:image" content="https://labs.steren.fr/2018/02/20/attractors/../../../01/large2.png%3Fw=920___IMAGE___amp;h=680___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Attractors"
+    "image": "https://labs.steren.fr/2018/02/20/attractors/../../../01/large2.png%3Fw=920___IMAGE___amp;h=680___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Attractors</h2>
+      <span href="index.html">
+        <time datetime="2018-02-20T01:35:31+02:00">2018/02/20</time>
+      </span>
+    </header>
+    <img src="../../../01/large2.png%3Fw=920&amp;h=680&amp;crop=1" alt=""/>
+    <h2>The idea</h2>
+    <p>For our <em>Save the date</em>, we had some visual ideas of what we wanted to achieve: Something relaxing and calm, inspired by the sea. We first started by picking a <a href="../../../../2016/01/25/color-palette-showcase/index.html">color palette</a> and then decided to explore streams of particles, reminding streams of ocean currents.</p>
+    <p>See the final result <a href="http://steren.github.io/les-ninis">here</a>.</p>
+    <h2>Using code for visual design</h2>
+    <p>Anne and I developed our project using JavaScript and browser technologies (see below).</p>
+    <p>It was interesting to use code to achieve something that is visual design. Part of the end result is coming from the randomness of the algorithm, like the initial positions of the attractors and of the particles, but another part of the result comes from hand picked parameter values (colors, sizes, number, speed…). The final result is in my opinion an interesting mix of pre-defined visual aesthetics and randomness.</p>
+    <p>Like any artistic tool, code can be used to achieve a certain artistic result. The drawback with most development environment is the long feedback loop: Contrary to a drawing tool where the feedback is almost instant, code demands to finish the code modification before being able to visualize it.</p>
+    <h2>The technology</h2>
+    <p>We draw many particles on a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">web canvas</a>. For each frame, we move the particles and draw their movement on top of the previous state. We do that at 60 frames per second.</p>
+    <p>The paths are never stored in memory, only the current position of the particles and the attractors are, what you see is just result of overlaying many many frames. The “shadow” is faked by using a transparent sprite, that we paint under each particle at each frame. This gives a nice depth effect to the end result, despite everything being in 2D.</p>
+    <p>The particles move by following the gradient of various “attractors”, like particles in a magnetic field. The position, number and impact of these attractors are generated randomly, within pre-defined boundaries.</p>
+    <p>In addition to particles and attractors, we added the ability to draw text and avoid certain zones. This complexified the codebase and does not lead in my opinion to great results. But we wanted to use it a little bit in our Save the Date.</p>
+    <p> </p>
+    <h2>A reusable library</h2>
+    <p>Later, I moved the code responsible for painting particles in a reusable JS library. Find it <a href="https://github.com/steren/attractors">on GitHub</a> and <a href="https://www.npmjs.com/package/attractors">on npm</a>. The code could be cleaned up, in particular, is assumes a global ‘config’ object, this should be passed as an argument when initializing the library.</p>
+    <p>Everything can be tweaked: text to display, the color, number of particles, size, speed… here are some videos of various settings:</p>
+    <span>
+      <iframe src="https://www.youtube.com/embed/videoseries?list=PL7Bq7_PxIAiCJ3yCgzGKgErZpBk7ipZ0I&amp;hl=en_US" allowfullscreen="true"/>
+    </span>
+    <h2>A ‘new tab’ Chrome extension</h2>
+    <p>Very recently, I used the library to create a Chrome extention that replaces your ‘new tab’ page with this library (see <a href="https://github.com/steren/attractors-newtab">sources on GitHub</a>)</p>
+    <p>
+      <a href="https://chrome.google.com/webstore/detail/attractors-new-tab/kalnpbpmfjnpehkhbpfikhopkoicaepi">Install it from the Chrome webstore</a>
+    </p>
+    <p>Here is a video of the new tab page once the extension is installed:</p>
+    <span>
+      <iframe src="https://www.youtube.com/embed/XBr6pdDIjj8?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true"/>
+    </span>
+  </article>
+</main>
+</body>
+</html>

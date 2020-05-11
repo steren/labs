@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Trying to confuse Google’s Vision algorithms with dogs and muffins</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Trying to confuse Google’s Vision algorithms with dogs and muffins">
+  <meta name="twitter:image" content="https://labs.steren.fr/2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/../../dog-or-muffing-results.png%3Fw=480___IMAGE___amp;h=468___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Trying to confuse Google’s Vision algorithms with dogs and muffins">
+  <meta property="og:image" content="https://labs.steren.fr/2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/../../dog-or-muffing-results.png%3Fw=480___IMAGE___amp;h=468___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Trying to confuse Google’s Vision algorithms with dogs and muffins"
+    "image": "https://labs.steren.fr/2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/../../dog-or-muffing-results.png%3Fw=480___IMAGE___amp;h=468___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Trying to confuse Google’s Vision algorithms with dogs and muffins</h2>
+      <span href="index.html">
+        <time datetime="2016-03-27T22:28:47+02:00">2016/03/27</time>
+      </span>
+    </header>
+    <img src="../../dog-or-muffing-results.png%3Fw=480&amp;h=468&amp;crop=1" alt=""/>
+    <p>When I saw <a href="https://www.reddit.com/r/funny/comments/49rpkb/dog_or_muffin/">this set</a> of very similar pictures of dogs and muffins (which comes from <a href="https://twitter.com/teenybiscuit/status/707727863571582978">@teenybiscuit</a>‘s tweets), I had only one question: How would <a href="https://cloud.google.com/vision/">Google’s Cloud Vision API</a> perform on this.</p>
+    <p>At a quick glance, it’s not obvious for a human, so how does the machine perform?  It turns out it does pretty well, check the results in this gallery:</p>
+    <figure>
+      <a href="dog-or-muffing-results/index.html">
+        <img src="../../dog-or-muffing-results.png%3Fw=150&amp;h=146" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="puppy-or-bagel-results/index.html">
+        <img src="../../puppy-or-bagel-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="shiba-or-marshmallow-results/index.html">
+        <img src="../../shiba-or-marshmallow-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="sloth-or-croissant-results/index.html">
+        <img src="../../sloth-or-croissant-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="dog-or-friedchicken-results/index.html">
+        <img src="../../dog-or-friedchicken-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="cat-results/index.html">
+        <img src="../../cat-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="parrot-results/index.html">
+        <img src="../../parrot-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <figure>
+      <a href="owl-or-apple-results/index.html">
+        <img src="../../owl-or-apple-results.png%3Fw=150&amp;h=150" alt=""/>
+      </a>
+    </figure>
+    <p>(also find the album on <a href="https://imgur.com/a/zLWre">imgur</a>)</p>
+    <p>For almost each set, there is one tile that is completely wrong, but the rest is at least in the good category. Overall, I am really surprised how well it performs.</p>
+    <p>You can try it yourself online with your own images <a href="http://steren.fr/vision-meme/">here</a>, and of course find the code <a href="https://github.com/steren/vision-meme">on GitHub</a>.</p>
+    <p>Technically it is built entirely in the browser, there is no server side component except the what’s behind the API of course:</p>
+    <ul>
+      <li>Images are loaded from presets or via the browser’s File API.</li>
+      <li>Each tile is converted in its own image, and converted to base 64.</li>
+      <li>All of this is sent at once to the Google Cloud Vision API, asking for label detection results (this is what matters to us here, even if the API can do much more like face detection, OCR, landmark detection…)</li>
+      <li>Only the label with the highest score is kept from the results and printed back into the main canvas.</li>
+    </ul>
+  </article>
+</main>
+</body>
+</html>

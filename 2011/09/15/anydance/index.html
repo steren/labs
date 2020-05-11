@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AnyDance</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="AnyDance">
+  <meta name="twitter:image" content="https://labs.steren.fr/2011/09/15/anydance/">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="AnyDance">
+  <meta property="og:image" content="https://labs.steren.fr/2011/09/15/anydance/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "AnyDance"
+    "image": "https://labs.steren.fr/2011/09/15/anydance/"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">AnyDance</h2>
+      <span href="index.html">
+        <time datetime="2011-09-15T17:45:49+02:00">2011/09/15</time>
+      </span>
+    </header>
+    <p>I’ve been hacking on a little project during the summer. The idea is to use the phone as a remote controller for a game displaying on a screen. I’m building a dance game, where the players’ goal is to follow a dance seen live in a video.</p>
+    <p>I’m using the accelerometers of the phone to record the movement of the players. Then I compare this to the reference movement of this video. If the movement match, the player earn points. The best dancer win at the end of the game.<br/>
+Technically, the main challenges are the processing of the accelerometer data and communicating in real time.</p>
+    <p><strong>Accelerometer data from the phone</strong>: I could use the native APIs and build a native app, but Phonegap is providing an <a href="http://docs.phonegap.com/en/1.0.0/phonegap_accelerometer_accelerometer.md.html">accelerometer API</a>, so I could build my app once and use it on many platforms.</p>
+    <p><strong>Data comparison</strong>: I have to use well thinked descriptors to compare the recorded data to the reference. I will start by detecting the “bumps”, their direction and their amplitude.</p>
+    <p><strong>Live communication</strong>: I’m using some real time technology to make all the device communicating with a server in real time: my choice is to use <a href="http://nodejs.org/">node.js</a> and the <a href="http://socket.io/">socket.io</a> library (and to ideally use web sockets).</p>
+    <p><strong>Data store</strong>: the library of dances will be stored in a no-SQL database. My choice is to use <a href="http://www.mongodb.org/">mongoDB</a>.</p>
+    <p><strong>Record a dance</strong>: one last challenge is to record the reference dance for a given video. I will try to use some simple machine learning algorithms to extract the reference from a set of records.</p>
+    <p>You can follow the development on <a href="https://github.com/Steren/anydance">my github</a>. </p>
+  </article>
+</main>
+</body>
+</html>

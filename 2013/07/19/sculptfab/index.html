@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sculptfab</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Sculptfab">
+  <meta name="twitter:image" content="https://labs.steren.fr/2013/07/19/sculptfab/../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sculptfab">
+  <meta property="og:image" content="https://labs.steren.fr/2013/07/19/sculptfab/../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Sculptfab"
+    "image": "https://labs.steren.fr/2013/07/19/sculptfab/../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article><header><span/><h2 href="index.html">Sculptfab</h2><span href="index.html"><time datetime="2013-07-19T23:57:08+02:00">2013/07/19</time></span></header><img src="../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>This Friday, I joined <a href="http://plopbyte.com/" target="_blank">Cédric</a>, <a href="https://twitter.com/marchelbling" target="_blank">Marc </a>and the guys from <a href="http://littleworkshop.fr/" target="_blank">Little Workshop</a> for a quick coding session.It all started when I noticed a very nice project: <a href="http://stephaneginier.com/sculptgl/">SculptGL</a> by Stéphane Ginier. Stéphane created a great 3D scuplting tool that implements some very nice adaptive subdivision and decimation.<figure data-shortcode="caption" aria-describedby="caption-attachment-415"><a href="../../../12/screen-shot-2013-12-10-at-23-01-18.png"><img src="../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=300&amp;h=170" alt="Final version of Sculptfab"/></a><figcaption>Final version of Sculptfab</figcaption></figure>We decided to refine the UI and to add the ability to directly upload to <a href="https://sketchfab.com">Sketchfab</a> without leaving the tool.On my part, I created the foundation of a small script that, when inserted, would help an application creator to upload model data to Sketchfab. it displays a model window asking for Sketchfab API key and basic information.Then, an archive containing the model data is created on the client using <a href="http://stuk.github.io/jszip/">JSzip</a> after the model has been transformed to the .obj file format. Screenshot of the current canvas is taken from the client too. and both are submitted to the <a href="https://sketchfab.com/api">Sketchfab API</a>.<p>Try Sculptfab online at <a href="http://labs.sketchfab.com/sculptfab/" target="_blank">http://labs.sketchfab.com/sculptfab/</a></p></article>
+</main>
+</body>
+</html>

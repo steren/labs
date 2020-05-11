@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Computing CO2 emissions from Location History</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Computing CO2 emissions from Location History">
+  <meta name="twitter:image" content="https://labs.steren.fr/2020/03/05/computing-co2-emissions-from-location-history/../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Computing CO2 emissions from Location History">
+  <meta property="og:image" content="https://labs.steren.fr/2020/03/05/computing-co2-emissions-from-location-history/../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Computing CO2 emissions from Location History"
+    "image": "https://labs.steren.fr/2020/03/05/computing-co2-emissions-from-location-history/../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Computing CO2 emissions from Location History</h2>
+      <span href="index.html">
+        <time datetime="2020-03-05T21:28:13+02:00">2020/03/05</time>
+      </span>
+    </header>
+    <img src="../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200&amp;h=800&amp;crop=1" title="Computing CO2 emissions from Location History"/>
+    <p>For more than 10 years, I have been recording my location with <a href="https://support.google.com/accounts/answer/3118687?hl=en">Google Location History</a>. This is a personal choice, I like going back in time and do stats about places I’ve been.</p>
+    <p>Recently, I’ve been trying to keep a closer look at my impact on climate change, which is driven by greenhouse gas emissions, measured in “CO2 equivalent (CO2e)”. A portion of these greenhouse gas comme from transportation.</p>
+    <p>So I wondered: Can I use this recorded personal data to better understand my personal impact on climate change for transpiration related emissions? Yes and <a href="https://observablehq.com/@steren/your-co2-emissions-from-location-history">you can too</a>. This is what I got:</p>
+    <figure>
+      <img src="../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1024" alt=""/>
+    </figure>
+    <p>Technically, Location History does not have an API, but you can retrieve the data using Google Takeout. You get the raw data points, but also analysed activity segments, and a lot of them already are labeled (“flight”, “in vehicle”…). All I needed to do was to write a script that automatically unzips the archive and parses these JSON files. Then plot the results. I added an extra step of activity detection based on heuristics (e.g. long distance and high average speed means flights), as it seems my Location History data was not properly labeled before 2017. </p>
+    <figure>
+      <img src="../../screenshot-2020-03-04-at-08.21.05.png%3Fw=1024" alt=""/>
+    </figure>
+    <p>In my case: Most of my emissions are from flights. Most of my flights are for business, and I am lucky that my employer offsets them entirely. But I would prefer to not emit the CO2 in the first place, so will make an effort to fly less in the future.</p>
+    <p>If you also enabled Location History, you can get the charts for your data using this online web page. It does not store or upload your data. All computation is done client-side using JavaScript in your web browser.</p>
+    <p>Try it for yourself and see the code at <a href="https://observablehq.com/@steren/your-co2-emissions-from-location-history">https://observablehq.com/@steren/your-co2-emissions-from-location-history</a></p>
+  </article>
+</main>
+</body>
+</html>

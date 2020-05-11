@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bringing video support to Phonegap Android</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Bringing video support to Phonegap Android">
+  <meta name="twitter:image" content="https://labs.steren.fr/2012/10/24/video-support-phonegap-android/../../phonegap-logo.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Bringing video support to Phonegap Android">
+  <meta property="og:image" content="https://labs.steren.fr/2012/10/24/video-support-phonegap-android/../../phonegap-logo.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Bringing video support to Phonegap Android"
+    "image": "https://labs.steren.fr/2012/10/24/video-support-phonegap-android/../../phonegap-logo.png%3Fw=512___IMAGE___amp;h=512___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Bringing video support to Phonegap Android</h2>
+      <span href="index.html">
+        <time datetime="2012-10-24T23:43:06+02:00">2012/10/24</time>
+      </span>
+    </header>
+    <img src="../../phonegap-logo.png%3Fw=512&amp;h=512&amp;crop=1" alt=""/>
+    <p>Phonegap for Android had serious issues with inline videos: HTML &lt;video&gt; tag was not supported at all on Android inferior to 4. (On Android 4.X, they require the View to be hardware accelerated)</p>
+    <p>On behalf of Joshfire, I worked on the main cordova Android source code by adding elements from the original Android browser. In the end, clicking on a video on a Phonegap application starts a fullscreen video player view. Hitting the “back” button goes back to the app. This is far from perfect, but better than nothing.</p>
+    <p>After submitting my pull request, I had warm and polite feedback from <a href="http://simonmacdonald.blogspot.fr/">Simon Mc Donald</a> of the Phonegap team, he helped to test my work and added the final touches before accepting the code into his branch.</p>
+    <p>Today the feature has been shipped into Phonegap 2.2.0. I had great feedback from both Phonegap creators and users. That’s something very motivating.</p>
+    <p>See the final <a href="https://github.com/apache/incubator-cordova-android/commit/06aafc96c9fd55a4d98dd032710048ed211ac49e">commit</a> in Phonegap’s source code.</p>
+  </article>
+</main>
+</body>
+</html>

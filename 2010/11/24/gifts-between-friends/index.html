@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gifts between us</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Gifts between us">
+  <meta name="twitter:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Gifts between us">
+  <meta property="og:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Gifts between us"
+    "image": "https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Gifts between us</h2>
+      <span href="index.html">
+        <time datetime="2010-11-24T14:45:49+02:00">2010/11/24</time>
+      </span>
+    </header>
+    <img src="../../capture-2.png%3Fw=894&amp;h=730&amp;crop=1" alt=""/>
+    <p>I’ve been building a new small website in a couple of evenings with the help of Xavier : <a href="http://www.gifts-between-us.com">www.gifts-between-us.com</a> (<a href="http://www.cadeaux-entre-nous.fr">www.cadeaux-entre-nous.fr</a> for the French version).</p>
+    <p>Xavier needed it to organize a present distribution with his family for Christmas. The idea is simple: in a group of person (family, co-workers) everyone will have to give a present to another person. What makes this fun is that you don’t know from who you are getting yours.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-171">
+      <a href="../../capture-2.png">
+        <img title="Home page, Gifts between us" src="../../capture-2.png%3Fw=300&amp;h=244" alt=""/>
+      </a>
+      <figcaption>The Gifts between us Home page</figcaption>
+    </figure>
+    <p>We first hacked a first version in a small amount of hours using the <a href="http://www.playframework.org/">Play! framework</a>. I could try the very easy to use <a href="http://www.playframework.org/documentation/1.1/emails">Mailer function from the framework</a>. So easy to use.</p>
+    <p>I did not found a very elegant method to define present targets. At first, users could only offer one present to the other, so I randomized the user list and then used a circular permutation to determine who offer to who. But then we decided that users could offer more than one gift. I couldn’t think rapidely of an algorithm that makes sure the gift repartition seams random, that everyone gets the same number of present and that I don’t offer one to myself. So I implemented a strategy that if it cannot find a solution once, try again.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-170">
+      <a href="../../capture-1.png">
+        <img title="Choose page, Gifts beween us" src="../../capture-1.png%3Fw=300&amp;h=242" alt=""/>
+      </a>
+      <figcaption>The “Pick a paper” page</figcaption>
+    </figure>
+    <p>I also took the time to make the pick experience something nice and natural, in the end, you pick a paper the same way you would do it in real life. I used <a href="http://www.w3.org/TR/css3-2d-transforms/">CSS3 transforms</a> with transitions. What is great with this technology is that it degrades well on non-compliant browsers: on IE, the papers are displayed as a list, on Firefox3 the papers are nicely organize but don’t move when you click on them, on Chrome you have a very nice transition when you pick one.</p>
+    <p>If you tested it, you probably noticed that the papers seam to flip in 3D. They don’t. 3D transforms are not really available in current browsers. To simulate a flip of the paper, I use the scale 2D transform, going from -1 to 1 in both X and Y. The illustion is here.</p>
+    <p>A last comment concerning CSS transforms: manipulating the transformation values using jQuery is not very easy. I tried the <a href="http://plugins.jquery.com/project/2d-transform">transform plugin</a> but this one wants to be compatible with all browsers (something I don’t necessarily want) and do not offer what I was looking for : an easy way to get and set transform values. I may extract my code into a plugin if I need it another time.</p>
+    <p>Then we polished the edges, tested it and we are proud to release it. <a href="https://labs.steren.fr/2010/11/24/gifts-between-friends/www.cadeaux-entre-amis.fr">Check it out</a> and tell me what you think of it.</p>
+  </article>
+</main>
+</body>
+</html>

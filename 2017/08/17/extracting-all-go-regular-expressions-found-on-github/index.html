@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Extracting all Go regular expressions found on GitHub</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Extracting all Go regular expressions found on GitHub">
+  <meta name="twitter:image" content="https://labs.steren.fr/2017/08/17/extracting-all-go-regular-expressions-found-on-github/../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Extracting all Go regular expressions found on GitHub">
+  <meta property="og:image" content="https://labs.steren.fr/2017/08/17/extracting-all-go-regular-expressions-found-on-github/../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Extracting all Go regular expressions found on GitHub"
+    "image": "https://labs.steren.fr/2017/08/17/extracting-all-go-regular-expressions-found-on-github/../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Extracting all Go regular expressions found on GitHub</h2>
+      <span href="index.html">
+        <time datetime="2017-08-17T07:22:23+02:00">2017/08/17</time>
+      </span>
+    </header>
+    <img src="../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p><a href="https://sylvainzimmer.com/">Sylvain Zimmer</a> sent a proposal to the <a href="https://github.com/golang/go">Go programming language</a> for <a href="https://github.com/golang/go/issues/21463">an optimization for Go’s regular expression processing</a>. One of the first comment from the community was to give actual proof that this optimization would be useful in real life by analyzing regular expressions in a large corpus of real Go code.</p>
+    <p>Reading this, I knew this was the perfect job for <a href="https://cloud.google.com/bigquery/">Google BigQuery</a> and the huge <a href="http://v">GitHub public dataset</a>.</p>
+    <p>BigQuery is my favorite data analysis tool. Almost every day at work, I query terabytes of data using SQL queries in seconds. The GitHub public dataset contains a snapshot of all GitHub files. That’s right, all lines of all of all GitHub’s files are available for direct querying. You only pay for the amount of processed data, and BigQuery has a generous free tier (the first 1 TB of data processed per month is free of charge)</p>
+    <p>Using the query bellow, I extracted a <a href="https://gist.github.com/steren/27caf0eded51b10239a2309275e8d697">list of all Go constant regular expressions on GitHub</a>. The query took less than a minute to process ~2.,2TB of data.</p>
+    <p>Sylvain then run his optimization on these and concluded that his change would benefit more than 30% of the regular expressions in this list, which hopefully should convince of the benefit of his change. So now, I am waiting for his Pull Request to make it into the main Go Repository 🙂</p>
+    <p>TODO: Gist 4e8784ba782c624be48f97a4ea808f28</p>
+  </article>
+</main>
+</body>
+</html>

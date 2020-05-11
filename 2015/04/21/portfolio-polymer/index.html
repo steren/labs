@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Building a portfolio using Polymer</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Building a portfolio using Polymer">
+  <meta name="twitter:image" content="https://labs.steren.fr/2015/04/21/portfolio-polymer/../../polymer-portfolio.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Building a portfolio using Polymer">
+  <meta property="og:image" content="https://labs.steren.fr/2015/04/21/portfolio-polymer/../../polymer-portfolio.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Building a portfolio using Polymer"
+    "image": "https://labs.steren.fr/2015/04/21/portfolio-polymer/../../polymer-portfolio.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Building a portfolio using Polymer</h2>
+      <span href="index.html">
+        <time datetime="2015-04-21T01:16:24+02:00">2015/04/21</time>
+      </span>
+    </header>
+    <img src="../../polymer-portfolio.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <p>I wanted to give a try to <a href="http://webcomponents.org/" target="_blank">web components</a>, that I think will change the way people create and share UI elements on the web. I chose <a href="https://www.polymer-project.org/" target="_blank">Polymer</a>, a framework that embraces web components and makes them easy to use. And when I want to get familiar with a new web frontend technology, I just rewrite my personal website with it (last time was <a href="../../../../2013/09/25/angularjs-portfolio-website/index.html" target="_blank">Angular</a>).</p>
+    <p>See it live at <a href="http://steren.fr/" target="_blank">steren.fr</a>, get the <a href="https://github.com/steren/steren.github.com" target="_blank">code on GitHub</a>, and compare it to <a href="https://github.com/steren/steren.github.com/tree/angular" target="_blank">the previous Angular version</a>.</p>
+    <p>Polymer contains many things :</p>
+    <ul>
+      <li>A <a href="https://www.polymer-project.org/docs/start/platform.html" target="_blank">set of browser polyfills</a>, to enable new browser technologies that are not yet entirely supported by moderns browsers: shadow DOM, templates, HTML imports.</li>
+      <li>The <a href="https://www.polymer-project.org/docs/polymer/polymer.html" target="_blank">Polymer library</a>, that is an opinionated way to define and use web components.</li>
+      <li>The <a href="https://www.polymer-project.org/docs/elements/core-elements.html#core-ajax" target="_blank">core Polymer elements</a> which provide basic new UI elements and tools without imposing any specific look and feel.</li>
+      <li>The <a href="https://www.polymer-project.org/docs/elements/paper-elements.html#paper-button" target="_blank">Paper Polymer elements</a>, that are an implementation, still incomplete, of the <a href="http://www.google.com/design/spec/material-design/introduction.html" target="_blank">Material Design guidelines</a>.</li>
+    </ul>
+    <p>Each of these points depends on the points above it. I built the portfolio relying on the Paper elements, and thus, on the full Polymer stack.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-508">
+      <a href="../../../03/screen-shot-2015-03-01-at-8-45-53-pm.png">
+        <img src="../../../03/screen-shot-2015-03-01-at-8-45-53-pm.png%3Fw=300&amp;h=221" alt="Polymer portfolio desktop"/>
+      </a>
+      <figcaption>My Polymer portfolio on a desktop device</figcaption>
+    </figure>
+    <p><strong>Responsive</strong>: The layout of the portfolio is responsive: on mobile, the menu is inside a navigation drawer, on a larger browser, it is displayed on the left. This behaviour came put of the box by using the <a href="https://www.polymer-project.org/0.5/docs/elements/core-drawer-panel.html">core-drawer-panel</a> element.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-514">
+      <a href="../../../03/polymer-portfolio-on-android.png">
+        <img src="../../../03/polymer-portfolio-on-android.png%3Fw=169&amp;h=300" alt="steren.fr on Chrome for Android"/>
+      </a>
+      <figcaption>The Polymer portfolio on Chrome for Android</figcaption>
+    </figure>
+    <p><strong>UI elements:</strong> I used many of the Paper elements to build the parts of the UI: A <a href="https://www.polymer-project.org/0.5/docs/elements/core-drawer-panel.html" target="_blank">Navigation drawer</a>, <a href="https://www.polymer-project.org/0.5/docs/elements/paper-tabs.html" target="_blank">tabs</a>, <a href="https://www.polymer-project.org/0.5/docs/elements/core-icon.html" target="_blank">icons</a>, <a href="https://www.polymer-project.org/0.5/docs/elements/core-header-panel.html" target="_blank">header</a>… And as in the previous <a title="My Portfolio written with AngularJS" href="../../../../2013/09/25/angularjs-portfolio-website/index.html">Angular version</a>, the content is a set of cards, except that this time, a card is defined by <a href="https://github.com/steren/steren.github.com/blob/master/steren-card.html">a custom element</a>, which make the DOM very clean and meaningful. Also each of these card tag is receiving the style from the Material Design card specification.</p>
+    <p><strong>Data service</strong>: A custom element is also used as a data service: it encapsulates fetching the content from a JSON file, using a Polymer helper (the <a href="https://www.polymer-project.org/0.5/docs/elements/core-ajax.html">core-ajax</a>). While at first it may sounds strange and unfamiliar to fetch a JSON data resource using only an HTML tag, for simple cases I actually think it is a good idea: It reinforces the declarative way of building a page, by declaring its resources in the HTML, not in JS.</p>
+    <p><strong>Filtering and sorting</strong>: Filtering and sorting of the cards based on their attributes is also done using Polymer’s data binding and filtering, very similar to filters in AngularJS (see the <a href="https://github.com/steren/steren.github.com/blob/master/steren-work-list.html">work list component</a>). UI elements for filters were available in the <a href="https://www.polymer-project.org/0.5/components/paper-elements/demo.html">paper elements library</a> and helpers (like <a href="https://www.polymer-project.org/0.5/docs/elements/core-selector.html">core-selector</a>) exists to ease the extraction and binding of their values.</p>
+    <p><strong>Routing:</strong> At the time of writing, Polymer does not provide a routing framework: you cannot bind a state of the URL to a given view state. But because of its design, I could easily combine it with other routing microframework: <a href="https://github.com/visionmedia/page.js">page.js</a>.</p>
+    <p><strong>Layout helpers:</strong> Centering things has never been that easy with Polymer: the framework is providing <a href="https://www.polymer-project.org/0.5/docs/polymer/layout-attrs.html">CSS layout attributes</a>, that allow you to center something vertically or horizontally by adding just one class.</p>
+    <p>
+      <strong>My first impressions</strong>
+    </p>
+    <p>After building this simple app, what do I think about Polymer? I really believe custom elements are ideal for adding a fully functional and autonomous UI element in an app without worrying about its dependencies or its its compatibility with your code or its API: you simply import the element and use it as any other HTML element. <strong>The DOM is the API</strong>. This is really great, it’s like if the DOM was designed from the beginning to allow this interoperability of UI elements.</p>
+    <p>However, I feel that building an app only with Polymer forces you to use custom elements too much. Sometimes, what I needed is not a fully isolated element represented as one tag in my HTML, but just a view, that can easily be styled using the global CSS. Because of this, I’m not sure Polymer is designed or should be used as a full featured client side framework.</p>
+    <p>I think it is really ideal to share and use custom elements and to add data binding capabilities to webpages. I would probably like it to focus on this role and make sure to be compatible with other popular web front-end framework like Angular, letting them handle the app state and complex controllers and services.</p>
+  </article>
+</main>
+</body>
+</html>

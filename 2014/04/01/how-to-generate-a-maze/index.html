@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>How to generate a maze?</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="How to generate a maze?">
+  <meta name="twitter:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="How to generate a maze?">
+  <meta property="og:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "How to generate a maze?"
+    "image": "https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">How to generate a maze?</h2>
+      <span href="index.html">
+        <time datetime="2014-04-01T10:42:51+02:00">2014/04/01</time>
+      </span>
+    </header>
+    <img src="../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410&amp;h=411&amp;crop=1" alt=""/>
+    <p>We had with Anne a 5 hours train trip and took the time to think about how we would proceed if we had to generate a maze.</p>
+    <p>First, we had to think about our problem: there are plenty of types of mazes. We decided that we would only consider mazes on a cartesian grid (no circle or bended walls). It can be different to start with a fixed start and end or just to fix the start, we decided to only fix the starting point, and to consider that the end would be the point the farest from this starting point.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-467">
+      <a href="../../../05/screen-shot-2014-03-18-at-00-26-43.png">
+        <img src="../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=300&amp;h=300" alt="An example of generated maze."/>
+      </a>
+      <figcaption>An example of generated maze.</figcaption>
+    </figure>
+    <p>After quickly setting up the rendering using HTML canvas (it may have been smarter to use SVG by the way), I set up the data structure : matrices (double arrays) for holes, horizontal and vertical walls</p>
+    <p>Then we arrived to the interesting part: our algorithm. We decided to consider a growing strategy: We start with a filled black canvas, and “grow” tunnels starting from the start point.<br/>
+We keep in memory a list of “tunnel ends”, which are the point we are currently continuing the tunnels from.<br/>
+At each iteration, we determine, with some probabilities, for each “tunnel end”: if the tunnel should continue in only one direction, split in two or three (if possible), the direction the tunnel should to continue to.<br/>
+If a tunnel end encounters a dead end, then we remove it from the list of tunnel ends to consider for the next iteration.<br/>
+We may end up with no “tunnel end” left, in that case we pick a random point on the current maze that is next to a “black” square, and we start a new tunnel from this point. This last condition is here to make sure all the available space will be used.<br/>
+For each “tunnel end”, we also keep in memory the distance from the starting point, and store this distance for all square of our maze. This allows us to select an end when the generation is done.</p>
+    <p>But what makes a maze interesting? As a human, a maze will be difficult if when you encounter an intersection, your brain cannot easily determine on which direction to go. For example if you clearly see that going left will end up in a dead end in a few blocks, then you will chose right.<br/>
+To achieve this, we adjusted some parameters in order for the maze to generate long and not obvious branches. We had to set the probability to split to a low amount, and had to keep in memory the overall tunnel growing direction and to make it prevail when selecting a direction in order to prevent the tunnel to collapse on itself too often.</p>
+    <figure data-shortcode="caption" aria-describedby="caption-attachment-468">
+      <a href="../../../05/screenshot.png">
+        <img src="../../../05/screenshot.png%3Fw=1024&amp;h=639" alt="Screenshot of the maze generator app."/>
+      </a>
+      <figcaption>Screenshot of the maze generator app.</figcaption>
+    </figure>
+    <p>Because something is not done until it’s pushed and shipped, I took a few more hours to <a href="http://steren.fr/labyrinth">put the result online</a> and in a <a href="https://chrome.google.com/webstore/detail/labyrinth/hicnnkflhccmckcedegeapcncpeignkl">Chrome Packaged application</a>.</p>
+    <p>The application is very simple: it generate a maze of the size of the window. To control the difficulty (size) of the maze, just resize the window.<br/>
+I may add in the future more interactions and printing features.</p>
+    <p>The code is separated in two files, a standalone <a href="https://github.com/steren/labyrinth/blob/master/labyrinth.js">maze generator</a> and a <a href="https://github.com/steren/labyrinth/blob/master/labyrinth-canvas-renderer.js">maze renderer</a>.</p>
+    <p>
+      <strong>
+        <a href="http://steren.fr/labyrinth">Try it now</a>
+      </strong>
+    </p>
+  </article>
+</main>
+</body>
+</html>

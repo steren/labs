@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Animating SVG using CSS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" sizes="32x32" href="/icon-32.png">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Animating SVG using CSS">
+  <meta name="twitter:image" content="https://labs.steren.fr/2019/11/30/animating-svg-using-css/../../svg-animation.gif%3Fw=600___IMAGE___amp;h=300___IMAGE___amp;crop=1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Animating SVG using CSS">
+  <meta property="og:image" content="https://labs.steren.fr/2019/11/30/animating-svg-using-css/../../svg-animation.gif%3Fw=600___IMAGE___amp;h=300___IMAGE___amp;crop=1">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Animating SVG using CSS"
+    "image": "https://labs.steren.fr/2019/11/30/animating-svg-using-css/../../svg-animation.gif%3Fw=600___IMAGE___amp;h=300___IMAGE___amp;crop=1"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <span/>
+      <h2 href="index.html">Animating SVG using CSS</h2>
+      <span href="index.html">
+        <time datetime="2019-11-30T05:08:27+02:00">2019/11/30</time>
+      </span>
+    </header>
+    <img src="../../svg-animation.gif%3Fw=600&amp;h=300&amp;crop=1" alt=""/>
+    <p>I wanted to animate a vector graphic (SVG) image by making some elements appearing gradually one after the other.</p>
+    <p>My first first step was to clean up the markup and give meaningful CSS classes to my SVG elements. For example:</p>
+    <pre title="">
+&lt;style type="text/css"&gt;
+  .arrow .line{fill:none;stroke:#8B999E;stroke-width:3;stroke-miterlimit:10;}
+  .arrow .head{fill:#8B999E;}
+&lt;/style&gt;
+&lt;g class="arrow"&gt;
+  &lt;path class="line" d="M160,41.4c9.2-4.9,21-7.2,29.8-8.2"/&gt;
+  &lt;polygon class="head" points="187.2,37.9 203.1,32.3 186.5,29.2"/&gt;
+  &lt;path class="line" d="M95,90.2c10-18.5,22.7-26.7,22.7-26.7"/&gt;
+&lt;/g&gt;
+</pre>
+    <p>My second step was to use <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations">CSS animations</a> to gradually make elements appear (go from opacity 0 to 100). To do that, I defined the animation <code>@keyframes</code>. Then I referenced the animation in the CSS class. To make multiple animations in sequence, I simply used the <code>animation-delay</code> attribute, with a computed value using <code>calc()</code> and a CSS variable for the time delay:</p>
+    <pre title="">
+    @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 100;
+      }
+    }
+
+  .arrow{
+    animation-name: appear;
+    animation-duration: 60s;
+    animation-fill-mode: backwards;
+    --spacing: 0.6s;
+  }
+  .arrow:nth-of-type(2) {
+    animation-delay: calc( 1*var(--spacing) );
+  }
+  .arrow:nth-of-type(3) {
+    animation-delay: calc( 2*var(--spacing) );
+  }
+  .arrow:nth-of-type(4) {
+    animation-delay: calc( 3*var(--spacing) );
+  }
+  .arrow:nth-of-type(5) {
+    animation-delay: calc( 4*var(--spacing) );
+  }
+</pre>
+    <p>Here is a recording of the final result. Find the full SVG markup <a href="https://gist.github.com/steren/7f9beb951b79b7b9da7837336edd058a?short_path=1ae551b">on GitHub</a>.</p>
+    <figure>
+      <img src="../../svg-animation.gif%3Fw=600" alt=""/>
+      <figcaption>The final animation, rendered as a gif</figcaption>
+    </figure>
+  </article>
+</main>
+</body>
+</html>
