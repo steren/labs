@@ -17,10 +17,14 @@ header {
   margin-bottom: 3em;
 }
 
-img, picture {
+img, picture, iframe {
   display: block;
   max-width: 100%;
   margin: 0 auto;
+}
+
+iframe {
+  width: 100%;
 }
 
 ul, ol{
