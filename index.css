@@ -2,6 +2,12 @@ html {
   font-family: Roboto,Helvetica,Arial,sans-serif;
   line-height: 1.4;
 }
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #121212;
+    color: #FFFFFF;
+  }
+}
 
 body{
   margin:1.2em;
@@ -37,4 +43,11 @@ ol.pages  {
 .pages a:visited {
   color: #000000;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pages a,
+  .pages a:visited {
+    color: #FFFFFF;
+  }
 }
