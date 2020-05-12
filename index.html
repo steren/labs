@@ -9,8 +9,62 @@
   <meta name="description" content="Labs">
   <meta name="author" content="Steren">
   
-  <link rel="stylesheet" href="/index.css">
   <link rel="icon" sizes="32x32" href="/icon-32.png">
+ <style>
+html {
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  line-height: 1.4;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: #121212;
+    color: #FFFFFF;
+  }
+}
+
+body{
+  margin:1.2em;
+  font-size:1rem;
+}
+
+ol.pages  {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0;
+  padding: 0;
+}
+
+.pages li {
+  list-style-type: none;
+  width: 400px;
+  height: 400px;
+}
+
+.pages figure {
+  margin: 0;
+}
+
+.pages img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.pages a,
+.pages a:visited {
+  color: #000000;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pages a,
+  .pages a:visited {
+    color: #FFFFFF;
+  }
+}
+ </style>
  </head>
  <body>
   <header>
