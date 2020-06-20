@@ -57,8 +57,8 @@
     <p>These 3 differences can be easily addressed:</p>
     <ol>
     <li><strong>Code vs container</strong>:To transform the code of an App Engine app into a container, we can simply use <a href="https://github.com/GoogleCloudPlatform/buildpacks">Google Cloud’s open source buildpacks</a>, which are exactly what App Engine uses under the hood when you type “gcloud app deploy”. This only applies to second generation runtimes of the App Engine standard environment and to App Engine flexible environments. For first generation runtimes, you’ll need first to migrate to a second generation runtime.
-    <li><strong>Config files:</strong>The configuration of an App Engine service can be almost entirely translated into the configuration of a Cloud Run service (Knative Service Object). 
-    <li><strong>Static files: </strong>Static files and folders have to be served from the container, or from a Google Cloud Storage bucket.</li>
+    <li><strong>Config files:</strong> The configuration of an App Engine service can be almost entirely translated into the configuration of a Cloud Run service (Knative Service Object). 
+    <li><strong>Static files: </strong> Static files and folders have to be served from the container, or from a Google Cloud Storage bucket.</li>
     </ol>
     <p>Check out the <a href="https://googlecloudplatform.github.io/app-engine-cloud-run-converter/">App Engine to Cloud Run</a> online migration tool.</p>
     
