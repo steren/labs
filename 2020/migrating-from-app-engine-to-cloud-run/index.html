@@ -49,18 +49,18 @@
     <p>See an end to end demo of migrating from App Engine to Cloud Run in 10 minutes:</p>
     <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/XXP6QIS8VME" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     
-    <p><a href="https://cloud.google.com/run">Cloud Run</a> and <a href="https://cloud.google.com/appengine">App Engine</a> both allow you to run your code in an environment fully managed by GCP.</p>
+    <p>Cloud Run and App Engine both allow you to run your code in an environment fully managed by GCP.</p>
     
     <p>But there are 3 main differences:</p>
     <ol>
-    <li><strong>Code vs container</strong>: Cloud Run takes any container that is able to listen for HTTP requests, while App Engine supports a set of languages and takes care of building them for you.
-    <li><strong>Config files</strong> are different: App engine uses a proprietary “<a href="https://cloud.google.com/appengine/docs/standard/nodejs/config/appref">app.yam</a>l”, while Cloud Run implements the <a href="https://knative.dev/docs/serving/spec/knative-api-specification-1.0/">Knative Serving API</a>, which can be described in a standard “<a href="https://github.com/knative/docs/blob/master/docs/serving/spec/knative-api-specification-1.0.md">service.yaml</a>”.
+    <li><strong>Code vs container:</strong> Cloud Run takes any container that is able to listen for HTTP requests, while App Engine supports a set of languages and takes care of building them for you.
+    <li><strong>Config files</strong> are different: App engine uses a proprietary “<a href="https://cloud.google.com/appengine/docs/standard/nodejs/config/appref">app.yaml</a>”, while Cloud Run implements the <a href="https://github.com/knative/docs/blob/master/docs/serving/spec/knative-api-specification-1.0.md">Knative Serving API</a>, which can be described in a standard “service.yaml”.
     <li><strong>Static files:</strong> App Engine supports static file handlers, while Cloud Run only takes care of the running containers.</li>
     </ol>
     
     <p>These 3 differences can be easily addressed:</p>
     <ol>
-    <li><strong>Code vs container</strong>:To transform the code of an App Engine app into a container, we can simply use <a href="https://github.com/GoogleCloudPlatform/buildpacks">Google Cloud’s open source buildpacks</a>, which are exactly what App Engine uses under the hood when you type “gcloud app deploy”. This only applies to second generation runtimes of the App Engine standard environment and to App Engine flexible environments. For first generation runtimes, you’ll need first to migrate to a second generation runtime.
+    <li><strong>Code vs container:</strong> To transform the code of an App Engine app into a container, we can simply use <a href="https://github.com/GoogleCloudPlatform/buildpacks">Google Cloud’s open source buildpacks</a>, which are exactly what App Engine uses under the hood when you type “gcloud app deploy”. This only applies to second generation runtimes of the App Engine standard environment and to App Engine flexible environments. For first generation runtimes, you’ll need first to migrate to a second generation runtime.
     <li><strong>Config files:</strong> The configuration of an App Engine service can be almost entirely translated into the configuration of a Cloud Run service (Knative Service Object). 
     <li><strong>Static files: </strong> Static files and folders have to be served from the container, or from a Google Cloud Storage bucket.</li>
     </ol>
