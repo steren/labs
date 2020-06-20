@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Screenshot as SVG</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Migrating from App Engine to Cloud Run">
+  <meta name="twitter:image" content="https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/app-engine-to-cloud-run.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Migrating from App Engine to Cloud Run">
+  <meta property="og:image" content="https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/app-engine-to-cloud-run.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Migrating from App Engine to Cloud Run",
+    "image": "https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/app-engine-to-cloud-run.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Migrating from App Engine to Cloud Run</h2>
+      <span>
+        <time datetime="2020-06-20">2020/06/20</time>
+      </span>
+    </header>
+    <img src="app-engine-to-cloud-run.png" alt="Hero image for App Engine to Cloud Run"/>
+    <p>It was  already quite straightforward to migrate from <a href="https://cloud.google.com/appengine">App Engine</a> to <a href="https://cloud.google.com/run">Cloud Run</a>, but I made it even easier by creating <a href="https://googlecloudplatform.github.io/app-engine-cloud-run-converter/">a tool</a> that guides you and automates some of the changes:
+    </p>
+    <p>
+    <a href="https://cloud.google.com/run">Cloud Run</a> and <a href="https://cloud.google.com/appengine">App Engine</a> both allow you to run your code in an environment fully managed by GCP. 
+    </p>
+    <p>
+    There are 3 main differences:
+    </p>
+    <ol>
+
+    <li><strong>Code vs container</strong>: Cloud Run takes any container that is able to listen for HTTP requests, while App Engine supports a set of languages and takes care of building them for you.
+
+    <li><strong>Config files:</strong> Their configuration files are different: App engine uses a proprietary “<a href="https://cloud.google.com/appengine/docs/standard/nodejs/config/appref">app.yam</a>l”, while Cloud Run implements the <a href="https://knative.dev/docs/serving/spec/knative-api-specification-1.0/">Knative Serving API</a>, which can be described in a standard “<a href="https://github.com/knative/docs/blob/master/docs/serving/spec/knative-api-specification-1.0.md">service.yaml</a>”.
+
+    <li><strong>Static files:</strong> App Engine supports static file handlers, while Cloud Run only takes care of the compute part.
+    </li>
+    </ol>
+    <p>
+    These 3 differences can be addressed easily:
+    </p>
+    <ol>
+
+    <li><strong>Code vs container</strong>:To transform the code of an App Engine app into a container, we can simply use <a href="https://github.com/GoogleCloudPlatform/buildpacks">Google Cloud’s open source buildpacks</a>, which are exactly what App Engine uses under the hood when you type “gcloud app deploy”. This only applies to second generation runtimes of the App Engine standard environment and to App Engine flexible environments. For first generation runtimes, you’ll need first to migrate to a second generation runtime.
+
+    <li><strong>Config files:</strong>The configuration of an App Engine service can be almost entirely translated into the configuration of a Cloud Run service (Knative Service Object). 
+
+    <li><strong>Static files: </strong>Static files and folders have to be served from the container, or from a Google Cloud Storage bucket.
+    </li>
+    </ol>
+    <p>
+    Check out the <a href="https://googlecloudplatform.github.io/app-engine-cloud-run-converter/">App Engine to Cloud Run</a> online migration tool.
+    </p>
+    <p>
+    The <a href="https://github.com/GoogleCloudPlatform/app-engine-cloud-run-converter">code is on GitHub</a>. The tool runs entirely in the browser, without any server-side component or without needing to access your GCP project. It is structured as a <a href="https://github.com/GoogleCloudPlatform/app-engine-cloud-run-converter/blob/master/app-to-run.js">JavaScript module</a> and a user interface (regular HTML+CSS+JS). Feel free to <a href="https://github.com/GoogleCloudPlatform/app-engine-cloud-run-converter/issues">report issues</a> and to <a href="https://github.com/GoogleCloudPlatform/app-engine-cloud-run-converter">contribute</a>.
+    </p>
+    <img src="app-engine-to-cloud-run-converter-screenshot.svg" alt="Screenshot of the App Engine to Cloud Run converter tool"/>
+  </article>
+</main>
+</body>
+</html>
