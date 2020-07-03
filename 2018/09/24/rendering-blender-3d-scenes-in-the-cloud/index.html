@@ -41,7 +41,7 @@
         <time datetime="2018-09-24T02:26:30+02:00">2018/09/24</time>
       </span>
     </header>
-    <img src="../../download.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <img src="blender-cloud-run.webp" alt="Blender render example, outrun style"/>
     <p>I created a simple app that renders a <a href="https://www.blender.org/">Blender</a> 3D scene in the cloud: users can customize the displayed message by changing an URL parameter, and the app will return the 3D rendered image.  <a href="https://render-fu4lqx2yaq-uc.a.run.app/?scene=outrun-filter&amp;text=OUTRUN">Give it a try here</a>.</p>
     <p>The code is a very simple <a href="https://github.com/steren/render/blob/master/function.py">Python function</a> that invokes the Blender open source software. It uses the <a href="https://docs.blender.org/api/">Blender API</a> in order to dynamically change the value of a Text object. The function is then simply <a href="https://github.com/steren/render/blob/master/invoker.py">wrapped</a> in a basic <a href="http://flask.pocoo.org/">Flask</a> application in order to respond to HTTP requests. Because Blender needs to be installed, I am using a <a href="https://github.com/steren/render/blob/master/Dockerfile">Dockerfile</a> that runs “apt-get install blender”.</p>
     <p>Find the <a href="https://github.com/steren/render">code on GitHub</a>.</p>
