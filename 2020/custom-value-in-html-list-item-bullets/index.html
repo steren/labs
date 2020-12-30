@@ -47,24 +47,20 @@
     </p>
 
     <p>The HTML markup of my index page, note the <code>year="2020"</code> attribute on the <code>&lt;li&gt</code> element:</p>
-    <pre><code>
-&lt;ol class="pages"&gt;
+    <pre><code>&lt;ol class="pages"&gt;
 &lt;li year="2020"&gt;
   &lt;a href="/my-article/"&gt;My article of 2020&lt;/a&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
-    </code></pre>
+&lt;/ol&gt;</code></pre>
 
     <p>And the CSS magic. we customize the bullet with <code>::marker</code> and read the HTML attribute witg <code>attr()</code>.</p>
-    <pre><code>
-  .pages {
+    <pre><code>.pages {
     padding-inline-start: 6ch;
   }
 
   .pages li::marker {
     content: attr(year) " - ";
-  }
-    </code></pre>
+  }</code></pre>
 
     <p>Here is how it displays:</p>
     <img src="steren-blog-screenshot.png" alt="Screenshot of a list with custom bullets" />
