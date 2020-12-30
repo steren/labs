@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Display the value of an  HTML attribute in custom<li> bullets with CSS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Display the value of an  HTML attribute in custom list bullets with CSS">
+  <meta name="twitter:image" content="https://labs.steren.fr/2020/custom-value-in-html-list-item-bullets/steren-blog-screenshot.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Display the value of an  HTML attribute in custom list bullets with CSS">
+  <meta property="og:image" content="https://labs.steren.fr/2020/custom-value-in-html-list-item-bullets/steren-blog-screenshot.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Display the value of an  HTML attribute in custom list bullets with CSS",
+    "image": "https://labs.steren.fr/2020/custom-value-in-html-list-item-bullets/steren-blog-screenshot.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Display the value of an  HTML attribute in custom list bullets with CSS</h2>
+      <time date="2020-12-29">2020-12-29</time>
+    </header>
+
+    <p>
+      Instead of simple dots, I wanted the list bullets of the index page of <a href=https://blog.steren.fr">my blog</a> to be the date at which articles were written. It turns out HTML+CSS can do that easily.
+    <br/>
+      Here is how I created a list with custom bullets, taking their value from an HTML attribute.
+    </p>
+
+    <p>The HTML markup of my index page, note the <code>year="2020"</code> attribute on the <code>&lt;li&gt</code> element:</p>
+    <pre><code>
+&lt;ol class="pages"&gt;
+&lt;li year="2020"&gt;
+  &lt;a href="/my-article/"&gt;My article of 2020&lt;/a&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+    </code></pre>
+
+    <p>And the CSS magic. we customize the bullet with <code>::marker</code> and read the HTML attribute witg <code>attr()</code>.</p>
+    <pre><code>
+  .pages {
+    padding-inline-start: 6ch;
+  }
+
+  .pages li::marker {
+    content: attr(year) " - ";
+  }
+    </code></pre>
+
+    <p>Here is how it displays:</p>
+    <img src="steren-blog-screenshot.png" alt="Screenshot of a list with custom bullets" />
+
+    
+    <p>You can achieve a lot with just HTML+CSS, the <a href="https://blog.steren.fr/2020/my-stack-will-outlive-yours/">stack powering this blog and my other web pages</a>.</p> 
+      
+  </article>
+</main>
+</body>
+</html>
