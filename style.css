@@ -23,7 +23,7 @@ header {
   margin-bottom: 3em;
 }
 
-img, picture, iframe {
+img, picture, iframe, video {
   display: block;
   max-width: 100%;
   margin: 0 auto;
