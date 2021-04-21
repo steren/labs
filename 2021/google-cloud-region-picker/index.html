@@ -42,12 +42,12 @@
       <time date="2021-04-19">2021-04-19</time>
     </header>
     
-    <p>Earlier this year, I worked with a group of googlers on <a href="https://cloud.google.com/sustainability/region-carbon#data">publishing carbon characteristics of Google Cloud datacenters</a>. Our main goal is to help customers take carbon information into their region selection process. </p>
+    <p>Earlier this year, I worked with a group of googlers on <a href="https://cloud.google.com/sustainability/region-carbon#data">publishing carbon characteristics of Google Cloud datacenters</a>. Our main goal is to help customers take carbon information into consideration when selecting a location for their workloads. </p>
     <p>But this adds one extra dimension to the already complex region selection process: customers need to compare carbon impact, price and latency. This basically means they have to solve for a 3 dimensional optimization problem, with information scattered in many different places.</p>
     <p>So I built a <a href="https://gcp-region-picker.web.app">very simple webapp</a> to help: It has 3 sliders (carbon, price, latency) to pick how important each parameter is. The tool then sorts Google Cloud regions based on these criteria.</p>
     
     <p>See it in action:</p>
-    <video autoplay width="600" height="400"`>
+    <video autoplay loop width="600" height="400"`>
       <source src="gcp-region-picker-video.webm" type="video/webm">
     </video>
 
