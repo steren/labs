@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sketchfab Head Tracker</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+  <meta name="twitter:image" content="https://labs.steren.fr/2015/03/sketchfab-head-tracker/image.webp">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Sketchfab Head Tracker">
+  <meta property="og:image" content="https://labs.steren.fr/2015/03/sketchfab-head-tracker/image.webp">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Sketchfab Head Tracker">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Sketchfab Head Tracker",
+    "image": "https://labs.steren.fr/2015/03/sketchfab-head-tracker/image.webp"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Sketchfab Head Tracker</h2>
+      <span>
+        <time datetime="2015-03">2015/03</time>
+      </span>
+    </header>
+    <p>By doing a face detection on the camera stream, I am able to change the perspective of a 3d model displayed on the screen. This gives the viewer a better illusion of presence, since the perspective of the 3d model changes with their movement in the real world.</p>
+    <p>See it in action in this video:</p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ImfbWTeDOAk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <p>Try it <a href="https://jsbin.com/jogadazaqa/4/edit?output">here</a> </p>
+    <p>Technically, this is using a <a href="https://github.com/auduno/headtrackr/">client-side head tracking library</a> coupled with the <a href="https://sketchfab.com/developers/viewer">Sketchfab Viewer API</a>. Find the code <a href="https://github.com/steren/sketchfab-head-tracking">on GitHub</a></p>
+  </article>
+</main>
+</body>
+</html>
