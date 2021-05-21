@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+	<title>Steren's labs</title>
+	<subtitle>Side projects and experiments</subtitle>
+	<link href="https://labs.steren.fr/atom.xml" rel="self" />
+	<link href="https://labs.steren.fr/" />
+    <id>https://labs.steren.fr/</id>
+    <author>
+        <name>Steren Giannini</name>
+        <uri>https://steren.fr</uri>
+    </author>
+    <icon>/icon.svg</icon>
+    <updated>2021-04-19T00:00:00Z</updated>
+
+	<entry>
+        <id>https://labs.steren.fr/2021/google-cloud-region-picker/</id>
+		<title>Google Cloud Region Picker</title>
+		<link href="https://labs.steren.fr/2021/google-cloud-region-picker/" rel="alternate" />
+        <updated>2021-04-19T00:00:00Z</updated>
+        <summary>Tool to help you pick a Google Cloud region considering carbon footprint, price and latency.</summary>
+	</entry>
+
+</feed>
