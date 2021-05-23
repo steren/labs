@@ -1,24 +1,366 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-	<title>Steren's labs</title>
-	<subtitle>Side projects and experiments</subtitle>
-	<link href="https://labs.steren.fr/atom.xml" rel="self" />
-	<link href="https://labs.steren.fr/" />
-	<id>https://labs.steren.fr/</id>
-	<author>
-		<name>Steren Giannini</name>
-		<uri>https://steren.fr</uri>
-	</author>
-	<icon>/icon.svg</icon>
-	<updated>2021-04-19T00:00:00Z</updated>
+  <title>Steren's labs</title>
+  <subtitle>Side projects and experiments</subtitle>
+  <link href="https://labs.steren.fr/atom.xml" rel="self" />
+  <link href="https://labs.steren.fr/" />
+  <id>https://labs.steren.fr</id>
+  <author>
+    <name>Steren Giannini</name>
+    <uri>https://steren.fr</uri>
+  </author>
+  <icon>/icon.svg</icon>
+  <updated>2021-04-19T00:00:00Z</updated>
 
-	<entry>
-		<id>https://labs.steren.fr/2021/google-cloud-region-picker/</id>
-		<title>Google Cloud Region Picker</title>
-		<link href="https://labs.steren.fr/2021/google-cloud-region-picker/" rel="alternate" />
-		<updated>2021-04-19T00:00:00Z</updated>
-		<summary>Tool to help you pick a Google Cloud region considering carbon footprint, price and latency.</summary>
-	</entry>
+  <entry>
+    <id>https://labs.steren.fr/2021/google-cloud-region-picker/</id>i
+    <link rel="alternate" href="https://labs.steren.fr/2021/google-cloud-region-picker/" />
+    <title>Google Cloud Region Picker</title>
+    <updated>2021-04-19T00:00:00Z</updated>
+    <summary>Tool to help you pick a Google Cloud region considering carbon footprint, price and latency.</summary>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2020/use-value-from-html-attribute-in-list-item-bullets/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2020/use-value-from-html-attribute-in-list-item-bullets/" />
+    <title>Display the value of an  HTML attribute in custom list bullets with CSS</title>
+    <updated>2020-12-29T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/" />
+    <title>Migrating from App Engine to Cloud Run</title>
+    <updated>2020-06-10T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2020/05/08/screenshot-as-svg/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2020/05/08/screenshot-as-svg/" />
+    <title>Screenshot as SVG</title>
+    <updated>2020-05-08T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2020/03/05/computing-co2-emissions-from-location-history/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2020/03/05/computing-co2-emissions-from-location-history/" />
+    <title>Computing CO2 emissions from Location History</title>
+    <updated>2020-03-05T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2019/11/30/animating-svg-using-css/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2019/11/30/animating-svg-using-css/" />
+    <title>Animating SVG using CSS</title>
+    <updated>2019-11-30T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2018/12/26/remixthem/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2018/12/26/remixthem/" />
+    <title>Open sourcing Remixthem, my first Android app</title>
+    <updated>2018-12-26T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2018/09/24/rendering-blender-3d-scenes-in-the-cloud/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2018/09/24/rendering-blender-3d-scenes-in-the-cloud/" />
+    <title>Rendering Blender 3D scenes in the cloud</title>
+    <updated>2018-09-24T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2018/02/20/attractors/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2018/02/20/attractors/" />
+    <title>Attractors</title>
+    <updated>2018-02-20T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2017/09/11/scuba-diving-dashboard-using-google-data-studio/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2017/09/11/scuba-diving-dashboard-using-google-data-studio/" />
+    <title>Scuba Diving dashboard using Google Data Studio</title>
+    <updated>2017-09-11T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2017/08/17/extracting-all-go-regular-expressions-found-on-github/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2017/08/17/extracting-all-go-regular-expressions-found-on-github/" />
+    <title>Extracting all Go regular expressions found on GitHub</title>
+    <updated>2017-08-17T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/" />
+    <title>Setting up Stackdriver Error Reporting on Play Framework 1.4</title>
+    <updated>2016-11-10T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2016/11/05/projection-mapping-on-painting/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2016/11/05/projection-mapping-on-painting/" />
+    <title>Projection mapping on painting</title>
+    <updated>2016-11-05T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/" />
+    <title>Generating a name tag sheet from a list of names</title>
+    <updated>2016-06-18T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/" />
+    <title>Trying to confuse Google’s Vision algorithms with dogs and muffins</title>
+    <updated>2016-03-27T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2016/01/25/color-palette-showcase/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2016/01/25/color-palette-showcase/" />
+    <title>Color palette showcase</title>
+    <updated>2016-01-25T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/12/13/painting-in-the-style-of-bob-ross/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/12/13/painting-in-the-style-of-bob-ross/" />
+    <title>Painting in the style of Bob Ross</title>
+    <updated>2015-12-13T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/" />
+    <title>Climb Tracker for Android and Android wear</title>
+    <updated>2015-12-27T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/04/22/exploring-ruled-surfaces-with-three-js-and-sketchfab/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/04/22/exploring-ruled-surfaces-with-three-js-and-sketchfab/" />
+    <title>Exploring ruled surfaces with Three.js and Sketchfab</title>
+    <updated>2015-04-22T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/04/21/portfolio-polymer/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/04/21/portfolio-polymer/" />
+    <title>Building a portfolio using Polymer</title>
+    <updated>2015-04-21T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/" />
+    <title>Cloud cup: a multiplayer set of mini games for web and Android</title>
+    <updated>2015-03-12T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2015/03/sketchfab-head-tracker/"</id>
+    <link rel="alternate" href="https://labs.steren.fr/2015/03/sketchfab-head-tracker/" />
+    <title>  Sketchfab Head Tracker</title>
+    <updated>2015-03-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/05/14/beansight-is-now-open-source/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/05/14/beansight-is-now-open-source/" />
+    <title>Beansight is now open source</title>
+    <updated>2014-05-14T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/05/05/indoor-climbing-tracker/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/05/05/indoor-climbing-tracker/" />
+    <title>Indoor climbing tracker</title>
+    <updated>2014-05-05T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/04/19/lecamping-mafia/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/04/19/lecamping-mafia/" />
+    <title>LeCamping Mafia</title>
+    <updated>2014-04-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/04/04/priority-for-everyone/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/04/04/priority-for-everyone/" />
+    <title>How to prove you created something before somebody else?</title>
+    <updated>2014-04-04T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/" />
+    <title>How to generate a maze?</title>
+    <updated>2014-04-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2014/03/20/colourful-intermediate-results/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2014/03/20/colourful-intermediate-results/" />
+    <title>Colourful intermediate results</title>
+    <updated>2014-03-20T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/" />
+    <title>MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js</title>
+    <updated>2013-12-10T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2013/09/25/angularjs-portfolio-website/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2013/09/25/angularjs-portfolio-website/" />
+    <title>My Portfolio written with AngularJS</title>
+    <updated>2013-09-25T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2013/09/23/poker-tournament-tracker/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2013/09/23/poker-tournament-tracker/" />
+    <title>Poker tournament tracker</title>
+    <updated>2013-09-23T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2013/07/19/sculptfab/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2013/07/19/sculptfab/" />
+    <title>Sculptfab</title>
+    <updated>2013-07-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2013/04/19/server-sent-events-parisjs-talk/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2013/04/19/server-sent-events-parisjs-talk/" />
+    <title>Server-sent Events ParisJS talk</title>
+    <updated>2020-12-29T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2012/10/24/video-support-phonegap-android/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2012/10/24/video-support-phonegap-android/" />
+    <title>Bringing video support to Phonegap Android</title>
+    <updated>2012-10-24T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2012/10/03/annual-update-to-cadeaux-entre-nous/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2012/10/03/annual-update-to-cadeaux-entre-nous/" />
+    <title>Annual update to “Cadeaux entre nous”</title>
+    <updated>2012-1003T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2012/02/10/voyages-sncf-com-more-is-less/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2012/02/10/voyages-sncf-com-more-is-less/" />
+    <title>voyages-sncf.com: more is less</title>
+    <updated>2012-02-10T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/12/noisebox-a-connected-music-box/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/12/noisebox-a-connected-music-box/" />
+    <title>Noisebox: a connected music box</title>
+    <updated>2011-12-01T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/11/16/349/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/11/16/349/" />
+    <title>Maldives documentary</title>
+    <updated>2011-11-16T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/09/20/square-of-the-dead/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/09/20/square-of-the-dead/" />
+    <title>Square of the Dead</title>
+    <updated>2011-09-20T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/09/15/anydance/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/09/15/anydance/" />
+    <title>AnyDance</title>
+    <updated>2011-09-15T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/05/19/hack-le-camping-logo/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/05/19/hack-le-camping-logo/" />
+    <title>Hack Le Camping logo</title>
+    <updated>2011-05-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/05/09/you-just-know-the-time/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/05/09/you-just-know-the-time/" />
+    <title>You just know the time</title>
+    <updated>2011-05-09T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2011/05/07/image-processing-with-javascript/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/05/07/image-processing-with-javascript/" />
+    <title>Image processing with Javascript</title>
+    <updated>2011-05-07T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/12/22/beansight-le-camping/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/12/22/beansight-le-camping/" />
+    <title>Beansight selected for Le Camping</title>
+    <updated>2010-12-22T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/12/19/a-very-first-result/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/12/19/a-very-first-result/" />
+    <title>Controlling my laptop with hand gesture: a first result</title>
+    <updated>2010-12-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/12/16/no-touch-screen/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/12/16/no-touch-screen/" />
+    <title>no-touch screen</title>
+    <updated>2010-12-16T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/12/05/concept-free-art/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/12/05/concept-free-art/" />
+    <title>Experimenting with “Concept Free Art”</title>
+    <updated>2010-12-05T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/12/04/bugfixes-and-new-features/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/12/04/bugfixes-and-new-features/" />
+    <title>Lesson learnt: use tasks and retries to send emails</title>
+    <updated>2010-12-04T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/11/25/beansight-pitch/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/11/25/beansight-pitch/" />
+    <title>Beansight pitch</title>
+    <updated>2010-11-25T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/11/24/gifts-between-friends/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/11/24/gifts-between-friends/" />
+    <title>Gifts between us</title>
+    <updated>2010-11-24T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/11/18/call-wikipedia-api-using-jquery/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/11/18/call-wikipedia-api-using-jquery/" />
+    <title>Call Wikipedia API using jQuery</title>
+    <updated>2010-11-18T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/11/17/my-fish-database/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/11/17/my-fish-database/" />
+    <title>Open Divers: My fish database</title>
+    <updated>2010-11-17T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/10/28/beansight-path-to-private-beta/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/10/28/beansight-path-to-private-beta/" />
+    <title>Beansight: the path to the private beta</title>
+    <updated>2010-10-28T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/10/20/open-divers-how-is-it-done/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/10/20/open-divers-how-is-it-done/" />
+    <title>Open Divers: How is it done?</title>
+    <updated>2010-10-20T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/10/19/open-divers-first-screen/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/10/19/open-divers-first-screen/" />
+    <title>Open Divers: first screen</title>
+    <updated>2010-10-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/10/19/beansight-at-start-in-paris/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/10/19/beansight-at-start-in-paris/" />
+    <title>Beansight at Start In Paris</title>
+    <updated>2010-10-19T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/2010/10/12/first-project-open-divers/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2010/10/12/first-project-open-divers/" />
+    <title>Open Divers: an online dive log</title>
+    <updated>2010-10-12T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <id>https://labs.steren.fr/http://al.chemy.org/news/alchemy-008-beta-release/"</id>
+    <link rel="alternate" href="https://labs.steren.fr/http://al.chemy.org/news/alchemy-008-beta-release/" />
+    <title>SVG export for Alchemy</title>
+    <updated>2009-08-01T00:00:00Z</updated>
+  </entry>
 
 </feed>
