@@ -49,7 +49,7 @@
     </p>
 
     <h3>Training dataset</h3>
-    <p>To generate our training dataset, we used perfect underwater pictures (e.g. from National Geographic) that we deteriorated to look like pictures that would have been taken with our camera. we used data augmentation to generate many variations of these (rotation, different color degradation...)</p>
+    <p>To generate our training dataset, we used perfect underwater pictures (e.g. from National Geographic) that we deteriorated to look like pictures that would have been taken with our camera (low contrast, too blue, underexposed...). We used data augmentation to generate many variations of these (rotation, more or less color degradation...)</p>
 
     <h3>Convolutional neural network</h3>
     <p>Our first approach that lead to promising results was to use a convolutional neural network:</p>
@@ -60,12 +60,12 @@
       <figcaption>Example results on training data: top is input, middle is output, bottom is reference</figcaption>
     </figure>
 
-    <p>The problem with this approach is that the result loses its sharpness. This is due to the fact that this is an "image to image" model.</p>
+    <p>not bad at all! The problem with this approach is that the result loses its sharpness. This is due to the fact that this is an "image to image" model.</p>
 
     <h3>Fully connected neural network</h3>
     <p>
       So our second approach was a fully connected neural network that outputs just a few image manipulation parameters (contrast, brightness, saturation...).
-      After adding a bunch of layers, we had promising results on our training and eval datasets.
+      After adding a bunch of layers, we had very good results on our training and eval datasets, but not when testing with real pictures.
     </p>
 
     <figure>
@@ -73,7 +73,11 @@
       <figcaption>Test on a real picture (not part of the training or eval dataset)</figcaption>
     </figure>
 
-    <p>The problem is that real life pictures (like the one above) seem to be different from what we trained on, so the next step would be to go back to gathering/generating better training data, probably using less data augmentation methods.</p>
+    <p>
+      The problem is that real life pictures (like the one above) are too different from what we trained or evaluated on: the model does its job well on what it was trained on.
+      But this the generated training dataset isn't really representative of pictures we usually take underwater.
+      So the next step would be to go back to gathering/generating better training data, probably using a bit less less data augmentation and using out own corrected pictures (instead of working backward by deteriorating great pictures).
+    </p>
 
     <p>Find the <a href="https://github.com/annemenini/deepwater/">source code on GitHub</a></p>
 
