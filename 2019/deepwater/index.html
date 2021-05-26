@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Deepwater: Deep-learning based enhancer for underwater pictures</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Deepwater: Deep-learning based enhancer for underwater pictures">
+  <meta name="twitter:image" content="https://labs.steren.fr/2019/deepwater/example.webp">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Deepwater: Deep-learning based enhancer for underwater pictures">
+  <meta property="og:image" content="https://labs.steren.fr/2019/deepwater/example.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Deepwater: Deep-learning based enhancer for underwater pictures",
+    "image": "https://labs.steren.fr/2019/deepwater/example.webp"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Deepwater: Deep-learning based enhancer for underwater pictures</h2>
+      <time date="2019-01-19">2019-01-19</time>
+    </header>
+
+    <p>
+      My <a href="https://twitter.com/annemenini">partner</a> and I are scuba divers and like to snap underwater pictures. Sadly, if we do not use any red filter underwater, the pictures always need manual color correction to look OK.
+      The "auto" adjustment of most photo softwares like Google Photos improves things a bit, but manual color retouching is needed for best results.
+      <br>
+      So we asked ourselves: could we train an ML model to automate this? That's how we started to work on a deep-learning based enhancer for underwater pictures.
+    </p>
+
+    <h3>Training dataset</h3>
+    <p>To generate our training dataset, we used perfect underwater pictures (e.g. from National Geographic) that we deteriorated to look like pictures that would have been taken with our camera. we used data augmentation to generate many variations of these (rotation, different color degradation...)</p>
+
+    <h3>Convolutional neural network</h3>
+    <p>Our first approach that lead to promising results was to use a convolutional neural network:</p>
+    
+    <figure>
+      <img src="deepwater-1.webp" alt="An example on training data"/>
+      <img src="deepwater-2.webp" alt="Another example on training data"/>
+      <figcaption>Example results on training data: top is input, middle is output, bottom is reference</figcaption>
+    </figure>
+
+    <p>The problem with this approach is that the result loses its sharpness. This is due to the fact that this is an "image to image" model.</p>
+
+    <h3>Fully connected neural network</h3>
+    <p>
+      So our second approach was a fully connected neural network that outputs just a few image manipulation parameters (contrast, brightness, saturation...).
+      After adding a bunch of layers, we had promising results on our training and eval datasets.
+    </p>
+
+    <figure>
+      <img src="deepwater-eval.webp" alt=""/>
+      <figcaption>Test on the eval dataset (a real picture)</figcaption>
+    </figure>
+
+    <p>The problem is that real life pictures (like the one above) seem to be different from what we trained on, so the next step would be to go back to gathering/generating better training data, probably using less data augmentation methods.</p>
+
+    <p>Find the <a href="https://github.com/annemenini/deepwater/">source code for training our model GitHub</a></p>
+
+    <h3>Web app</h3>
+    <p>
+      We were able to load and execute our model client-side on a webpage with <a href="https://www.tensorflow.org/js">TensorFlowJS</a>.
+      The web app is hosted on <a href="https://firebase.google.com/docs/hosting">Firebase Hosting</a>, re-deployed automatically when we push to the GitHub repo with a <a href="https://cloud.google.com/build/docs/automating-builds/create-manage-triggers">Google Cloud Build trigger</a>.
+      The training code is in Python, and outputs a "SavedModel". Using a tool named <code>tensorflowjs_converter</code>, we coverted the model into a format that can be hosted and loaded by TensorFlowJS.
+      The model is stored in a public Cloud Storage bucket, as it is quite bit to be in git.
+    </p>
+    <p>
+      See <a href="https://github.com/annemenini/deepwater/tree/master/web">source code of the webapp on GitHub</a>
+      <br>
+      Try the web app at <a href="https://deepwater-project.web.app/">deepwater-project.web.app</a>.
+    </p>
+    <figure>
+      <img src="deepwater-webapp.webp" alt=""/>
+      <figcaption>Screenshot of the webapp</figcaption>
+    </figure>
+
+  </article>
+</main>
+</body>
+</html>
