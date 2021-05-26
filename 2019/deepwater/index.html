@@ -60,11 +60,13 @@
       <figcaption>Example results on training data: top is input, middle is output, bottom is reference</figcaption>
     </figure>
 
-    <p>not bad at all! The problem with this approach is that the result loses its sharpness. This is due to the fact that this is an "image to image" model.</p>
+    <p>Not bad at all! The problem with this approach is that the result loses its sharpness. This is due to the fact that this is an "image to image" model.</p>
 
     <h3>Fully connected neural network</h3>
     <p>
-      So our second approach was a fully connected neural network that outputs just a few image manipulation parameters (contrast, brightness, saturation...).
+      Our second approach was a fully connected neural network that outputs just a few image manipulation parameters (contrast, brightness, saturation...).
+      These parameters are then applied to the original image.
+      By design, this technique removed the sharpness issue.
       After adding a bunch of layers, we had very good results on our training and eval datasets, but not when testing with real pictures.
     </p>
 
