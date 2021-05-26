@@ -357,8 +357,8 @@
     <updated>2010-10-12T00:00:00Z</updated>
   </entry>
   <entry>
-    <id>https://labs.steren.fr/http://al.chemy.org/news/alchemy-008-beta-release/</id>
-    <link rel="alternate" href="https://labs.steren.fr/http://al.chemy.org/news/alchemy-008-beta-release/" />
+    <id>http://al.chemy.org/news/alchemy-008-beta-release/</id>
+    <link rel="alternate" href="http://al.chemy.org/news/alchemy-008-beta-release/" />
     <title>SVG export for Alchemy</title>
     <updated>2009-08-01T00:00:00Z</updated>
   </entry>
