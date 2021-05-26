@@ -29,6 +29,14 @@ img, picture, iframe, video {
   margin: 0 auto;
 }
 
+/* Figures with 2 images */
+/* we use 3 because we assume there is a <figcaption> element */
+figure > img:first-child:nth-last-child(3),
+figure > img:first-child:nth-last-child(3) ~ img {
+  display: inline;
+  width: 40%;
+}
+
 iframe {
   width: 100%;
 }
@@ -92,12 +100,12 @@ h1 a:hover, h2 a:hover, h3 a:hover {
 figure{
   margin:1em 0 0.5em;
   padding:0;
+  text-align: center;
 }
 
 figure figcaption{
   opacity:0.65;
   font-size:0.85em;
-  text-align: center
 }
 
 code, kbd, var, samp{
