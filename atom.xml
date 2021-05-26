@@ -51,6 +51,13 @@
     <updated>2019-11-30T00:00:00Z</updated>
   </entry>
   <entry>
+    <id>https://labs.steren.fr/2019/deepwater/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2019/deepwater/" />
+    <title>Deepwater</title>
+    <summary>Deep-learning based enhancer for underwater pictures</summary>
+    <updated>2019-11-30T00:00:00Z</updated>
+  </entry>
+  <entry>
     <id>https://labs.steren.fr/2018/12/26/remixthem/</id>
     <link rel="alternate" href="https://labs.steren.fr/2018/12/26/remixthem/" />
     <title>Open sourcing Remixthem, my first Android app</title>
