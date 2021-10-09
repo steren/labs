@@ -38,7 +38,9 @@
 html {
   font-family: Roboto,Helvetica,Arial,sans-serif;
   line-height: 1.4;
+  background-color: #EEEEEE;
 }
+
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #121212;
@@ -51,29 +53,52 @@ body{
   font-size:1rem;
 }
 
-ol.pages  {
+main {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin: 0;
-  padding: 0;
+  --size: 200px;
+  --margin: 4px;
+  --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px); 
+}
+
+.pages {
+  font-size: 0; /* disable white space between inline block element */
 }
 
 .pages li {
-  list-style-type: none;
-  width: 400px;
-  height: 400px;
+  width: var(--size);
+  margin: var(--margin);
+  height: calc(var(--size) * 1.1547);
+  display: inline-block;
+  font-size: initial;
+  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
+  margin-bottom: calc(var(--margin) - var(--size) * 0.2885);
+  background-color: #FFFFFF;
+}
+
+/* https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
+.pages::before {
+  content: "";
+  width: calc(var(--size) / 2 + var(--margin));
+  float: left;
+  height: 120%; 
+  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
 }
 
 .pages figure {
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .pages img {
-  width: 400px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  float: left;
+}
+
+.pages figcaption {
+  display: none;
 }
 
 .pages a,
@@ -102,7 +127,7 @@ ol.pages  {
     <li>
       <a href="2021/google-cloud-region-picker/">
        <figure>
-        <img loading="lazy" src="2021/google-cloud-region-picker/gcp-region-picker.png" alt="Screenshot of sliders showing Carbon footprint, price and latency">
+        <img loading="lazy" src="2021/google-cloud-region-picker/gcp-region-picker.png" alt="Screenshot of sliders showing Carbon footprint, price and latency" title="Google Cloud Region Picker">
         <figcaption>
         Google Cloud Region Picker
         </figcaption>
@@ -112,7 +137,7 @@ ol.pages  {
     <li>
       <a href="2020/use-value-from-html-attribute-in-list-item-bullets/">
        <figure>
-        <img loading="lazy" src="2020/use-value-from-html-attribute-in-list-item-bullets/steren-blog-screenshot.png" alt="Screenshot of a list with custom bullets">
+        <img loading="lazy" src="2020/use-value-from-html-attribute-in-list-item-bullets/steren-blog-screenshot.png" alt="Screenshot of a list with custom bullets" title="Display the value of an  HTML attribute in custom list bullets with CSS">
         <figcaption>
         Display the value of an  HTML attribute in custom list bullets with CSS
         </figcaption>
@@ -122,7 +147,7 @@ ol.pages  {
     <li>
      <a href="2020/migrating-from-app-engine-to-cloud-run/">
       <figure>
-       <img loading="lazy" src="2020/migrating-from-app-engine-to-cloud-run/app-engine-to-cloud-run.svg" alt="App Engine to Cloud Run">
+       <img loading="lazy" src="2020/migrating-from-app-engine-to-cloud-run/app-engine-to-cloud-run.svg" title="Migrating from App Engine to Cloud Run">
        <figcaption>
         Migrating from App Engine to Cloud Run
        </figcaption>
@@ -132,7 +157,7 @@ ol.pages  {
     <li>
      <a href="2020/05/08/screenshot-as-svg/">
       <figure>
-       <img loading="lazy" src="2020/05/08/screenshot-as-svg/html-to-svg.svg" alt="Screenshot as SVG">
+       <img loading="lazy" src="2020/05/08/screenshot-as-svg/html-to-svg.svg" title="Screenshot as SVG">
        <figcaption>
         Screenshot as SVG
        </figcaption>
@@ -142,7 +167,7 @@ ol.pages  {
     <li>
      <a href="2020/03/05/computing-co2-emissions-from-location-history/">
       <figure>
-       <img loading="lazy" src="2020/03/05/computing-co2-emissions-from-location-history/../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200&h=800&crop=1" alt="Computing CO2 emissions from Location History">
+       <img loading="lazy" src="2020/03/05/computing-co2-emissions-from-location-history/../../screenshot-2020-03-04-at-08.20.38.png%3Fw=1200&h=800&crop=1" title="Computing CO2 emissions from Location History">
        <figcaption>
         Computing CO2 emissions from Location History
        </figcaption>
@@ -152,7 +177,7 @@ ol.pages  {
     <li>
      <a href="2019/11/30/animating-svg-using-css/">
       <figure>
-       <img loading="lazy" src="2019/11/30/animating-svg-using-css/secret-santa-principle.svg" alt="Animating SVG using CSS">
+       <img loading="lazy" src="2019/11/30/animating-svg-using-css/secret-santa-principle.svg" title="Animating SVG using CSS">
        <figcaption>
         Animating SVG using CSS
        </figcaption>
@@ -162,7 +187,7 @@ ol.pages  {
     <li>
       <a href="2019/deepwater/">
        <figure>
-        <img loading="lazy" src="2019/deepwater/deepwater-eval.webp" alt="Deepwater project screenshot">
+        <img loading="lazy" src="2019/deepwater/deepwater-eval.webp" title="Deepwater project screenshot">
         <figcaption>
           Deepwater: Deep-learning based enhancer for underwater pictures
         </figcaption>
@@ -172,7 +197,7 @@ ol.pages  {
     <li>
      <a href="2018/12/26/remixthem/">
       <figure>
-       <img loading="lazy" src="2018/12/26/remixthem/../../large-icon.png%3Fw=512&h=512&crop=1" alt="Open sourcing Remixthem, my first Android app">
+       <img loading="lazy" src="2018/12/26/remixthem/../../large-icon.png%3Fw=512&h=512&crop=1" title="Open sourcing Remixthem, my first Android app">
        <figcaption>
         Open sourcing Remixthem, my first Android app
        </figcaption>
@@ -182,7 +207,7 @@ ol.pages  {
     <li>
      <a href="2018/09/24/rendering-blender-3d-scenes-in-the-cloud/">
       <figure>
-       <img loading="lazy" src="2018/09/24/rendering-blender-3d-scenes-in-the-cloud/blender-cloud-run.webp" alt="Rendering Blender 3D scenes in the cloud">
+       <img loading="lazy" src="2018/09/24/rendering-blender-3d-scenes-in-the-cloud/blender-cloud-run.webp" title="Rendering Blender 3D scenes in the cloud">
        <figcaption>
         Rendering Blender 3D scenes in the cloud
        </figcaption>
@@ -192,7 +217,7 @@ ol.pages  {
     <li>
      <a href="2018/02/20/attractors/">
       <figure>
-       <img loading="lazy" src="2018/02/20/attractors/attractors.webp" alt="Attractors">
+       <img loading="lazy" src="2018/02/20/attractors/attractors.webp" title="Attractors">
        <figcaption>
         Attractors
        </figcaption>
@@ -202,7 +227,7 @@ ol.pages  {
     <li>
      <a href="2017/09/11/scuba-diving-dashboard-using-google-data-studio/">
       <figure>
-       <img loading="lazy" src="2017/09/11/scuba-diving-dashboard-using-google-data-studio/dive-dashboard-screenshot.svg" alt="Scuba Diving dashboard using Google Data Studio">
+       <img loading="lazy" src="2017/09/11/scuba-diving-dashboard-using-google-data-studio/dive-dashboard-screenshot.svg" title="Scuba Diving dashboard using Google Data Studio">
        <figcaption>
         Scuba Diving dashboard using Google Data Studio
        </figcaption>
@@ -212,7 +237,7 @@ ol.pages  {
     <li>
      <a href="2017/08/17/extracting-all-go-regular-expressions-found-on-github/">
       <figure>
-       <img loading="lazy" src="2017/08/17/extracting-all-go-regular-expressions-found-on-github/../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200&h=800&crop=1" alt="Extracting all Go regular expressions found on GitHub">
+       <img loading="lazy" src="2017/08/17/extracting-all-go-regular-expressions-found-on-github/../../screen-shot-2017-08-16-at-10-20-03-pm.png%3Fw=1200&h=800&crop=1" title="Extracting all Go regular expressions found on GitHub">
        <figcaption>
         Extracting all Go regular expressions found on GitHub
        </figcaption>
@@ -222,7 +247,7 @@ ol.pages  {
     <li>
      <a href="2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/">
       <figure>
-       <img loading="lazy" src="2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200&h=800&crop=1" alt="Setting up Stackdriver Error Reporting on Play Framework 1.4">
+       <img loading="lazy" src="2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200&h=800&crop=1" title="Setting up Stackdriver Error Reporting on Play Framework 1.4">
        <figcaption>
         Setting up Stackdriver Error Reporting on Play Framework 1.4
        </figcaption>
@@ -232,7 +257,7 @@ ol.pages  {
     <li>
      <a href="2016/11/05/projection-mapping-on-painting/">
       <figure>
-       <img loading="lazy" src="2016/11/05/projection-mapping-on-painting/../../img_20161101_144424.jpg%3Fw=1200&h=800&crop=1" alt="Projection mapping on painting">
+       <img loading="lazy" src="2016/11/05/projection-mapping-on-painting/../../img_20161101_144424.jpg%3Fw=1200&h=800&crop=1" title="Projection mapping on painting">
        <figcaption>
         Projection mapping on painting
        </figcaption>
@@ -242,7 +267,7 @@ ol.pages  {
     <li>
      <a href="2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/">
       <figure>
-       <img loading="lazy" src="2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/../../tags.png%3Fw=1200&h=800&crop=1" alt="Generating a name tag sheet from a list of names">
+       <img loading="lazy" src="2016/06/18/generating-a-name-tag-sheet-from-a-list-of-names/../../tags.png%3Fw=1200&h=800&crop=1" title="Generating a name tag sheet from a list of names">
        <figcaption>
         Generating a name tag sheet from a list of names
        </figcaption>
@@ -252,7 +277,7 @@ ol.pages  {
     <li>
      <a href="2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/">
       <figure>
-       <img loading="lazy" src="2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/../../dog-or-muffing-results.png%3Fw=480&h=468&crop=1" alt="Trying to confuse Google’s Vision algorithms with dogs and muffins">
+       <img loading="lazy" src="2016/03/27/trying-to-confuse-googles-vision-algorithms-with-dogs-and-muffins/../../dog-or-muffing-results.png%3Fw=480&h=468&crop=1" title="Trying to confuse Google’s Vision algorithms with dogs and muffins">
        <figcaption>
         Trying to confuse Google’s Vision algorithms with dogs and muffins
        </figcaption>
@@ -262,7 +287,7 @@ ol.pages  {
     <li>
      <a href="2016/01/25/color-palette-showcase/">
       <figure>
-       <img loading="lazy" src="2016/01/25/color-palette-showcase/../../screen-shot-2016-01-25-at-00-04-49.png%3Fw=940&h=800&crop=1" alt="Color palette showcase">
+       <img loading="lazy" src="2016/01/25/color-palette-showcase/../../screen-shot-2016-01-25-at-00-04-49.png%3Fw=940&h=800&crop=1" title="Color palette showcase">
        <figcaption>
         Color palette showcase
        </figcaption>
@@ -272,7 +297,7 @@ ol.pages  {
     <li>
      <a href="2015/12/13/painting-in-the-style-of-bob-ross/">
       <figure>
-       <img loading="lazy" src="2015/12/13/painting-in-the-style-of-bob-ross/../../../../2016/01/bob-ross-steren.jpg%3Fw=1200&h=800&crop=1" alt="Painting in the style of Bob Ross">
+       <img loading="lazy" src="2015/12/13/painting-in-the-style-of-bob-ross/../../../../2016/01/bob-ross-steren.jpg%3Fw=1200&h=800&crop=1" title="Painting in the style of Bob Ross">
        <figcaption>
         Painting in the style of Bob Ross
        </figcaption>
@@ -282,7 +307,7 @@ ol.pages  {
     <li>
      <a href="2015/10/27/climb-tracker-for-android-and-android-wear/">
       <figure>
-       <img loading="lazy" src="2015/10/27/climb-tracker-for-android-and-android-wear/../../feature-graphic.jpg%3Fw=1024&h=500&crop=1" alt="Climb Tracker for Android and Android wear">
+       <img loading="lazy" src="2015/10/27/climb-tracker-for-android-and-android-wear/../../feature-graphic.jpg%3Fw=1024&h=500&crop=1" title="Climb Tracker for Android and Android wear">
        <figcaption>
         Climb Tracker for Android and Android wear
        </figcaption>
@@ -292,7 +317,7 @@ ol.pages  {
     <li>
      <a href="2015/04/22/exploring-ruled-surfaces-with-three-js-and-sketchfab/">
       <figure>
-       <img loading="lazy" src="2015/04/22/exploring-ruled-surfaces-with-three-js-and-sketchfab/../../screen-shot-2016-01-30-at-13-15-47.png%3Fw=1200&h=800&crop=1" alt="Exploring ruled surfaces with Three.js and Sketchfab">
+       <img loading="lazy" src="2015/04/22/exploring-ruled-surfaces-with-three-js-and-sketchfab/../../screen-shot-2016-01-30-at-13-15-47.png%3Fw=1200&h=800&crop=1" title="Exploring ruled surfaces with Three.js and Sketchfab">
        <figcaption>
         Exploring ruled surfaces with Three.js and Sketchfab
        </figcaption>
@@ -302,7 +327,7 @@ ol.pages  {
     <li>
      <a href="2015/04/21/portfolio-polymer/">
       <figure>
-       <img loading="lazy" src="2015/04/21/portfolio-polymer/../../polymer-portfolio.png%3Fw=1200&h=800&crop=1" alt="Building a portfolio using Polymer">
+       <img loading="lazy" src="2015/04/21/portfolio-polymer/../../polymer-portfolio.png%3Fw=1200&h=800&crop=1" title="Building a portfolio using Polymer">
        <figcaption>
         Building a portfolio using Polymer
        </figcaption>
@@ -312,7 +337,7 @@ ol.pages  {
     <li>
      <a href="2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/">
       <figure>
-       <img loading="lazy" src="2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/../../screenshot.png%3Fw=1200&h=800&crop=1" alt="Cloud cup: a multiplayer set of mini games for web and Android">
+       <img loading="lazy" src="2015/03/12/cloud-cup-a-multiplayer-set-of-mini-games-for-web-and-android/../../screenshot.png%3Fw=1200&h=800&crop=1" title="Cloud cup: a multiplayer set of mini games for web and Android">
        <figcaption>
         Cloud cup: a multiplayer set of mini games for web and Android
        </figcaption>
@@ -322,7 +347,7 @@ ol.pages  {
     <li>
       <a href="2015/03/sketchfab-head-tracker/">
        <figure>
-        <img loading="lazy" src="2015/03/sketchfab-head-tracker/image.webp" alt="Sketchfab Head Tracker">
+        <img loading="lazy" src="2015/03/sketchfab-head-tracker/image.webp" title="Sketchfab Head Tracker">
         <figcaption>
           Sketchfab Head Tracker
         </figcaption>
@@ -332,7 +357,7 @@ ol.pages  {
     <li>
      <a href="2014/05/14/beansight-is-now-open-source/">
       <figure>
-       <img loading="lazy" src="2014/05/14/beansight-is-now-open-source/../../screen-shot-2015-03-01-at-8-08-14-pm.png%3Fw=1200&h=800&crop=1" alt="Beansight is now open source">
+       <img loading="lazy" src="2014/05/14/beansight-is-now-open-source/../../screen-shot-2015-03-01-at-8-08-14-pm.png%3Fw=1200&h=800&crop=1" title="Beansight is now open source">
        <figcaption>
         Beansight is now open source
        </figcaption>
@@ -342,7 +367,7 @@ ol.pages  {
     <li>
      <a href="2014/05/05/indoor-climbing-tracker/">
       <figure>
-       <img loading="lazy" src="2014/05/05/indoor-climbing-tracker/../../screen-shot-2015-03-01-at-8-11-03-pm.png%3Fw=1200&h=800&crop=1" alt="Indoor climbing tracker">
+       <img loading="lazy" src="2014/05/05/indoor-climbing-tracker/../../screen-shot-2015-03-01-at-8-11-03-pm.png%3Fw=1200&h=800&crop=1" title="Indoor climbing tracker">
        <figcaption>
         Indoor climbing tracker
        </figcaption>
@@ -352,7 +377,7 @@ ol.pages  {
     <li>
      <a href="2014/04/19/lecamping-mafia/">
       <figure>
-       <img loading="lazy" src="2014/04/19/lecamping-mafia/../../screen-shot-2015-03-01-at-8-12-20-pm.png%3Fw=1200&h=800&crop=1" alt="LeCamping Mafia">
+       <img loading="lazy" src="2014/04/19/lecamping-mafia/../../screen-shot-2015-03-01-at-8-12-20-pm.png%3Fw=1200&h=800&crop=1" title="LeCamping Mafia">
        <figcaption>
         LeCamping Mafia
        </figcaption>
@@ -362,7 +387,7 @@ ol.pages  {
     <li>
      <a href="2014/04/04/priority-for-everyone/">
       <figure>
-       <img loading="lazy" src="2014/04/04/priority-for-everyone/../../screen-shot-2015-03-12-at-9-02-08-am.png%3Fw=1200&h=572&crop=1" alt="How to prove you created something before somebody else?">
+       <img loading="lazy" src="2014/04/04/priority-for-everyone/../../screen-shot-2015-03-12-at-9-02-08-am.png%3Fw=1200&h=572&crop=1" title="How to prove you created something before somebody else?">
        <figcaption>
         How to prove you created something before somebody else?
        </figcaption>
@@ -372,7 +397,7 @@ ol.pages  {
     <li>
      <a href="2014/04/01/how-to-generate-a-maze/">
       <figure>
-       <img loading="lazy" src="2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410&h=411&crop=1" alt="How to generate a maze?">
+       <img loading="lazy" src="2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410&h=411&crop=1" title="How to generate a maze?">
        <figcaption>
         How to generate a maze?
        </figcaption>
@@ -382,7 +407,7 @@ ol.pages  {
     <li>
      <a href="2014/03/20/colourful-intermediate-results/">
       <figure>
-       <img loading="lazy" src="2014/03/20/colourful-intermediate-results/../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200&h=800&crop=1" alt="Colourful intermediate results">
+       <img loading="lazy" src="2014/03/20/colourful-intermediate-results/../../screen-shot-2014-03-17-at-00-29-25.png%3Fw=1200&h=800&crop=1" title="Colourful intermediate results">
        <figcaption>
         Colourful intermediate results
        </figcaption>
@@ -392,7 +417,7 @@ ol.pages  {
     <li>
      <a href="2013/12/10/mri-principle-3d-curve-browser/">
       <figure>
-       <img loading="lazy" src="2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966&h=800&crop=1" alt="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
+       <img loading="lazy" src="2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966&h=800&crop=1" title="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
        <figcaption>
         MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js
        </figcaption>
@@ -402,7 +427,7 @@ ol.pages  {
     <li>
      <a href="2013/09/25/angularjs-portfolio-website/">
       <figure>
-       <img loading="lazy" src="2013/09/25/angularjs-portfolio-website/../../portfolio.png%3Fw=1124&h=654&crop=1" alt="My Portfolio written with AngularJS">
+       <img loading="lazy" src="2013/09/25/angularjs-portfolio-website/../../portfolio.png%3Fw=1124&h=654&crop=1" title="My Portfolio written with AngularJS">
        <figcaption>
         My Portfolio written with AngularJS
        </figcaption>
@@ -412,7 +437,7 @@ ol.pages  {
     <li>
      <a href="2013/09/23/poker-tournament-tracker/">
       <figure>
-       <img loading="lazy" src="2013/09/23/poker-tournament-tracker/../../screen-shot-2013-09-23-at-12-20-38-pm.png%3Fw=1200&h=800&crop=1" alt="Poker tournament tracker">
+       <img loading="lazy" src="2013/09/23/poker-tournament-tracker/../../screen-shot-2013-09-23-at-12-20-38-pm.png%3Fw=1200&h=800&crop=1" title="Poker tournament tracker">
        <figcaption>
         Poker tournament tracker
        </figcaption>
@@ -422,7 +447,7 @@ ol.pages  {
     <li>
      <a href="2013/07/19/sculptfab/">
       <figure>
-       <img loading="lazy" src="2013/07/19/sculptfab/../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200&h=800&crop=1" alt="Sculptfab">
+       <img loading="lazy" src="2013/07/19/sculptfab/../../../12/screen-shot-2013-12-10-at-23-01-18.png%3Fw=1200&h=800&crop=1" title="Sculptfab">
        <figcaption>
         Sculptfab
        </figcaption>
@@ -432,7 +457,7 @@ ol.pages  {
     <li>
      <a href="2013/04/19/server-sent-events-parisjs-talk/">
       <figure>
-       <img loading="lazy" src="2013/04/19/server-sent-events-parisjs-talk/../../sse.png%3Fw=960&h=720&crop=1" alt="Server-sent Events ParisJS talk">
+       <img loading="lazy" src="2013/04/19/server-sent-events-parisjs-talk/../../sse.png%3Fw=960&h=720&crop=1" title="Server-sent Events ParisJS talk">
        <figcaption>
         Server-sent Events ParisJS talk
        </figcaption>
@@ -442,7 +467,7 @@ ol.pages  {
     <li>
      <a href="2012/10/24/video-support-phonegap-android/">
       <figure>
-       <img loading="lazy" src="2012/10/24/video-support-phonegap-android/../../phonegap-logo.png%3Fw=512&h=512&crop=1" alt="Bringing video support to Phonegap Android">
+       <img loading="lazy" src="2012/10/24/video-support-phonegap-android/../../phonegap-logo.png%3Fw=512&h=512&crop=1" title="Bringing video support to Phonegap Android">
        <figcaption>
         Bringing video support to Phonegap Android
        </figcaption>
@@ -452,7 +477,7 @@ ol.pages  {
     <li>
      <a href="2012/10/03/annual-update-to-cadeaux-entre-nous/">
       <figure>
-       <img loading="lazy" src="2012/10/03/annual-update-to-cadeaux-entre-nous/../../capture-du-2012-10-03-001835.png%3Fw=1200&h=800&crop=1" alt="Annual update to “Cadeaux entre nous”">
+       <img loading="lazy" src="2012/10/03/annual-update-to-cadeaux-entre-nous/../../capture-du-2012-10-03-001835.png%3Fw=1200&h=800&crop=1" title="Annual update to “Cadeaux entre nous”">
        <figcaption>
         Annual update to “Cadeaux entre nous”
        </figcaption>
@@ -462,7 +487,7 @@ ol.pages  {
     <li>
      <a href="2012/02/10/voyages-sncf-com-more-is-less/">
       <figure>
-       <img loading="lazy" src="2012/02/10/voyages-sncf-com-more-is-less/../../voyagesncf-compare.png%3Fw=1200&h=800&crop=1" alt="voyages-sncf.com: more is less">
+       <img loading="lazy" src="2012/02/10/voyages-sncf-com-more-is-less/../../voyagesncf-compare.png%3Fw=1200&h=800&crop=1" title="voyages-sncf.com: more is less">
        <figcaption>
         voyages-sncf.com: more is less
        </figcaption>
@@ -472,7 +497,7 @@ ol.pages  {
     <li>
      <a href="2011/12/noisebox-a-connected-music-box/">
       <figure>
-       <img loading="lazy" src="2011/12/noisebox-a-connected-music-box/noisebox.jpg" alt="Connected music box">
+       <img loading="lazy" src="2011/12/noisebox-a-connected-music-box/noisebox.jpg" title="Connected music box">
        <figcaption>
         Noisebox: a connected music box
        </figcaption>
@@ -482,7 +507,7 @@ ol.pages  {
     <li>
      <a href="2011/11/16/349/">
       <figure>
-       <img loading="lazy" src="2011/11/16/349/../../screen-shot-2017-09-10-at-9-19-22-pm.png%3Fw=1200&h=800&crop=1" alt="Maldives documentary">
+       <img loading="lazy" src="2011/11/16/349/../../screen-shot-2017-09-10-at-9-19-22-pm.png%3Fw=1200&h=800&crop=1" title="Maldives documentary">
        <figcaption>
         Maldives documentary
        </figcaption>
@@ -492,7 +517,7 @@ ol.pages  {
     <li>
      <a href="2011/09/20/square-of-the-dead/">
       <figure>
-       <img loading="lazy" src="2011/09/20/square-of-the-dead/capture-square-of-the-dead-google-chrome.png" alt="Square of the Dead">
+       <img loading="lazy" src="2011/09/20/square-of-the-dead/capture-square-of-the-dead-google-chrome.png" title="Square of the Dead">
        <figcaption>
         Square of the Dead
        </figcaption>
@@ -502,7 +527,7 @@ ol.pages  {
     <li>
      <a href="2011/09/15/anydance/">
       <figure>
-       <img loading="lazy" src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 150%22><text y=%221.3em%22 x=%220.7em%22 font-size=%2280%22>💃</text></svg>" alt="AnyDance">
+       <img loading="lazy" src="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 150%22><text y=%221.3em%22 x=%220.7em%22 font-size=%2280%22>💃</text></svg>" title="AnyDance">
        <figcaption>
         AnyDance
        </figcaption>
@@ -512,7 +537,7 @@ ol.pages  {
     <li>
      <a href="2011/05/19/hack-le-camping-logo/">
       <figure>
-       <img loading="lazy" src="2011/05/19/hack-le-camping-logo/../../hack_lecamping_fractale_final.png%3Fw=959&h=800&crop=1" alt="Hack Le Camping logo">
+       <img loading="lazy" src="2011/05/19/hack-le-camping-logo/../../hack_lecamping_fractale_final.png%3Fw=959&h=800&crop=1" title="Hack Le Camping logo">
        <figcaption>
         Hack Le Camping logo
        </figcaption>
@@ -522,7 +547,7 @@ ol.pages  {
     <li>
      <a href="2011/05/09/you-just-know-the-time/">
       <figure>
-       <img loading="lazy" src="2011/05/09/you-just-know-the-time/../../colocclock-howto.png%3Fw=539&h=539&crop=1" alt="You just know the time">
+       <img loading="lazy" src="2011/05/09/you-just-know-the-time/../../colocclock-howto.png%3Fw=539&h=539&crop=1" title="You just know the time">
        <figcaption>
         You just know the time
        </figcaption>
@@ -532,7 +557,7 @@ ol.pages  {
     <li>
      <a href="2011/05/07/image-processing-with-javascript/">
       <figure>
-       <img loading="lazy" src="2011/05/07/image-processing-with-javascript/../../js-image.png%3Fw=960&h=720&crop=1" alt="Image processing with Javascript">
+       <img loading="lazy" src="2011/05/07/image-processing-with-javascript/../../js-image.png%3Fw=960&h=720&crop=1" title="Image processing with Javascript">
        <figcaption>
         Image processing with Javascript
        </figcaption>
@@ -542,7 +567,7 @@ ol.pages  {
     <li>
      <a href="2010/12/22/beansight-le-camping/">
       <figure>
-       <img loading="lazy" src="2010/12/22/beansight-le-camping/../../la_camping_kick-off_for_start-ups_logo.png%3Fw=1200&h=800&crop=1" alt="Beansight selected for Le Camping">
+       <img loading="lazy" src="2010/12/22/beansight-le-camping/../../la_camping_kick-off_for_start-ups_logo.png%3Fw=1200&h=800&crop=1" title="Beansight selected for Le Camping">
        <figcaption>
         Beansight selected for Le Camping
        </figcaption>
@@ -552,7 +577,7 @@ ol.pages  {
     <li>
      <a href="2010/12/19/a-very-first-result/">
       <figure>
-       <img loading="lazy" src="2010/12/19/a-very-first-result/../../screenshot-2020-05-10-at-17.15.47.png%3Fw=1200&h=800&crop=1" alt="Controlling my laptop with hand gesture: a first result">
+       <img loading="lazy" src="2010/12/19/a-very-first-result/../../screenshot-2020-05-10-at-17.15.47.png%3Fw=1200&h=800&crop=1" title="Controlling my laptop with hand gesture: a first result">
        <figcaption>
         Controlling my laptop with hand gesture: a first result
        </figcaption>
@@ -562,7 +587,7 @@ ol.pages  {
     <li>
      <a href="2010/12/16/no-touch-screen/">
       <figure>
-       <img loading="lazy" src="2010/12/16/no-touch-screen/../../opencv_diff.png%3Fw=1200&h=800&crop=1" alt="no-touch screen">
+       <img loading="lazy" src="2010/12/16/no-touch-screen/../../opencv_diff.png%3Fw=1200&h=800&crop=1" title="no-touch screen">
        <figcaption>
         no-touch screen
        </figcaption>
@@ -572,7 +597,7 @@ ol.pages  {
     <li>
      <a href="2010/12/05/concept-free-art/">
       <figure>
-       <img loading="lazy" src="2010/12/05/concept-free-art/../../algo_iris.png%3Fw=760&h=761&crop=1" alt="Experimenting with “Concept Free Art”">
+       <img loading="lazy" src="2010/12/05/concept-free-art/../../algo_iris.png%3Fw=760&h=761&crop=1" title="Experimenting with “Concept Free Art”">
        <figcaption>
         Experimenting with “Concept Free Art”
        </figcaption>
@@ -582,7 +607,7 @@ ol.pages  {
     <li>
      <a href="2010/12/04/bugfixes-and-new-features/">
       <figure>
-       <img loading="lazy" src="2010/12/04/bugfixes-and-new-features/../../internet-mail.png%3Fw=1200&h=800&crop=1" alt="Lesson learnt: use tasks and retries to send emails">
+       <img loading="lazy" src="2010/12/04/bugfixes-and-new-features/../../internet-mail.png%3Fw=1200&h=800&crop=1" title="Lesson learnt: use tasks and retries to send emails">
        <figcaption>
         Lesson learnt: use tasks and retries to send emails
        </figcaption>
@@ -592,7 +617,7 @@ ol.pages  {
     <li>
      <a href="2010/11/25/beansight-pitch/">
       <figure>
-       <img loading="lazy" src="2010/11/25/beansight-pitch/../../screenshot-2020-05-10-at-17.26.46.png%3Fw=1200&h=800&crop=1" alt="Beansight pitch">
+       <img loading="lazy" src="2010/11/25/beansight-pitch/../../screenshot-2020-05-10-at-17.26.46.png%3Fw=1200&h=800&crop=1" title="Beansight pitch">
        <figcaption>
         Beansight pitch
        </figcaption>
@@ -602,7 +627,7 @@ ol.pages  {
     <li>
      <a href="2010/11/24/gifts-between-friends/">
       <figure>
-       <img loading="lazy" src="2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894&h=730&crop=1" alt="Gifts between us">
+       <img loading="lazy" src="2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894&h=730&crop=1" title="Gifts between us">
        <figcaption>
         Gifts between us
        </figcaption>
@@ -612,7 +637,7 @@ ol.pages  {
     <li>
      <a href="2010/11/18/call-wikipedia-api-using-jquery/">
       <figure>
-       <img loading="lazy" src="2010/11/18/call-wikipedia-api-using-jquery/../../wikipedia-jquery.png%3Fw=960&h=720&crop=1" alt="Call Wikipedia API using jQuery">
+       <img loading="lazy" src="2010/11/18/call-wikipedia-api-using-jquery/../../wikipedia-jquery.png%3Fw=960&h=720&crop=1" title="Call Wikipedia API using jQuery">
        <figcaption>
         Call Wikipedia API using jQuery
        </figcaption>
@@ -622,7 +647,7 @@ ol.pages  {
     <li>
      <a href="2010/11/17/my-fish-database/">
       <figure>
-       <img loading="lazy" src="2010/11/17/my-fish-database/../../fish-database.png%3Fw=960&h=720&crop=1" alt="My fish database">
+       <img loading="lazy" src="2010/11/17/my-fish-database/../../fish-database.png%3Fw=960&h=720&crop=1" title="My fish database">
        <figcaption>
         Open Divers: My fish database
        </figcaption>
@@ -632,7 +657,7 @@ ol.pages  {
     <li>
      <a href="2010/10/28/beansight-path-to-private-beta/">
       <figure>
-       <img loading="lazy" src="2010/10/28/beansight-path-to-private-beta/../../beansight_new_home1.png%3Fw=1200&h=800&crop=1" alt="Beansight: the path to the private beta">
+       <img loading="lazy" src="2010/10/28/beansight-path-to-private-beta/../../beansight_new_home1.png%3Fw=1200&h=800&crop=1" title="Beansight: the path to the private beta">
        <figcaption>
         Beansight: the path to the private beta
        </figcaption>
@@ -642,7 +667,7 @@ ol.pages  {
     <li>
      <a href="2010/10/20/open-divers-how-is-it-done/">
       <figure>
-       <img loading="lazy" src="2010/10/20/open-divers-how-is-it-done/../../data-model.jpg%3Fw=1200&h=800&crop=1" alt="Open Divers: How is it done?">
+       <img loading="lazy" src="2010/10/20/open-divers-how-is-it-done/../../data-model.jpg%3Fw=1200&h=800&crop=1" title="Open Divers: How is it done?">
        <figcaption>
         Open Divers: How is it done?
        </figcaption>
@@ -652,7 +677,7 @@ ol.pages  {
     <li>
      <a href="2010/10/19/open-divers-first-screen/">
       <figure>
-       <img loading="lazy" src="2010/10/19/open-divers-first-screen/../../explore-open-divers_12875097093361.png%3Fw=1200&h=800&crop=1" alt="Open Divers: first screen">
+       <img loading="lazy" src="2010/10/19/open-divers-first-screen/../../explore-open-divers_12875097093361.png%3Fw=1200&h=800&crop=1" title="Open Divers: first screen">
        <figcaption>
         Open Divers: first screen
        </figcaption>
@@ -662,7 +687,7 @@ ol.pages  {
     <li>
      <a href="2010/10/19/beansight-at-start-in-paris/">
       <figure>
-       <img loading="lazy" src="2010/10/19/beansight-at-start-in-paris/../../beansight-logo.jpg%3Fw=1200&h=800&crop=1" alt="Beansight at Start In Paris">
+       <img loading="lazy" src="2010/10/19/beansight-at-start-in-paris/../../beansight-logo.jpg%3Fw=1200&h=800&crop=1" title="Beansight at Start In Paris">
        <figcaption>
         Beansight at Start In Paris
        </figcaption>
@@ -672,7 +697,7 @@ ol.pages  {
     <li>
      <a href="2010/10/12/first-project-open-divers/">
       <figure>
-       <img loading="lazy" src="2010/10/12/first-project-open-divers/../../p1000660-modific3a9e-resized.jpg%3Fw=1024&h=768&crop=1" alt="First project: Open Divers">
+       <img loading="lazy" src="2010/10/12/first-project-open-divers/../../p1000660-modific3a9e-resized.jpg%3Fw=1024&h=768&crop=1" title="First project: Open Divers">
        <figcaption>
         Open Divers: an online dive log
        </figcaption>
@@ -682,7 +707,7 @@ ol.pages  {
     <li>
       <a href="http://al.chemy.org/news/alchemy-008-beta-release/">
        <figure>
-        <img loading="lazy" src="2009/alchemy.png" alt="Drawing made usign Alchemy">
+        <img loading="lazy" src="2009/alchemy.png" title="Drawing made usign Alchemy">
         <figcaption>
           SVG export for Alchemy
         </figcaption>
