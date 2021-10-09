@@ -53,11 +53,26 @@ body{
   font-size:1rem;
 }
 
+/* Hexagons from https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
 main {
-  display: flex;
-  --size: 200px;
-  --margin: 4px;
-  --f: calc(var(--size) * 1.732 + 4 * var(--margin) - 1px); 
+  display:flex;
+  --size: 300px;
+  --ratio: calc(1.732 / 2);
+
+  /* clip-path */
+  --vc: calc(0.5 * var(--size) * var(--ratio)); 
+  
+  /*margin */
+  --margin-vertical: 4px;
+  --margin-horizontal: calc(2 * var(--margin-vertical) + 0.25 * var(--size));
+  /* for the float*/
+  --float: calc(2*var(--size)*var(--ratio) + 4*var(--margin-vertical)  - 2*var(--vc) - 2px);
+}
+
+@media screen and (max-device-width: 360px)  {
+  main {
+    --size: 120px;
+  }
 }
 
 .pages {
@@ -66,22 +81,31 @@ main {
 
 .pages li {
   width: var(--size);
-  margin: var(--margin);
-  height: calc(var(--size) * 1.1547);
+  margin: var(--margin-vertical) var(--margin-horizontal);
+  height: calc(var(--size)*var(--ratio)); 
   display: inline-block;
   font-size: initial;
-  clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-  margin-bottom: calc(var(--margin) - var(--size) * 0.2885);
-  background-color: #FFFFFF;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);;
+  margin-bottom: calc(var(--margin-vertical) - var(--vc)); 
 }
 
-/* https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
 .pages::before {
   content: "";
-  width: calc(var(--size) / 2 + var(--margin));
+  width: calc(var(--size)/2 + var(--margin-horizontal));
   float: left;
-  height: 120%; 
-  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f));
+  height: 135%;
+  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--float) - 2px), #000  0 var(--float));
+}
+
+/* End Hexagons */
+
+.pages {
+  padding: 0;
+  margin: 0;
+}
+
+.pages li {
+  background-color: #FFFFFF;
 }
 
 .pages figure {
