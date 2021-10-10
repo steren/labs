@@ -53,10 +53,10 @@ body{
   font-size:1rem;
 }
 
-/* Hexagons from https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
+/* Hexagons, following guidance from https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
 main {
-  display:flex;
-  --size: 300px;
+  /* Adaptive size to avoid media queries */
+  --size: calc(clamp(100px, 100vw / 6, 300px));
   --ratio: calc(1.732 / 2);
 
   /* clip-path */
@@ -67,16 +67,16 @@ main {
   --margin-horizontal: calc(2 * var(--margin-vertical) + 0.25 * var(--size));
   /* for the float*/
   --float: calc(2*var(--size)*var(--ratio) + 4*var(--margin-vertical)  - 2*var(--vc) - 2px);
-}
 
-@media screen and (max-device-width: 600px)  {
-  main {
-    --size: 120px;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, calc(var(--size) + 2*var(--margin-horizontal)));
+  justify-content: center;
+  
 }
 
 .pages {
   font-size: 0; /* disable white space between inline block element */
+  grid-column: 1/-1;
 }
 
 .pages li {
