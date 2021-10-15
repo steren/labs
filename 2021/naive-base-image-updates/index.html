@@ -90,7 +90,9 @@ TRIGGER_ID=89fce451-85cb-4671-9404-f325b0373e6e</code></pre>
     
     <h2>Conclusion</h2>
 
-    <p>This technique is very naive, and might creates builds. Ideally, you want to only to do when the base image has actually been updated. And for languages that capture the exact version of language dependencies (like <code>package.lock.json</code> in Node.js), this technique does not automatically update the language dependencies. A developer action is required to do so in any case.</p>
+    <p>This technique is very naive, and will create unnecessary builds and revisions polluting your history. Ideally, you want to only to do when the base image has actually been updated.
+      <br>
+      And we've only taled about base images, not about language packages. For package managers that pin the exact version of dependencies (like <code>package-lock.json</code> in Node.js), this will not automatically update the language dependencies. A developer action is required to do so in any case.</p>
 
   </article>
 </main>
