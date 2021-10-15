@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>A Naive container base image update strategy</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="A Naive container base image update strategy">
+  <meta name="twitter:image" content="https://labs.steren.fr/2021/naive-base-image-update/base-image-update.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Naive container base image update strategy">
+  <meta property="og:image" content="https://labs.steren.fr/2021/naive-base-image-update/base-image-update.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "A Naive container base image update strategy",
+    "image": "https://labs.steren.fr/2021/naive-base-image-update/base-image-update.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>A Naive container base image update strategy</h2>
+      <time date="2021-10-14">2021-10-14</time>
+    </header>
+    
+    <img src="base-image-update.svg" alt="Base image update illustration"/>
+
+    <h2>Base image updates</h2>
+    <p>Security of the Software Supply Chain is a <a href="https://security.googleblog.com/2021/06/introducing-slsa-end-to-end-framework.html">hot topic these days</a>. When you build your app into a container, all its dependencies are captured in an immutable container image. That's great. It means that when you deploy this container image to a container runtime like <a href="https://cloud.google.com/run">Cloud Run</a>, you can be sure that what's running is exactly the same as what you built and potentially tested. But what if you want to keep your app up to date with the latest vulnerability patches?</p>
+
+    <p>When it comes to patches of the OS, most of the time, all it takes to update them is to re-build and re-deploy your container. Indeed, if you use a <code>Dockerfile</code>, you likely use a "base image", and you likely point at a tag of this base image (e.g. you might use the latest official Node.js 16 base image with <code>FROM node:16</code>). A tag is a moving target that will point at the latest "version" of this image (technically called a "digest").</p>
+
+    <p>So, if you are continuously developing and deploying your app, problem solved. Every time you build, it will pick up whatever is the latest version of the base image. You do not get the patch <i>as soon</i> as it's available, but if you deploy frequently enough (e.g. once a day, a week), it's probably good enough.</p>
+
+    <p>But what if you are not actively developing your app? In that case, nothing will re-build and re-deploy it. Not even your CI/CD system, since no code change is pushed to your <code>main</code> branch. Assuming you have set up a CI/CD pipeline that builds and deploy your app, all you need to do is to regularly trigger this pipeline.
+    </p>
+
+    <p>Let's take a concrete example with a git repository continuously built with Cloud Build and pushed to Cloud Run:</p>
+
+    <h2>Automatically updating the base image of your Cloud Run service</h2>
+    
+    <p>If you haven't already, follow the instructions to <a href="https://cloud.google.com/run/docs/continuous-deployment-with-cloud-build">Continuously deploy your Cloud Run service from git using Cloud Build</a>. This creates a <a href="https://cloud.google.com/build/docs/automating-builds/create-manage-triggers">Cloud Build Trigger</a> that triggers anytime you push to a certain branch of your GitHub repository.</p>
+
+    <p>All we need to do is create a <a href="https://cloud.google.com/scheduler">Cloud Scheduler</a> job that will run the Cloud Build Trigger every day.</p>
+
+    <p>Let's start by capturing your Google Cloud project ID and Cloud Build Trigger ID in environment variables. The easiest way I found to get the ID your Cloud Build Trigger, open it in <a href="https://console.cloud.google.com/cloud-build/triggers">the Cloud Console</a> and then look up the ID in the URL.</p>
+    <pre><code>PROJECT_ID=your-project-id
+TRIGGER_ID=89fce451-85cb-4671-9404-f325b0373e6e</code></pre>    
+        
+    <p>We are then going to create a dedicated identity that is going to have the permission to run the trigger:</p>
+
+    <pre><code>gcloud iam service-accounts create trigger-build-every-day --description="Can trigger Cloud Build ${TRIGGER_ID}"</code></pre>
+
+    <pre><code>gcloud projects add-iam-policy-binding ${PROJECT_ID}\
+      --member="serviceAccount:trigger-build-every-day@${PROJECT_ID}.iam.gserviceaccount.com" \
+      --role="roles/cloudbuild.builds.editor"</code></pre>
+
+    <p>Finally, we create a Cloud Scheduler job that will send a POST request to the <a href="https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers/run"></a>Cloud Build API</a> with the proper body and credentials (replace <code>main</code> with the name of your branch ):</p>
+
+    <pre><code>gcloud scheduler jobs create http trigger-build-every-day \
+    --schedule='0 12 * * *' \
+    --uri=https://cloudbuild.googleapis.com/v1/projects/${PROJECT_ID}/triggers/${TRIGGER_ID}:run \
+    --message-body='{"branchName": "main"}' \
+    --oauth-service-account-email=trigger-build-every-day@${PROJECT_ID}.iam.gserviceaccount.com \
+    --oauth-token-scope=https://www.googleapis.com/auth/cloud-platform</code></pre>
+
+    That's it. Your app will now automatically be built and deploy every day, even if you do not push  
+
+    You can manually trigger the Cloud Scheduler job to test that a new build-and-deploy is started: 
+    <pre><code>gcloud scheduler jobs run trigger-build-every-day</code></pre>
+    
+    <h2>Conclusion</h2>
+
+    <p>This technique is very naive, and might creates builds. Ideally, you want to only to do when the base image has actually been updated. And for languages that capture the exact version of language dependencies (like <code>package.lock.json</code> in Node.js), this technique does not automatically update the language dependencies. A developer action is required to do so in any case.</p>
+
+  </article>
+</main>
+</body>
+</html>
