@@ -34,6 +34,12 @@
     <updated>2020-12-29T00:00:00Z</updated>
   </entry>
   <entry>
+    <id>https://labs.steren.fr/2020/datastore-cleaner/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2020/datastore-cleaner/" />
+    <title>Datastore Cleaner</title>
+    <updated>2020-09-12T00:00:00Z</updated>
+  </entry>
+  <entry>
     <id>https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/</id>
     <link rel="alternate" href="https://labs.steren.fr/2020/migrating-from-app-engine-to-cloud-run/" />
     <title>Migrating from App Engine to Cloud Run</title>

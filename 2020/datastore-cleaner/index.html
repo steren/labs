@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Datastore cleaner</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Datastore cleaner">
+  <meta name="twitter:image" content="https://labs.steren.fr/2020/datastore-cleaner/datastore-cleaner.drawio.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Datastore cleaner">
+  <meta property="og:image" content="https://labs.steren.fr/2020/datastore-cleaner/datastore-cleaner.drawio.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Datastore cleaner",
+    "image": "https://labs.steren.fr/2020/datastore-cleaner/datastore-cleaner.drawio.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Datastore cleaner</h2>
+      <span>
+        <time date="2020-09-12">2020-09-12</time>
+      </span>
+    </header>
+    
+    <img src="datastore-cleaner.drawio.svg" alt="Diagram for Datastore cleaner system"/>
+    
+    <p>Because the best data is the data you do not keep, I wanted to periodically clean up old entries from the database of <a href="https://cadeaux-entre-nous.fr/">cadeaux-entre-nous.fr</a>. The data is store in <a href="https://cloud.google.com/datastore">Google Cloud Datastore</a>, so I built a tool to automatically clean up old Google Cloud Datastore entities.</p>
+
+    <p>I <a href="https://github.com/steren/datastore-cleaner">built a serverless microservice</a> that deletes Cloud Datastore entities that are older than a certain age (at year by default), to be run as a cron job every day (using <a href="https://cloud.google.com/scheduler">Cloud Scheduler</a>)
+    <br>
+    It uses a <a href="https://cloud.run">Cloud Run</a> microservice that is privately invoked every day by a Cloud Scheduler job. When invoked, it queries your Cloud Datastore for entities that are older than a year and deletes them. The entity name and attribute containing the date must be provided as parameters. The number of entities and the time period can be customized.</p>
+
+    <p>Get it on <a href="https://github.com/steren/datastore-cleaner">GitHub at github.com/steren/datastore-cleaner</a></p>
+
+  </article>
+</main>
+</body>
+</html>
