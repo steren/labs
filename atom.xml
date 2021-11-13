@@ -11,8 +11,15 @@
     <uri>https://steren.fr</uri>
   </author>
   <icon>/icon.svg</icon>
-  <updated>2021-05-23T12:01:00Z</updated>
+  <updated>2021-11-13T00:00:00Z</updated>
 
+  <entry>
+    <id>https://labs.steren.fr/2021/stereo-img/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2021/stereo-img/" />
+    <title>&lt;stereo-img&gt;</title>
+    <updated>2021-11-13T00:00:00Z</updated>
+    <summary>A web component to display stereographic pictures on web pages and in VR.</summary>
+  </entry>
   <entry>
     <id>https://labs.steren.fr/2021/naive-base-image-updates/</id>
     <link rel="alternate" href="https://labs.steren.fr/2021/naive-base-image-updates/" />

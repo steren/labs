@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>&lt;stereo-img&gt; a web component to display stereographic pictures on web pages and in VR</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="<stereo-img> a web component to display stereographic pictures on web pages and in VR">
+  <meta name="twitter:image" content="https://labs.steren.fr/2021/stereo-img/stereo-img.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="<stereo-img> a web component to display stereographic pictures on web pages and in VR">
+  <meta property="og:image" content="https://labs.steren.fr/2021/stereo-img/stereo-img.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "<stereo-img> a web component to display stereographic pictures on web pages and in VR",
+    "image": "https://labs.steren.fr/2021/stereo-img/stereo-img.png"
+  }
+  </script>
+
+  <!-- Shim for importmap -->
+  <script async src="https://unpkg.com/es-module-shims@1.3.0/dist/es-module-shims.js"></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "stereo-img": "./node_modules/stereo-img/stereo-img.js",
+        "exifr": "./node_modules/exifr/dist/full.esm.js",
+        "three": "./node_modules/three/build/three.module.js",
+        "three/": "./node_modules/three/"
+      }
+    }
+  </script>
+
+  <script type="module">import "stereo-img";</script>
+
+  <style>
+    stereo-img {
+      width: 100%;
+      height: 400px;
+    }
+  </style>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>&lt;stereo-img&gt; a web component to display stereographic pictures on web pages and in VR</h2>
+      <time date="2021-11-13">2021-11-13</time>
+    </header>
+    
+    <code>&lt;stereo-img src="vr180-lenovo-mirage.vr.jpg"&gt;&lt;/stereo-img&gt;</code>
+
+    <stereo-img src="vr180-lenovo-mirage.vr.jpg"></stereo-img>
+
+  </article>
+</main>
+</body>
+</html>
