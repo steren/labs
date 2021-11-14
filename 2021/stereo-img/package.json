@@ -5,6 +5,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "stereo-img": "^0.5.0"
+    "stereo-img": "^1.0.0"
   }
 }
