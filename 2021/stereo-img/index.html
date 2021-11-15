@@ -32,7 +32,6 @@
 
   <!-- Shim for importmap -->
   <script async src="https://unpkg.com/es-module-shims@1.3.0/dist/es-module-shims.js"></script>
-
   <script type="importmap">
     {
       "imports": {
@@ -64,10 +63,67 @@
       <h2>&lt;stereo-img&gt; a web component to display stereographic pictures on web pages and in VR</h2>
       <time date="2021-11-13">2021-11-13</time>
     </header>
-    
-    <code>&lt;stereo-img src="vr180-lenovo-mirage.vr.jpg"&gt;&lt;/stereo-img&gt;</code>
+  
+    <p>
+      <a href="https://en.wikipedia.org/wiki/Stereoscopy">Stereo imaging</a> is an old technique used to capture and view pictures with a sense of depth: simply capture what the left and eye eyes see, and then ensure the image of each eye goes in the respective eye of the viewer. 
+      Consumer VR headsets represent are an ideal way to view stereoscopic pictures, since they have a wide angle of view and have solved the spatial tracking problem.
+      <a href="https://arvr.google.com/cardboard/">Google Cardboard</a> is probably the device that introduced me to both stereo photography and VR (though it's a bit later, after trying an HTV Vive that I realized the true immersive experience of VR).
+      So it's around this time that I started to capture stereo pictures, at first for my wedding in 2016, with a rig made of two GoPros triggered by a remote and later with the Lenovo Mirage Camera (a camera with two lenses, producing VR180 pictures).
+      Sadly, neither VR nor stereo photography has really taken of (yet), and most viewers are proprietary native apps, when they haven't been discontinued.
+    </p>
 
+    <p>
+      So to ensure I'll still be able to view my stereo pictures in the future, I decided to build a stereo picture viewer on top of the web platform: <a href="https://stereo-img.steren.fr/">demo</a>, <a href="https://github.com/steren/stereo-img">GitHub</a>.
+    </p>
+
+    <p>
+      From a developer standpoint, it's quite convenient to use:
+      <br>
+      <code>&lt;stereo-img src="vr180-lenovo-mirage.vr.jpg"&gt;&lt;/stereo-img&gt;</code>
+    </p>
+
+    <p>Here's a demo (I highly recommend to click "Enter VR" if you have a VR headset):</p>
     <stereo-img src="vr180-lenovo-mirage.vr.jpg"></stereo-img>
+
+    <p>
+      It supports "<a href="https://developers.google.com/vr/reference/cardboard-camera-vr-photo-format">VR Photos</a>" ("VR180", Google Camera panorama, Cardboard camera..), left-right stereo images, and <a href="https://en.wikipedia.org/wiki/Anaglyph_3D">anaglyph 3D</a> (You know, the pictures you usually view with red / green glasses).
+    </p>
+
+    <h3>How it's done?</h3>
+
+    <p>The viewer is basically made of 3 technical pieces:
+      <ol>
+        <li>A parser of stereo picture</li>
+        <li>A VR viewer</li>
+        <li>Exposing all of that in a simple web component</li>
+      </ol>
+    </p>
+
+    <h4>Let's talk parsing</h4>
+    <p>
+      Left-right stereo simply requires extracting the left and right halves of the image.
+      For Anaglyph, it requires to extract the green and red color channels of the image to reconstruct the left and right eye images.
+      Note that for both of these, the image doesn't render well when seen in a regular image viewer. 
+      This is where "VR pictures" (like "VR180") have an advantage: they store the right eye pixels in the image metadata, this makes them look a bit more normal when seen in a regular image viewer. I find this pretty clever, to jam in the  XMP metadata of a JPEG image an entire JPEG image (or even sound!). Because the right eye and other metadata are store in teh XMP metadata, writing a parser by hand would be quite some work (I started, but is a lot to do to parse metadata of a JPEG file properly), so I rely on a <a href="https://github.com/MikeKovarik/exifr"><code>exifr</code></a>, a powerful and maintained JavaScript module to parse metadata of a JPEG file. The <a href="https://developers.google.com/vr/reference/cardboard-camera-vr-photo-format">spec of VR Photos</a> simple and well documented, so I was able to extract all metadata I neded (right eye pixels, orientation, angle of view, etc.).
+    </p>
+
+    <h4>A VR viewer for stereo pictures</h4>
+    <p>
+      Now that I had extracted the pixels for both eyes and some additional metadata like orientation and angle of view, I needed to render them in each eye the VR headset. 
+      Using <a href="https://threejs.org/">Three.js</a>, I rendered the images on a sphere in 3D, properly oriented and truncated using orientation and angle of view information.
+      Three.js has built-in support for WebXR, starting  VR session and creating the appropriate camera for each eye.
+      Using layers, I am able to show to each eye of the VR headset the corresponding image.
+    </p>
+  
+    <h4>Wrapping it all in a web component</h4>
+    <p>
+      I wanted to abstract all of this to the developer, so that the "API" ends up exactly like using a regular <code>&lt;img src="image.jpg"&gt;</code> tag.
+      And this is where web components come into play. 
+      They are a framework agnostic way to declare custom HTML elements.
+      I sincerely believe they are the future of the web platform, the unifying standard between rapidly changing frameworks.
+      While I could have used <a href="https://lit.dev/">Lit</a> to create my web component, I just coded it "by hand", as it turns out defining a new custom element is actually just a few lines of code.
+      The 3D renderer and "Enter VR" button are all rendered in a "shadow DOM", i.e. a DOM subtree that is encapsulated in the <code>&lt;stereo-img&gt;</code> element.
+    </p>
 
   </article>
 </main>
