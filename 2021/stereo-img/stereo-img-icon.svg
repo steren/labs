@@ -1,13 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 500 500">
   <defs>
-    <linearGradient bx:pinned="true" id="a">
+    <linearGradient id="a">
       <stop offset="0" stop-color="#00ff8f"/>
       <stop offset="1" stop-color="#00a1ff"/>
     </linearGradient>
-    <linearGradient xlink:href="#a" id="b" x1="250" x2="250" y1="95.541" y2="404.459" gradientTransform="rotate(180 251.827 253.795) scale(1.03225)" gradientUnits="userSpaceOnUse"/>
-    <linearGradient xlink:href="#a" id="c" x1="250" x2="250" y1="119.779" y2="327.674" gradientTransform="translate(-145.063 -104.109) scale(1.58025)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="c" x1="250" x2="250" y1="119.8" y2="327.7" gradientTransform="translate(-348 -285) scale(2.39285)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient xlink:href="#a" id="b" x1="250" x2="250" y1="0" y2="500" gradientTransform="rotate(180 250 250) scale(.99897)" gradientUnits="userSpaceOnUse"/>
   </defs>
-  <path fill="#fff" stroke="url(#b)" stroke-width="35" d="M66.384 95.541h367.232v308.918H66.384z" paint-order="stroke" vector-effect="non-scaling-stroke"/>
-  <path fill="url(#c)" d="M91.757 119.779h316.487v207.895H91.757z" paint-order="fill"/>
-  <path fill="#fff" d="M333.377 169.211c13.307 0 24.095 10.787 24.095 24.094v72.525c0 13.308-10.788 24.095-24.095 24.095 0 0-31.078 2.349-48.809-4.291-21.488-8.045-18.611-37.064-34.569-37.311-15.956.316-13.079 29.336-34.567 37.381-17.731 6.64-48.809 4.291-48.809 4.291-13.307 0-24.095-10.787-24.095-24.095v-72.525c0-13.307 10.788-24.094 24.095-24.094Zm-51.468 52.048c0 12.763 10.347 23.11 23.11 23.11s23.11-10.347 23.11-23.11-10.347-23.11-23.11-23.11-23.11 10.347-23.11 23.11Zm-86.928-23.11c-12.763 0-23.11 10.347-23.11 23.11s10.347 23.11 23.11 23.11 23.11-10.347 23.11-23.11-10.347-23.11-23.11-23.11Z"/>
+  <path fill="url(#b)" d="M0 0h500v500H0z"/>
+  <path fill="#fff" d="M66 96h368v308H66z" paint-order="stroke" vector-effect="non-scaling-stroke"/>
+  <path fill="url(#c)" d="M92 120h316v208H92z" paint-order="fill"/>
+  <path fill="#fff" d="M333 169c14 0 24 11 24 24v73c0 13-10 24-24 24 0 0-31 2-48-4-22-8-19-37-35-38-16 1-13 30-35 38-17 6-48 4-48 4-14 0-24-11-24-24v-73c0-13 10-24 24-24Zm-51 52a23 23 0 1 0 46 0 23 23 0 0 0-46 0Zm-87-23a23 23 0 1 0 0 46 23 23 0 0 0 0-46Z"/>
 </svg>
