@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="500">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="500">
   <defs>
     <linearGradient xlink:href="#a" id="b" x1="250" x2="250" y1="95.5" y2="404.5" gradientTransform="rotate(180 251.8 253.8) scale(1.03225)" gradientUnits="userSpaceOnUse"/>
-    <linearGradient bx:pinned="true" id="a">
+    <linearGradient id="a">
       <stop offset="0" stop-color="#00ff8f"/>
       <stop offset="1" stop-color="#00a1ff"/>
     </linearGradient>
