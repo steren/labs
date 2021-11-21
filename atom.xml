@@ -18,7 +18,7 @@
     <link rel="alternate" href="https://labs.steren.fr/2021/stereo-img/" />
     <title>&lt;stereo-img&gt;</title>
     <updated>2021-11-13T00:00:00Z</updated>
-    <summary>A web component to display stereographic pictures on web pages and in VR.</summary>
+    <summary>A web component to display 3D stereo pictures on web pages and in VR.</summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2021/naive-base-image-updates/</id>
