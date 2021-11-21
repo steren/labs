@@ -8,7 +8,7 @@
     <linearGradient xlink:href="#a" id="b" x1="250" x2="250" y1="0" y2="500" gradientTransform="rotate(180 250 250) scale(.99897)" gradientUnits="userSpaceOnUse"/>
   </defs>
   <path fill="url(#b)" d="M0 0h500v500H0z"/>
-  <path fill="#fff" d="M66 96h368v308H66z" paint-order="stroke" vector-effect="non-scaling-stroke"/>
-  <path fill="url(#c)" d="M92 120h316v208H92z" paint-order="fill"/>
+  <path fill="#fff" d="M66 96h368v308H66z"/>
+  <path fill="url(#c)" d="M92 120h316v208H92z"/>
   <path fill="#fff" d="M333 169c14 0 24 11 24 24v73c0 13-10 24-24 24 0 0-31 2-48-4-22-8-19-37-35-38-16 1-13 30-35 38-17 6-48 4-48 4-14 0-24-11-24-24v-73c0-13 10-24 24-24Zm-51 52a23 23 0 1 0 46 0 23 23 0 0 0-46 0Zm-87-23a23 23 0 1 0 0 46 23 23 0 0 0 0-46Z"/>
 </svg>
