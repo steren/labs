@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    body {
+      --dark-blue: #4F7F8F;
+      --light-blue: #96D5EB;
+      --blue: #57A3BD;
+      --dark-sand: #DBCEC1;
+      --sand: #F7F6F5;
+
+      --color1: var(--sand);
+      --color2: var(--dark-sand);
+      --color3: var(--light-blue);
+      --color4: var(--dark-blue);
+      --color5: var(--blue);
+
+      /* height of the pallette */
+      --h : 70vh;
+
+      /* background blur amount */
+      --blur: 50px;
+
+      background-color: black;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .background-container {
+      height: 100%;
+    }
+
+    .background {
+      position: absolute;
+      top: calc(-1 * var(--blur));
+      bottom: calc(-1 * var(--blur));
+      left: calc(-1 * var(--blur));
+      right: calc(-1 * var(--blur));
+      z-index: 0;
+      
+      background: linear-gradient(to bottom, var(--color1) 20%, var(--color2) 30%, var(--color3) 40%, var(--color4) 50%, var(--color5) 60%);
+    }
+
+    .effect-blurry {
+      filter: blur(var(--blur));
+    }
+
+    .effect-grain{
+      filter: url(#grain);
+    }
+
+    .effect-paper{
+      filter: url(#paper);
+    }
+
+    .colors-container {
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--h);
+      width: calc(0.8 * var(--h));
+
+      background-color: black;
+      box-shadow: 10px 30px 100px 0px rgba(0,0,0,0.7);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .color {
+      width: 100%;
+      flex-grow: 1;
+    }
+    .color-1 {
+      background-color: var(--color1);
+      flex-grow: 3;
+    }
+    .color-2 {
+      background-color: var(--color2);
+    }
+    .color-3 {
+      background-color: var(--color3);
+    }
+    .color-4 {
+      background-color: var(--color4);
+    }
+    .color-5 {
+      background-color: var(--color5);
+      flex-grow: 8;
+    }
+  </style>
+
+  </head>
+  <body>
+
+    <div class="background-container effect-grain">
+      <div class="background effect-blurry"></div>
+    </div>
+    <div class="colors-container">
+      <div class="color color-1"></div>
+      <div class="color color-2"></div>
+      <div class="color color-3"></div>
+      <div class="color color-4"></div>
+      <div class="color color-5"></div>
+    </div>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <defs>
+        <filter style="color-interpolation-filters:sRGB;" id="grain">
+          <feTurbulence type="fractalNoise" numOctaves="10" baseFrequency="0.25" seed="10" result="result0" />
+          <feColorMatrix result="result4" values="0" type="saturate" />
+          <feComposite in="SourceGraphic" in2="result4" operator="arithmetic" k1="0" k2="0.5" k3="0.1" result="result2" />
+          <feBlend result="result5" mode="normal" in="result2" in2="SourceGraphic" />
+        </filter>
+
+        <filter style="color-interpolation-filters:sRGB;" id="paper">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" seed="0" result="result4" id="feTurbulence4160" scale="4" />
+          <feDisplacementMap in="SourceGraphic" in2="result4" yChannelSelector="G" xChannelSelector="R" scale="1" result="result3" id="feDisplacementMap4162" />
+          <feDiffuseLighting lighting-color="rgb(233,230,215)" diffuseConstant="1" surfaceScale="0.2" result="result1" in="result4" id="feDiffuseLighting4164">
+            <feDistantLight azimuth="235" elevation="40" id="feDistantLight4166" />
+          </feDiffuseLighting>
+          <feComposite operator="in" in="result3" in2="result1" result="result2" id="feComposite4168" />
+          <feComposite in2="result1" result="result5" operator="arithmetic" k1="1.7" id="feComposite4170" />
+          <feBlend in="result5" in2="result3" mode="normal" id="feBlend4172" />
+        </filter>
+      </defs>
+    </svg>
+
+  </body> 
+</html>
