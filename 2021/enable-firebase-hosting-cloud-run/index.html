@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI">
+  <meta name="twitter:image" content="https://labs.steren.fr/2021/enable-firebase-hosting-cloud-run/firebase-cloud-run.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI">
+  <meta property="og:image" content="https://labs.steren.fr/2021/enable-firebase-hosting-cloud-run/firebase-cloud-run.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI",
+    "image": "https://labs.steren.fr/2021/enable-firebase-hosting-cloud-run/firebase-cloud-run.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI</h2>
+      <time date="2021-12-31">2021-12-31</time>
+    </header>
+
+    <p>
+      <a href="https://cloud.google.com/run">Cloud Run</a> serves pretty much anything and has a pay-per-use billing model, making it very economical notably for side projects.
+      <br>
+      However, requests sent to a Cloud Run service are not subject to any caching, to so so, one must use a CDN on top of Cloud Run.
+      <br>
+      It's custom domain feature is also not available in all regions.
+    </p>
+
+    <p>
+      <a href="https://firebase.google.com/docs/hosting">Firebase Hosting</a> is a quick and easy way to cache requests sent to your Cloud Run service, and to add a custom domain to it.
+      However, setting up Firebase Hosting usually requires the use of the Firebase command line tool and the creation of a <code>firebase.json</code> file.
+      This is not a problem when hosting static assets or when using a more advanced Firebase configuration, but sometimes, all I need it a layer of caching and a custom domain for my Cloud Run service.
+    </p>
+
+    <p>I created a simple bash script to enable Firebase Hosting in front of a Cloud Run service: </p>   
+
+    <pre><code>#!/bin/bash          
+
+# Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI
+# The following commands must be installed:
+# - gcloud
+# - curl
+# - jq
+
+# Update these variables
+PROJECT_ID="enable-fb-hosting" # Make sure you have enabled Firebase on this Google Cloud project
+CLOUD_RUN_SERVICE_NAME="hello"
+CLOUD_RUN_SERVICE_REGION="us-central1"
+
+
+ACCESS_TOKEN=$(gcloud auth print-access-token) #Make sure you are logged into gcloud
+
+# Inspired by https://firebase.google.com/docs/hosting/api-deploy
+
+echo "Creating new Firebase Hosting version:"
+
+version=$(
+    curl --silent -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $ACCESS_TOKEN" \
+        -d '{
+            "config": {
+                "rewrites": [{
+                    "glob": "**",
+                    "run": {
+                        "serviceId": "'$CLOUD_RUN_SERVICE_NAME'",
+                        "region": "'$CLOUD_RUN_SERVICE_REGION'"
+                    }
+                }]
+            }
+        }' \
+https://firebasehosting.googleapis.com/v1beta1/sites/$PROJECT_ID/versions \
+| jq -r '.name')
+
+echo "New version created: $version"
+
+echo "Finalizing..."
+
+curl --silent -H "Content-Type: application/json" \
+        -H "Authorization: Bearer $ACCESS_TOKEN" \
+        -X PATCH \
+        -d '{"status": "FINALIZED"}' \
+https://firebasehosting.googleapis.com/v1beta1/$version?update_mask=status \
+| jq '.status'
+
+echo "Releasing..."
+
+curl --silent -H "Authorization: Bearer $ACCESS_TOKEN" \
+      -X POST https://firebasehosting.googleapis.com/v1beta1/sites/$PROJECT_ID/releases?versionName=$version \
+| jq '.version.status'
+
+echo "Cloud Run service $CLOUD_RUN_SERVICE_NAME ($CLOUD_RUN_SERVICE_REGION) is serving behing Firebase Hosting at https://$PROJECT_ID.web.app/"
+
+echo "Set up a custom domain at https://console.firebase.google.com/project/$PROJECT_ID/hosting/sites"</code></pre>
+
+  <p>Also find this cript in a <a href="https://gist.github.com/steren/03d3e58c58c9a53fd49bb78f58541872">GitHub gist</a></p>
+  </article>
+</main>
+</body>
+</html>
