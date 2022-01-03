@@ -112,11 +112,11 @@ curl --silent -H "Authorization: Bearer $ACCESS_TOKEN" \
       -X POST https://firebasehosting.googleapis.com/v1beta1/sites/$PROJECT_ID/releases?versionName=$version \
 | jq '.version.status'
 
-echo "Cloud Run service $CLOUD_RUN_SERVICE_NAME ($CLOUD_RUN_SERVICE_REGION) is serving behing Firebase Hosting at https://$PROJECT_ID.web.app/"
+echo "Cloud Run service $CLOUD_RUN_SERVICE_NAME ($CLOUD_RUN_SERVICE_REGION) is serving behind Firebase Hosting at https://$PROJECT_ID.web.app/"
 
 echo "Set up a custom domain at https://console.firebase.google.com/project/$PROJECT_ID/hosting/sites"</code></pre>
 
-  <p>Also find this cript in a <a href="https://gist.github.com/steren/03d3e58c58c9a53fd49bb78f58541872">GitHub gist</a></p>
+  <p>Also find this script in a <a href="https://gist.github.com/steren/03d3e58c58c9a53fd49bb78f58541872">GitHub gist</a></p>
   </article>
 </main>
 </body>
