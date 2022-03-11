@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Web page visual history</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Web page visual history">
+  <meta name="twitter:image" content="https://labs.steren.fr/2018/web-page-visual-history/nodejs-microservices-demo-arch.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Web page visual history">
+  <meta property="og:image" content="https://labs.steren.fr/2018/web-page-visual-history/nodejs-microservices-demo-arch.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Web page visual history",
+    "image": "https://labs.steren.fr/2018/web-page-visual-history/nodejs-microservices-demo-arch.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header><main role="main">
+  <article>
+    <header>
+      <h2>Web page visual history</h2>
+      <span>
+        <time datetime="2018-09-24T02:26:30+02:00">2018/09/24</time>
+      </span>
+    </header>
+        
+    <p>
+      <a href="https://twitter.com/MylesBorins">Myles</a> and I worked on a set of microservices to track visual changes of web pages.
+      We use it as a demo to showcase <a href="https://www.youtube.com/watch?v=ogexnfng_hE">the launch of Node.js on the App Engine standard environment at Google I/O 2018</a>
+    </p>
+
+    <h3>Why?</h3>
+    <p>The use case is to automatically watch websites for visual changes. I needed such tool in order to track the latest dates of Radiohead concerts. It can also be sued to track visual regressions of landing pages for example.</p>
+    
+    <h3>How?</h3>
+    <p>Every 5 minutes, the <code>task-scheduler</code> microservice runs, queries the Cloud Datastore database for webpages ot screenshot. For each webpage, it sends a message to a Pub/Sub topic. This topic is responsible for pushing these messages to the <code>screenshot</code> microservice. This <code>screenshot</code> service receives the message as a regular HTTP POST request, screenshots requested webpage and stores the result in a Cloud Storage bucket. The creation of a new file in the bucket triggers the a Cloud Function (<code>image-diff</code>). The <code>image-diff</code> function compares the new image with a reference image from the references folder. If a difference is found, it stores the image in a keyframe folder and updates the reference image.</p>
+
+    <img src="nodejs-microservices-demo-arch.webp" alt="Architecture of the web page visual history demo"/>
+
+    <p>The <code>frontend</code> service is a web frontend that allows to browse the data: Its main page lists the currently tracked webpages, clicking on a webpage shows all the saved keyframes for this webpage. Users can start tracking a new webpage by entering its URL, which will add a new entity to the Cloud Datastore database.</p>
+
+    <p>To recap:</p>
+    <ul>
+     <li><code>frontend</code>: A frontend to vizualise which websites are tracked and see their screenshots</li> 
+     <li><code>task-scheduler</code>: Every 5 minutes, looks for screenshots to take and schedule them as tasks.</li>
+     <li><code>screenshot</code>: Takes screenshots of the given URL, stores it in Cloud Storage</li>
+     <li><code>image-diff</code>: Compares an image with its reference image in Cloud Storage</li>
+    </ul>
+
+    <h3>Give it a try</h3>
+    <p>Find the <a href="https://github.com/GoogleCloudPlatform/nodejs-serverless-microservices-demo">code on GitHub</a> and watch me demo it on stage:<p>
+
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/ogexnfng_hE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+  </article>
+</main>
+</body>
+</html>
