@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Space to earth solar energy</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Space to earth solar energy">
+  <meta name="twitter:image" content="https://labs.steren.fr/2021/space-to-earth-solar-energy/space-to-earth-solar-energy.webp">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Space to earth solar energy">
+  <meta property="og:image" content="https://labs.steren.fr/2021/space-to-earth-solar-energy/space-to-earth-solar-energy.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Space to earth solar energy",
+    "image": "https://labs.steren.fr/2021/space-to-earth-solar-energy/space-to-earth-solar-energy.webp"
+  }
+  </script>
+
+  <!-- Observable stylesheet -->
+  <link rel="stylesheet" type="text/css" href="./inspector.css">
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Space to earth solar energy</h2>
+      <time date="2022-03-19">2022-03-19</time>
+    </header>
+    
+    <img src="space-to-earth-solar-energy.svg" alt="Space to earth solar energy illustration"/>
+
+    <h3>What if?</h3>
+
+    <p>The problem with collecting solar energy is that it's... only available when the sun is shining. I was curious to know if it would be feasible to collect solar energy in space and send it back to Earth.</p>
+
+    <h3>Let's take a look:</h3>
+    <div id="notebook"></div>
+
+    <p><i>This interactive notebook is also available on <a href="https://observablehq.com/@steren/space-to-earth-solar-energy">Observable</a></i></p>
+
+    <script type="module">
+    import define from "./space-to-earth-solar-energy.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+    const runtime = new Runtime();
+    const main = runtime.module(define, Inspector.into(document.getElementById("notebook")));
+    </script>
+
+</article>
+</main>
+</body>
+</html>
