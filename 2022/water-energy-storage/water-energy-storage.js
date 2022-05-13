@@ -115,7 +115,6 @@ mass_kg * volume_1kg_water_m3
 
 export default function define(runtime, observer) {
   const main = runtime.module();
-  main.variable(observer()).define(["md"], _1);
   main.variable(observer()).define(["md"], _2);
   main.variable(observer("viewof goal")).define("viewof goal", ["Inputs"], _goal);
   main.variable(observer("goal")).define("goal", ["Generators", "viewof goal"], (G, _) => G.input(_));
