@@ -39,17 +39,17 @@
     <header>
       <h2>Web page visual history</h2>
       <span>
-        <time datetime="2018-09-24T02:26:30+02:00">2018/09/24</time>
+        <time datetime="2018-06-01T02:26:30+02:00">2016/06/01</time>
       </span>
     </header>
         
     <p>
       <a href="https://twitter.com/MylesBorins">Myles</a> and I worked on a set of microservices to track visual changes of web pages.
-      We use it as a demo to showcase <a href="https://www.youtube.com/watch?v=ogexnfng_hE">the launch of Node.js on the App Engine standard environment at Google I/O 2018</a>
+      We used it as a demo to showcase <a href="https://www.youtube.com/watch?v=ogexnfng_hE">the launch of Node.js on the App Engine standard environment at Google I/O 2018</a>
     </p>
 
     <h3>Why?</h3>
-    <p>The use case is to automatically watch websites for visual changes. I needed such tool in order to track the latest dates of Radiohead concerts. It can also be sued to track visual regressions of landing pages for example.</p>
+    <p>The use case is to automatically watch websites for visual changes. I needed such tool in order to track the latest dates of Radiohead concerts. It can also be used to track visual regressions of landing pages for example.</p>
     
     <h3>How?</h3>
     <p>Every 5 minutes, the <code>task-scheduler</code> microservice runs, queries the Cloud Datastore database for webpages ot screenshot. For each webpage, it sends a message to a Pub/Sub topic. This topic is responsible for pushing these messages to the <code>screenshot</code> microservice. This <code>screenshot</code> service receives the message as a regular HTTP POST request, screenshots requested webpage and stores the result in a Cloud Storage bucket. The creation of a new file in the bucket triggers the a Cloud Function (<code>image-diff</code>). The <code>image-diff</code> function compares the new image with a reference image from the references folder. If a difference is found, it stores the image in a keyframe folder and updates the reference image.</p>
