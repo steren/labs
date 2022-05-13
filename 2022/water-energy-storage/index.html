@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lifting water to store energy</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Lifting water to store energy">
+  <meta name="twitter:image" content="https://labs.steren.fr/2022/water-energy-storage/water-energy-storage.webp">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Lifting water to store energy">
+  <meta property="og:image" content="https://labs.steren.fr/2022/water-energy-storage/water-energy-storage.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Lifting water to store energy",
+    "image": "https://labs.steren.fr/2022/water-energy-storage/water-energy-storage.webp"
+  }
+  </script>
+
+  <!-- Observable stylesheet -->
+  <link rel="stylesheet" type="text/css" href="./inspector.css">
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Lifting water to store energy</h2>
+      <time date="2022-03-19">2022-04-30</time>
+    </header>
+    
+    <img src="water-energy-storage.svg" alt="Lifting water to store energy illustration"/>
+
+    <p>
+      Where I live, solar energy is abundant during the day.
+      So I wondered if it would be practical to use it to lift water and then release this water later at night to produce energy.
+      Of course, this is how pumped hydro energy works, but could it work at home?      
+    </p>
+
+    <h3>Let's take a look:</h3>
+    <div id="notebook"></div>
+
+    <p><i>This interactive notebook is also available on <a href="https://observablehq.com/@steren/water-energy-storage">Observable</a></i></p>
+
+    <script type="module">
+    import define from "./water-energy-storage.js";
+    import {Runtime, Library, Inspector} from "./runtime.js";
+    const runtime = new Runtime();
+    const main = runtime.module(define, Inspector.into(document.getElementById("notebook")));
+    </script>
+
+</article>
+</main>
+</body>
+</html>

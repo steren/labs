@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient bx:pinned="true" id="a">
+      <stop offset="0" stop-color="#bdc3c7"/>
+      <stop offset="1" stop-color="#2c3e50"/>
+    </linearGradient>
+    <linearGradient xlink:href="#a" id="c" x1="300" x2="300" y1="300" y2="400" gradientTransform="matrix(-.99996 -.0087 0 -1 649.989 702.611)" gradientUnits="userSpaceOnUse"/>
+    <linearGradient id="b" x1="300.001" x2="300.001" y1="0" y2="399.998" gradientTransform="matrix(.71162 -.70475 .43952 .4411 -209.788 216.21)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffea00"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#b)" d="M0 0h600.003v399.998H0z" transform="matrix(1 .00307 0 1 0 -.92)"/>
+  <path fill="#d8d8d8" stroke="#000" stroke-width="5" d="M150.44 260.188 280 260"/>
+  <path fill="url(#c)" d="M0 300h600v100H0z"/>
+  <path fill="#6aa2e2" d="M350 250h150v50H350zm0-200h150v100H350zm-50 210h50v10h-50zm0-240h50v10h-50zm-10 0h10v250h-10z"/>
+  <path d="m249.998 145.875 2.491 2.491 9.869-9.851v21.486h3.532v-21.486l9.852 9.869 2.508-2.509-14.126-14.126-14.126 14.126Z"/>
+  <circle cx="294.999" cy="265.003" r="25" fill="#d8d8d8" stroke="#000" stroke-width="5"/>
+  <path fill="#454545" stroke="#000" stroke-width="5" d="M107.54 291.923 184.68 200 200 212.856l-77.14 91.924z"/>
+</svg>
