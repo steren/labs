@@ -11,8 +11,15 @@
     <uri>https://steren.fr</uri>
   </author>
   <icon>/icon.svg</icon>
-  <updated>2021-12-31T00:00:00Z</updated>
+  <updated>2022-07-30T00:00:00Z</updated>
 
+  <entry>
+    <id>https://labs.steren.fr/2022/pure-css-content-filtering-has/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2022/pure-css-content-filtering-has/" />
+    <title>&lt;stereo-img&gt;</title>
+    <updated>2020-07-30T00:00:00Z</updated>
+    <summary>Pure CSS content filtering with :has()</summary>
+  </entry>
   <entry>
     <id>https://labs.steren.fr/2022/water-energy-storage/</id>
     <link rel="alternate" href="https://labs.steren.fr/2022/water-energy-storage/" />
