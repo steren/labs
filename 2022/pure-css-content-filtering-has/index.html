@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pure CSS content filtering with :has()</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Pure CSS content filtering with :has()">
+  <meta name="twitter:image" content="https://labs.steren.fr/2022/pure-css-content-filtering-has/css-filtering-has.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pure CSS content filtering with :has()">
+  <meta property="og:image" content="https://labs.steren.fr/2022/pure-css-content-filtering-has/css-filtering-has.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Pure CSS content filtering with :has()",
+    "image": "https://labs.steren.fr/2022/pure-css-content-filtering-has/css-filtering-has.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+<article>
+
+<header>
+  <h2>Pure CSS content filtering with <code>:has()</code></h2>
+  <time date="2022-07-23">2022-07-23</time>
+</header>
+
+<p>I was able to build a content page that has filter buttons with 0 line of JavaScript and without compromise on the DOM structure. See it in action on my <a href="https://talks.steren.fr/">"Talks" website</a> or see a recording:</p>
+<video src="screen-capture.webm" autoplay loop muted></video>
+
+<p>
+  CSS has now become so powerful that it's possible to style an element based on the state of any other element on the page. 
+  In the past, it was only possible to do so for children or siblings.
+  <br>
+  This new power comes from a new selector: <code>:has()</code>.
+</p>
+
+<p>Let's be more concrete. Consider this HTML:</p>
+<pre><code>&lt;body>
+  &lt;header>
+    &lt;menu>
+      &lt;input type="checkbox" class="filter" id="talks-filter" checked>
+      &lt;label for="talks-filter">Talks&lt;/label>
+      &lt;input type="checkbox" class="filter" id="podcasts-filter" checked>
+      &lt;label for="podcasts-filter">Podcasts&lt;/label>
+    &lt;/menu>
+  &lt;/header>
+
+  &lt;main>
+    &lt;ol class="talks">
+      &lt;li type="podcast">My podcast&lt;/li>
+      &lt;li type="talk">My talk&lt;/li>
+    &lt;/ol>
+  &lt;/main>
+  &lt;/body>
+</code></pre>
+
+<h3>Understanding the code</h3>
+
+<p>
+  We want to hide/display the list items (<code>&lt;li></code>) depending on which checkbox (<code>&lt;input type="checkbox"></code>) is checked.
+</p>
+
+<p>
+  The only DOM relationship between the list and the checkboxes is that they are part of the same document.
+  <br>
+  But that's not a problem anymore: By using the CSS selector <code>:has()</code> on the <code>&lt;body></code> element, we can basically check fot the state of any element in the document, and style any other element accordingly.
+</p>
+
+<p>Giving a filtering behavior to our checkbox is as easy as using these two selectors of CSS:</p>
+<pre><code>body:has(#talks-filter:not(:checked)) [type='talk'] {
+  display: none;
+}
+body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
+  display: none;
+}</code></pre>
+
+<p>Alright, what is this doing exactly? Let's de-constuct the first selector:</p>
+
+<ol>
+  <li><code>display: none;</code> will simply hide our elements is they match the selector. You probably know that.</li>
+  <li><code>[type='talk']</code> will simply select any element with a <code>type="talk"</code> attribute. Again, you probably know that.</li>
+  <li><code>#talks-filter:not(:checked)</code> will select the element with <code>id="talks"</code> that doesn't (<code>:not()</code>) have the <code>checked</code> attribute.</li>
+  <li><code>body:has(#talks-filter:not(:checked))</code> will match the <code>&lt;body></code> element <b>if it doesn't contain any checked <code>id="talks-filter"</code> element.</b></li>
+</ol>
+
+<p>
+  When we arrange all of together: We hide any element that has the <code>type="talk"</code> attribute if it a child of a <code>&lt;body></code> element that doesn't contain any checked <code>id="talks-filter"</code> element.
+  <br>
+  <br>
+In other words: if the  checkbox with id "talks-filter" is unchecked, it will hide all elements of type "talk".
+</p>
+
+<h3>Can I Use?</h3>
+
+<p>As you <a href="https://caniuse.com/css-has">can read</a>, the CSS <code>:has()</code> selector is still behind a flag in Chrme 103. the feature is planned to be enabled by default in Chrome 105.</p>
+
+<p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrate our page by not displaying the checkbox filters, or in my case, by hidding the <code>&lt;menu></code> element entirely:</p>
+
+<pre><code>menu {
+  display: none;
+}
+
+@supports(selector(:has(*))) {
+  menu {
+    display: block;
+  }
+}</code></pre>
+
+<p>I think I am only stracting the surface of how powerfull the <code>:has()</code> selector is. I predict the community will use it to implement many declarative "pure CSS" logic that previously required JavaScript code (or even loading a JavaScript framework).</p>
+
+<p>If you are running a supported browser, see the code in action on my <a href="https://talks.steren.fr/">"Talks" website</a>.</p>
+
+</article>
+</main>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="Roboto Mono">@import url(https://fonts.googleapis.com/css2?family=Roboto+Mono%3Aital%2Cwght%400%2C100%3B0%2C200%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C600%3B0%2C700%3B1%2C100%3B1%2C200%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C600%3B1%2C700&amp;display=swap);</style>
+    <style bx:fonts="Roboto">@import url(https://fonts.googleapis.com/css2?family=Roboto%3Aital%2Cwght%400%2C100%3B0%2C300%3B0%2C400%3B0%2C500%3B0%2C700%3B0%2C900%3B1%2C100%3B1%2C300%3B1%2C400%3B1%2C500%3B1%2C700%3B1%2C900&amp;display=swap);</style>
+  </defs>
+  <rect width="1000" height="500" style="fill: rgb(255, 255, 255);"/>
+  <rect x="498.561" y="175.011" width="150" height="100" style="stroke-width: 3px; stroke: rgb(0, 86, 191); fill: rgba(41, 119, 255, 0.17);"/>
+  <text style="fill: rgb(51, 51, 51); font-family: &quot;Roboto Mono&quot;; font-size: 74px; white-space: pre;" x="336.1" y="118.88">:has()</text>
+  <rect x="688.195" y="175.011" width="150" height="100" style="stroke-width: 3px; stroke: rgb(0, 86, 191); fill: rgba(41, 119, 255, 0.17);"/>
+  <rect x="498.561" y="317.316" width="150" height="100" style="stroke-width: 3px; stroke: rgb(0, 86, 191); fill: rgba(41, 119, 255, 0.17);"/>
+  <rect x="688.195" y="317.316" width="150" height="100" style="stroke-width: 3px; stroke: rgb(0, 86, 191); fill: rgba(41, 119, 255, 0.17);"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="294.517" y="252.912">Filter 1</text>
+  <polyline style="stroke: rgb(0, 0, 0); stroke-width: 9px; fill: none;" points="207.561 238.883 225.532 256.418 263.721 217.276"/>
+  <rect x="202.561" y="203.382" width="66.519" height="66.519" style="stroke: rgb(0, 0, 0); stroke-width: 6px; fill: none;"/>
+  <polyline style="stroke: rgb(0, 0, 0); stroke-width: 9px; fill: none;" points="207.561 354.708 225.532 372.243 263.721 333.101"/>
+  <rect x="202.561" y="319.207" width="66.519" height="66.519" style="stroke: rgb(0, 0, 0); stroke-width: 6px; fill: none;"/>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="294.517" y="368.737">Filter 2</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="553.332" y="242.905">1</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="553.332" y="386.146">2</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="747.931" y="386.146">1</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Roboto; font-size: 52px; white-space: pre;" x="747.931" y="242.912">2</text>
+</svg>
