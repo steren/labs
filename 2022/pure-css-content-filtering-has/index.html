@@ -111,7 +111,7 @@ In other words: if the  checkbox with id "talks-filter" is unchecked, it will hi
 
 <h3>Can I Use?</h3>
 
-<p>As you <a href="https://caniuse.com/css-has">can read</a>, the CSS <code>:has()</code> selector is still behind a flag in Chrme 103. the feature is planned to be enabled by default in Chrome 105.</p>
+<p>As you <a href="https://caniuse.com/css-has">can read</a>, the CSS <code>:has()</code> selector is still behind a flag in Chrome 103. the feature is planned to be enabled by default in Chrome 105.</p>
 
 <p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrade our page by not displaying the checkbox filters, or in my case, by hiding the <code>&lt;menu></code> element entirely:</p>
 
