@@ -46,6 +46,44 @@
 <p>I was able to build a content page that has filter buttons with 0 line of JavaScript and without compromise on the DOM structure. See it in action on my <a href="https://talks.steren.fr/">"Talks" website</a> or see a recording:</p>
 <video src="screen-capture.webm" autoplay loop muted width="1928" height="1204"></video>
 
+<!-- demo -->
+
+<style>
+  body:has(#talks-filter:not(:checked)) [type='talk'] {
+    display: none;
+  }
+  body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
+    display: none;
+  }
+
+  .demo {
+    display: none;
+  }
+
+  @supports(selector(:has(*))) {
+    .demo {
+      display: block;
+    }
+  }
+</style>
+<div class="demo"> 
+  <p>And here is a live demo:</p>
+  <div class="menu">
+    <input type="checkbox" id="talks-filter" checked>
+    <label for="talks-filter">Talks</label>
+    <input type="checkbox" id="podcasts-filter" checked>
+    <label for="podcasts-filter">Podcasts</label>
+  </div>
+
+  <ol>
+    <li type="podcast">My podcast</li>
+    <li type="talk">My talk</li>
+    <li type="talk">My talk 2</li>
+    <li type="podcast">My podcast 2</li>
+  </ol>
+</div>
+<!-- end demo-->
+
 <p>
   CSS has now become so powerful that it's possible to style an element based on the state of any other element on the page. 
   In the past, it was only possible to do so for children or siblings.
