@@ -112,22 +112,24 @@ figure figcaption{
 code, kbd, var, samp{
   font-family:Consolas, "Lucida Console", Monaco, monospace;
   font-style:normal;
+  background-color: hsla(0, 0%, 0%, 0.1);
+  border-radius: 0.25em;
+}
+@media (prefers-color-scheme: dark) {
+  code {
+    background-color: hsla(0, 0%, 100%, 0.1);
+  }
 }
 
 pre{
-  overflow-x:auto;
-  font-size:0.8em;
-  background:linear-gradient(rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%) 0 0, linear-gradient(rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.15) 100%) 100% 0;
-  background-attachment:scroll, scroll;
-  background-size:1px 100%, 1px 100%;
-  background-repeat:no-repeat, no-repeat;
+  overflow-x: auto;
+  font-size: 0.8em;
 }
 
 pre > code{
-  display:inline-block;
-  overflow-x:visible;
-  box-sizing:border-box;
-  min-width:100%;
-  border-right:3px solid white;
-  border-left:1px solid white;
+  display: inline-block;
+  overflow-x: visible;
+  box-sizing: border-box;
+  min-width: 100%;
+  padding: 1em;
 }
