@@ -53,6 +53,8 @@
   This new power comes from a new selector: <code>:has()</code>.
 </p>
 
+<h3>Understanding the code</h3>
+
 <p>Let's be more concrete. Consider this HTML:</p>
 <pre><code>&lt;body>
   &lt;menu>
@@ -73,8 +75,6 @@
 &lt;/body>
 </code></pre>
 
-<h3>Understanding the code</h3>
-
 <p>
   We want to hide/display the list items (<code>&lt;li></code>) depending on which checkbox (<code>&lt;input type="checkbox"></code>) is checked.
 </p>
@@ -93,7 +93,7 @@ body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
   display: none;
 }</code></pre>
 
-<p>Alright, what is this doing exactly? Let's de-constuct the first selector:</p>
+<p>Alright, what is this doing exactly? Let's de-construct the first selector:</p>
 
 <ol>
   <li><code>display: none;</code> will simply hide our elements is they match the selector. You probably know that.</li>
@@ -113,7 +113,7 @@ In other words: if the  checkbox with id "talks-filter" is unchecked, it will hi
 
 <p>As you <a href="https://caniuse.com/css-has">can read</a>, the CSS <code>:has()</code> selector is still behind a flag in Chrme 103. the feature is planned to be enabled by default in Chrome 105.</p>
 
-<p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrate our page by not displaying the checkbox filters, or in my case, by hidding the <code>&lt;menu></code> element entirely:</p>
+<p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrade our page by not displaying the checkbox filters, or in my case, by hiding the <code>&lt;menu></code> element entirely:</p>
 
 <pre><code>menu {
   display: none;
@@ -125,7 +125,7 @@ In other words: if the  checkbox with id "talks-filter" is unchecked, it will hi
   }
 }</code></pre>
 
-<p>I think we are only stratching the surface of how powerfull the <code>:has()</code> selector is. I predict the community will use it to implement many declarative "pure CSS" logic that previously required JavaScript code (or even loading a JavaScript framework).</p>
+<p>I think we are only scratching the surface of how powerful the <code>:has()</code> selector is. I predict the community will use it to implement many declarative "pure CSS" logic that previously required JavaScript code (or even loading a JavaScript framework).</p>
 
 <p>If you are running a supported browser, see the code in action on my <a href="https://talks.steren.fr/">"Talks" website</a>.</p>
 
