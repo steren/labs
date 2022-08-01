@@ -48,10 +48,10 @@
 
 <!-- demo -->
 <style>
-  body:has(#talks-filter:not(:checked)) [type='talk'] {
+  body:has(#talks-filter:not(:checked)) .talk {
     display: none;
   }
-  body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
+  body:has(#podcasts-filter:not(:checked)) .podcast {
     display: none;
   }
 
@@ -65,9 +65,9 @@
     }
   }
 </style>
-<div class="demo"> 
+<div class="demo">
   <p>And here is a live demo:</p>
-  <div class="menu">
+  <div class="filters">
     <input type="checkbox" id="talks-filter" checked>
     <label for="talks-filter">Talks</label>
     <input type="checkbox" id="podcasts-filter" checked>
@@ -75,10 +75,10 @@
   </div>
 
   <ol>
-    <li type="podcast">My podcast</li>
-    <li type="talk">My talk</li>
-    <li type="talk">My talk 2</li>
-    <li type="podcast">My podcast 2</li>
+    <li class="podcast">My podcast</li>
+    <li class="talk">My talk</li>
+    <li class="talk">My talk 2</li>
+    <li class="podcast">My podcast 2</li>
   </ol>
 </div>
 <!-- end demo-->
@@ -93,19 +93,19 @@
 </p>
 <p>Let's be more concrete. Consider this HTML:</p>
 <pre><code>&lt;body>
-  &lt;menu>
+  &lt;div class="filters">
     &lt;input type="checkbox" id="talks-filter" checked>
     &lt;label for="talks-filter">Talks&lt;/label>
     &lt;input type="checkbox" id="podcasts-filter" checked>
     &lt;label for="podcasts-filter">Podcasts&lt;/label>
-  &lt;/menu>
+  &lt;/div>
 
   &lt;main>
     &lt;ol>
-      &lt;li type="podcast">My podcast&lt;/li>
-      &lt;li type="talk">My talk&lt;/li>
-      &lt;li type="talk">My talk 2&lt;/li>
-      &lt;li type="podcast">My podcast 2&lt;/li>
+      &lt;li class="podcast">My podcast&lt;/li>
+      &lt;li class="talk">My talk&lt;/li>
+      &lt;li class="talk">My talk 2&lt;/li>
+      &lt;li class="podcast">My podcast 2&lt;/li>
     &lt;/ol>
   &lt;/main>
 &lt;/body>
@@ -122,10 +122,10 @@
 </p>
 
 <p>Giving a filtering behavior to our checkbox is as easy as using these two selectors of CSS:</p>
-<pre><code>body:has(#talks-filter:not(:checked)) [type='talk'] {
+<pre><code>body:has(#talks-filter:not(:checked)) .talk {
   display: none;
 }
-body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
+body:has(#podcasts-filter:not(:checked)) .podcast {
   display: none;
 }</code></pre>
 
@@ -133,23 +133,23 @@ body:has(#podcasts-filter:not(:checked)) [type='podcast'] {
 
 <ol>
   <li><code>display: none;</code> will simply hide our elements is they match the selector. You probably know that.</li>
-  <li><code>[type='talk']</code> will simply select any element with a <code>type="talk"</code> attribute. Again, you probably know that.</li>
-  <li><code>#talks-filter:not(:checked)</code> will select the element with <code>id="talks"</code> that doesn't (<code>:not()</code>) have the <code>checked</code> attribute.</li>
+  <li><code>.talk</code> will simply select any element with a <code>class="talk"</code> attribute. Again, you probably know that.</li>
+  <li><code>#talks-filter:not(:checked)</code> will select the element with <code>id="talks-filter"</code> that doesn't (<code>:not()</code>) have the <code>checked</code> attribute.</li>
   <li><code>body:has(#talks-filter:not(:checked))</code> will match the <code>&lt;body></code> element <b>if it doesn't contain any checked <code>id="talks-filter"</code> element.</b></li>
 </ol>
 
 <p>
-  When we arrange all of together: We hide any element that has the <code>type="talk"</code> attribute if it a child of a <code>&lt;body></code> element that doesn't contain any checked <code>id="talks-filter"</code> element.
+  When we arrange all of together: We hide any element that has the class <code>"talk"</code> attribute if it a child of a <code>&lt;body></code> element that doesn't contain any checked <code>id="talks-filter"</code> element.
   <br>
   <br>
-In other words: if the  checkbox with id "talks-filter" is unchecked, it will hide all elements of type "talk".
+In other words: if the "talks" checkbox is unchecked, it will hide all talks.
 </p>
 
 <h3>Can I Use?</h3>
 
 <p>As you <a href="https://caniuse.com/css-has">can read</a>, the CSS <code>:has()</code> selector is still behind a flag in Chrome 103. the feature is planned to be enabled by default in Chrome 105.</p>
 
-<p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrade our page by not displaying the checkbox filters, or in my case, by hiding the <code>&lt;menu></code> element entirely:</p>
+<p>So, what do we do if the user's browser doesn't support <code>:has()</code>? Well, we can check for the support of this feature with <code>@supports(selector(:has(*)))</code> and gracefully degrade our page by not displaying the checkbox filters, or in my case, by hiding the <code>&lt;div class="filters"></code> element entirely:</p>
 
 <pre><code>menu {
   display: none;
