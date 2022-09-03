@@ -23,7 +23,7 @@ header {
   margin-bottom: 3em;
 }
 
-img, picture, iframe, video {
+img, video {
   display: block;
   max-width: 100%;
   height: auto;
@@ -40,6 +40,8 @@ figure > img:first-child:nth-last-child(3) ~ img {
 
 iframe {
   width: 100%;
+  display: block;
+  margin: 0 auto;
 }
 
 ul, ol{
