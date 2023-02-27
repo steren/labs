@@ -11,35 +11,42 @@
     <uri>https://steren.fr</uri>
   </author>
   <icon>/icon.svg</icon>
-  <updated>2022-07-30T00:00:00Z</updated>
+  <updated>2023-01-28T00:00:00Z</updated>
 
+  <entry>
+    <id>https://labs.steren.fr/2023/half-life-engine-js/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2023/half-life-engine-js/" />
+    <title>Half-Life Engine JS</title>
+    <updated>2023-01-28T00:00:00Z</updated>
+    <summary></summary>
+  </entry>        
   <entry>
     <id>https://labs.steren.fr/2022/pure-css-content-filtering-has/</id>
     <link rel="alternate" href="https://labs.steren.fr/2022/pure-css-content-filtering-has/" />
-    <title>&lt;stereo-img&gt;</title>
+    <title>Pure CSS content filtering with :has()</title>
     <updated>2020-07-30T00:00:00Z</updated>
-    <summary>Pure CSS content filtering with :has()</summary>
+    <summary></summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2022/water-energy-storage/</id>
     <link rel="alternate" href="https://labs.steren.fr/2022/water-energy-storage/" />
-    <title>&lt;stereo-img&gt;</title>
+    <title>Lifting water to store energy</title>
     <updated>2020-04-30T00:00:00Z</updated>
-    <summary>Space to earth solar energy</summary>
+    <summary></summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2022/space-to-earth-solar-energy/</id>
     <link rel="alternate" href="https://labs.steren.fr/2022/space-to-earth-solar-energy/" />
-    <title>&lt;stereo-img&gt;</title>
+    <title>Space to earth solar energy</title>
     <updated>2020-03-19T00:00:00Z</updated>
-    <summary>Space to earth solar energy</summary>
+    <summary></summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2021/enable-firebase-hosting-cloud-run/</id>
     <link rel="alternate" href="https://labs.steren.fr/2021/enable-firebase-hosting-cloud-run/" />
-    <title>&lt;stereo-img&gt;</title>
+    <title>Set up Firebase Hosting in front of a Cloud Run service, without using the firebase CLI</title>
     <updated>2021-12-13T00:00:00Z</updated>
-    <summary>A web component to display 3D stereo pictures on web pages and in VR.</summary>
+    <summary></summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2021/stereo-img/</id>
@@ -53,7 +60,7 @@
     <link rel="alternate" href="https://labs.steren.fr/2021/naive-base-image-updates/" />
     <title>A Naive container base image update strategy</title>
     <updated>2021-10-14T00:00:00Z</updated>
-    <summary>Simple strateg to keep your container base image up to date even if you are not actively developing it.</summary>
+    <summary>Simple strategy to keep your container base image up to date even if you are not actively developing it.</summary>
   </entry>
   <entry>
     <id>https://labs.steren.fr/2021/google-cloud-region-picker/</id>

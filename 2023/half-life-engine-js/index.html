@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Half-Life Engine JS</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Half-Life Engine JS">
+  <meta name="twitter:image" content="https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Half-Life Engine JS">
+  <meta property="og:image" content="https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Half-Life Engine JS",
+    "image": "https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Half-Life Engine JS</h2>
+      <time date="2023-01-28">2023-01-28</time>
+    </header>
+    
+    <img src="half-life-engine-js.svg" alt="Logo for HL Engine JS"/>
+
+    <p>
+      Half-Life is one of my favorite games. Not only because it was revolutionary when it was released, but also because I have spent countless hours creating maps and mods for it.
+      In retrospect, I think being involved in the Half-Life modding community taught me a lot about game design and programming.
+      Out of nostalgia, I recently dug into old maps I had designed. While they still can run with the original game, I wondered if they could also run in the browser as a way to preserve them forever.
+    </p>
+
+    <p>
+      I have discovered <a href="https://github.com/FWGS/xash3d-fwgs">Xash3D</a>, a C++ game engine aiming to provide compatibility with Half-Life Engine.
+      Some time ago, the engine was <a href="https://github.com/iCrazyBlaze/Xash3D-Emscripten">ported to JavaScript</a> using <a href="https://emscripten.org/">Emscripten</a>. 
+      While I wish <a href="https://github.com/FWGS/xash3d-fwgs/issues/1226">a more modern web port using WebAssembly of the engine was available</a>, the existing JavaScript port was already able to run my maps.
+    </p>
+
+    <p>
+      So I have created <a href="https://github.com/steren/hl-engine-js">hl-engine-js</a>, a JavaScript module that wraps a cleaned=up version of the web port of the Xash3D engine and provides a simple API to load and run Half-Life maps.
+    </p>
+
+    <p>
+      I have used it to host online old maps I have created, such as <a href="https://parpaing-1337-krew.github.io/hl-parpaing-web/">Half-Life Parpaing</a> or <a href="https://tpe.steren.fr/game/">a virtual tour of a nuclear power plant</a>. Give them a try!
+    </p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
