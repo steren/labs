@@ -5,6 +5,9 @@ html {
 html, h1 a {
   color: #000000;
 }
+h1 {
+  view-transition-name: title;
+}
 @media (prefers-color-scheme: dark) {
   html {
     background-color: #121212;
