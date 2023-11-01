@@ -1,3 +1,7 @@
+:root {
+  --width: 40rem;
+}
+
 html {
   font-family: Roboto,Helvetica,Arial,sans-serif;
   line-height: 1.4;
@@ -23,7 +27,7 @@ body{
 }
 
 header, main {	
-  max-width: 40rem;	
+  max-width: var(--width);	
   margin: 0 auto;	
 }
 
@@ -35,6 +39,7 @@ img, video {
   display: block;
   max-width: 100%;
   height: auto;
+  max-height: var(--width);
   margin: 0 auto;
 }
 
