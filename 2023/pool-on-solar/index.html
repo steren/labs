@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pool on Solar</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Pool on Solar">
+  <meta name="twitter:image" content="https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Pool on Solar">
+  <meta property="og:image" content="https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Pool on Solar",
+    "image": "https://labs.steren.fr/2022/half-life-engine-js/hl-engine-js.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Pool on Solar</h2>
+      <time date="2023-01-28">2023-01-28</time>
+    </header>
+    
+
+
+    <p>
+      We own a pool, and we recently installed <a href="https://www.tesla.com/energy">Tesla solar panels and batteries</a>. Our goal was to automate the activation / deactivation of the pool cleaning system so that it only runs when excess solar power is available.
+    </p>  
+    <p>
+      This is a feature inspired by “Charge on Solar” from Tesla, where software ensures that your car charges only when there is excess solar production at your home:
+    </p>
+
+    <figure>
+      <img src="charge-on-solar.avif" alt="Screenshot of Tesla's Charge on Solar feature in the mobile app"/>
+      <figcaption>Tesla's Charge on Solar: after a defined minimum, the car will only charge at home if there is excess solar production.</figcaption>
+    </figure>
+
+    <p>
+      We wanted to do the same for another big consumer of electricity: the pool pumps. Used for filtering, cleaning and pushing water through solar heating panels, they consume around 4kW when on. Luckily, a <a href="https://www.jandy.com/en/products/controls/system-components/interfaces/iaqualink">connected controller</a> existed for our pool system.
+    </p>
+    <p>
+      The idea is rather simple: On a schedule, fetch the current energy production from the Tesla solar system, and if the difference between solar electricity production and home electricity consumption is above a certain threshold, turn on the pumps. Turn them off if there isn't enough excess power. In the end, this is the result:
+    </p>
+
+    <figure>
+      <img src="pool-on-solar.avif" alt="Screenshot of Tesla's Charge on Solar feature in the mobile app"/>
+      <figcaption>The energy production curve for a sunny day: the home consumption (in blue) rises to 4kW only when there's enough production (curve) and turns off when the production drops.
+      </figcaption>
+    </figure>
+    
+    <p>
+      It turns out that both our pool equipment and Tesla solar system are controllable by making API calls to remote servers, so we decided to host this home automation in the cloud (Google Cloud) for simpler maintenance instead of running it on a local server.
+    </p>
+    <p>
+      The architecture is very simple: a <a href="https://cloud.google.com/run/docs/resource-model#jobs">Cloud Run job</a> runs every 15 minutes via <a href="https://cloud.google.com/scheduler">Cloud Scheduler</a>. It loads Tesla and iAquaLink credentials from <a href="https://cloud.google.com/secret-manager">Secret Manager</a>. We use the <a href="https://github.com/tdorssers/TeslaPy">teslapy</a> Python module to get a live status of energy production at our house, then the <a href="https://pypi.org/project/iaqualink/">iaqualink</a> Python module to turn on/off the equipment. All parameters are configurable (<a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.proto">proto</a>) and stored in a <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.pbtxt">proto txt file</a>, mounted in the container via a Cloud Storage volume mount, and parsed when the job is executed.
+    </p>
+    <p>
+      Because our outdoor lighting is also controlled using the same equipment, we added some extra code to turn on the lights when the sun sets and when there's sufficient battery capacity left, using the <a href="https://pypi.org/project/suntime/">suntime</a> Python module and the latitude and longitude of our city.
+    </p>
+      <p>
+      Find the <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/main.py">code on GitHub</a> and feel free to use it if you have a similar home setup.
+      </p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
