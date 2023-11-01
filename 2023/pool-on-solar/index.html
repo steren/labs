@@ -61,7 +61,9 @@
       We wanted to do the same for another big consumer of electricity: the pool pumps. Used for filtering, cleaning and pushing water through solar heating panels, they consume around 4kW when on. Luckily, a <a href="https://www.jandy.com/en/products/controls/system-components/interfaces/iaqualink">connected controller</a> existed for our pool system.
     </p>
     <p>
-      The idea is rather simple: On a schedule, fetch the current energy production from the Tesla solar system, and if the difference between solar electricity production and home electricity consumption is above a certain threshold, turn on the pumps. Turn them off if there isn't enough excess power. In the end, this is the result:
+      The idea is rather simple: On a schedule, fetch the current energy production from the Tesla solar system, and if the difference between solar electricity production and home electricity consumption is above a certain threshold, turn on the pumps. Turn them off if there isn't enough excess power. We call this “<b>Pool on Solar</b>”. 
+    <br>
+      In the end, this is the result:
     </p>
 
     <figure>
@@ -74,13 +76,13 @@
       It turns out that both our pool equipment and Tesla solar system are controllable by making API calls to remote servers, so we decided to host this home automation in the cloud (Google Cloud) for simpler maintenance instead of running it on a local server.
     </p>
     <p>
-      The architecture is very simple: a <a href="https://cloud.google.com/run/docs/resource-model#jobs">Cloud Run job</a> runs every 15 minutes via <a href="https://cloud.google.com/scheduler">Cloud Scheduler</a>. It loads Tesla and iAquaLink credentials from <a href="https://cloud.google.com/secret-manager">Secret Manager</a>. We use the <a href="https://github.com/tdorssers/TeslaPy">teslapy</a> Python module to get a live status of energy production at our house, then the <a href="https://pypi.org/project/iaqualink/">iaqualink</a> Python module to turn on/off the equipment. All parameters are configurable (<a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.proto">proto</a>) and stored in a <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.pbtxt">proto txt file</a>, mounted in the container via a Cloud Storage volume mount, and parsed when the job is executed.
+      The architecture is very simple: a <a href="https://cloud.google.com/run/docs/resource-model#jobs">Cloud Run job</a> runs every 15 minutes via <a href="https://cloud.google.com/scheduler">Cloud Scheduler</a>. It loads Tesla and iAquaLink credentials from <a href="https://cloud.google.com/secret-manager">Secret Manager</a>. We use the <a href="https://github.com/tdorssers/TeslaPy"><code>teslapy</code></a> Python module to get a live status of energy production at our house, then the <a href="https://pypi.org/project/iaqualink/"><code>iaqualink</code></a> Python module to turn on/off the equipment. All parameters are configurable (<a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.proto">proto</a>) and stored in a <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/config.pbtxt">proto txt file</a>, mounted in the container via a Cloud Storage volume mount, and parsed when the job is executed.
     </p>
     <p>
       Because our outdoor lighting is also controlled using the same equipment, we added some extra code to turn on the lights when the sun sets and when there's sufficient battery capacity left, using the <a href="https://pypi.org/project/suntime/">suntime</a> Python module and the latitude and longitude of our city.
     </p>
       <p>
-      Find the <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/main.py">code on GitHub</a> and feel free to use it if you have a similar home setup.
+      Find the <a href="https://github.com/annemenini/pool-on-solar/blob/main/automation/main.py">code of Pool on Solar on GitHub</a> and feel free to use it if you have a similar home setup.
       </p>
 
   </article>
