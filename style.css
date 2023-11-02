@@ -26,7 +26,7 @@ body{
   font-size:1rem;
 }
 
-header, main {	
+header, footer, main {	
   max-width: var(--width);	
   margin: 0 auto;	
 }
