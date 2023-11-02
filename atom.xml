@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Load XSL file as stylesheet -->
+<?xml-stylesheet href="/atom-style.xsl" type="text/xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title>Steren's labs</title>
