@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PDF to SVG</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="PDF to SVG">
+  <meta name="twitter:image" content="https://labs.steren.fr/2024/pdf-to-svg/pdf-to-svg.avif">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="PDF to SVG">
+  <meta property="og:image" content="https://labs.steren.fr/2024/pdf-to-svg/pdf-to-svg.avif">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "PDF to SVG",
+    "image": "https://labs.steren.fr/2024/pdf-to-svg/pdf-to-svg.avif"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>PDF to SVG</h2>
+      <time date="2024-05-04">2024-05-04</time>
+    </header>
+    
+    <p>I recently developed <a href="https://pdf-to-svg.client-side.app/"></a>PDF to SVG</strong>, a client-side web app that converts PDFs to SVGs, entirely in the browser. This post gives a quick overview of how I built it.</p>
+
+    <h3>The Goal:</h3>
+    
+    <p>Offer a privacy-respecting, accessible, and performant alternative to traditional PDF to SVG converters. No server-side processing, no software installations.</p>
+    
+    <h3>The Tech:</h3>
+    
+    <p><a href="https://mupdf.readthedocs.io/en/latest/mupdf-js.html">MuPDF.js</a>, which is the official WebAssembly port of <a href="https://mupdf.com/">MuPDF</a>, does the heavy lifting. This allows for efficient PDF parsing and SVG rendering within the browser.</p>
+    
+    <ol>
+      <li><strong>File Input:</strong> The browser's File Handling API lets users select a PDF.</li>
+      <li><strong>MuPDF:</strong> MuPDF.js (wasm) opens the PDF and renders each page to SVG.</li>
+      <li><strong>Display and Download:</strong> SVGs are displayed as images on the page and a download button lets users save them.</li>
+      <li><strong>Offline:</strong> Service Workers enable offline access.</li>
+      <li><strong>System Integration:</strong> The app integrates with the File Handling API to become a default PDF handler.</li>
+    </ol>
+    
+    <h3>Check it out!</h3>
+    
+    <p>
+      Source code: <a href="https://github.com/client-side-apps/pdf-to-svg">https://github.com/client-side-apps/pdf-to-svg</a><br>
+      Try the app: <a href="https://pdf-to-svg.client-side.app/">https://pdf-to-svg.client-side.app/</a>
+    </p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
