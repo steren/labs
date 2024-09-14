@@ -14,20 +14,20 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
-  <meta name="twitter:title" content="no-touch screen">
-  <meta name="twitter:image" content="https://labs.steren.fr/2010/12/16/no-touch-screen/../../opencv_diff.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta name="twitter:title" content="Controlling my laptop with hand gesture">
+  <meta name="twitter:image" content="https://labs.steren.fr/2010/12/16/no-touch-screen/no-touch-screen.png">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="no-touch screen">
-  <meta property="og:image" content="https://labs.steren.fr/2010/12/16/no-touch-screen/../../opencv_diff.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta property="og:title" content="Controlling my laptop with hand gesture">
+  <meta property="og:image" content="https://labs.steren.fr/2010/12/16/no-touch-screen/no-touch-screen.png">
 
   <script type="application/ld+json">
   {
     "@context": "http://schema.org",
     "@type": "Article",
     "author": "Steren Giannini",
-    "name": "no-touch screen",
-    "image": "https://labs.steren.fr/2010/12/16/no-touch-screen/../../opencv_diff.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+    "name": "Controlling my laptop with hand gesture",
+    "image": "https://labs.steren.fr/2010/12/16/no-touch-screen/no-touch-screen.png"
   }
   </script>
 
@@ -38,24 +38,28 @@
 </header><main role="main">
   <article>
     <header>
-      <h2>no-touch screen</h2>
+      <h2>Controlling my laptop with hand gesture</h2>
       <span>
         <time datetime="2010-12-16T12:16:12+02:00">2010/12/16</time>
       </span>
     </header>
-    <img src="../../opencv_diff.png%3Fw=1200&amp;h=800&amp;crop=1" title="no-touch screen"/>
     <p>For months, I’ve been talking with my friend <a href="http://lesgeorges.org/">Canard</a> about a project of interacting with a computer without touching it. We are convinced that it can be done with a simple webcam and that the “depth” information is not needed for simple interactions. (So no need to buy a kinect or two webcams).</p>
     <p>Yesterday we started hacking on this. We are using <a href="http://opencv.willowgarage.com/wiki/">OpenCV</a>. We first discussed about the different steps of doing it. But as we explored OpenCV, we changed some of these previous decisions because we found some built-in functions.</p>
     <p>After investigation, we decided that the first part of our system will be using a method named “<em>Real-time Motion Template Gradient</em>s” by James Davis and Gary Bradski (you can read the paper <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.46.5663&amp;rep=rep1&amp;type=pdf">here</a>)</p>
     <p>The very first step was to get the difference between two frames of the webcam video, what you can see in the next image is the movement : black means no movement, colored means there was a difference between the two frames:</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-244">
-      <a href="../../opencv_diff.png">
-        <img title="opencv_diff" src="../../opencv_diff.png%3Fw=1200" alt=""/>
-      </a>
+      <img title="opencv_diff" src="opencv_diff.png" alt=""/>
       <figcaption>Visualisation of the difference between frames of a real time video</figcaption>
     </figure>
+
+    <img src="no-touch-screen.png" alt=""/>
+    <p>And here we are, our very first demo:<br/></p>
+    <span>
+      <iframe width="600" height="400" frameborder="0" src="https://www.youtube.com/embed/s9f-7XJBB6U?version=3&amp;rel=1&amp;fs=1&amp;autohide=2&amp;showsearch=0&amp;showinfo=1&amp;iv_load_policy=1&amp;wmode=transparent" allowfullscreen="true"/>
+    </span>
+    <p>The video analysis simply execute keyboard shortcuts to interact with the OS.<br/>Canard worked on a Windows/Linux keystroke system while I created a naive gesture detection algorithm. We then just had to plug the two.</p>
+
     <p>You can check out the code (and fork us) on <a href="https://github.com/Steren/notouchscreen">our github repository</a>.</p>
-    <p>Stay tunned to follow our progress.</p>
   </article>
 </main>
 <footer>
