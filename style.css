@@ -43,6 +43,10 @@ img, video {
   margin: 0 auto;
 }
 
+img.icon {
+  max-width: 200px;
+}
+
 /* Figures with 2 images */
 /* we use 3 because we assume there is a <figcaption> element */
 figure > img:first-child:nth-last-child(3),
