@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs/>
+  <path fill="#fff" d="M 54.743 20.615 L 377.139 20.615 L 457.257 100.733 L 457.257 491.385 L 54.743 491.385 L 54.743 20.615 Z" style="stroke: rgb(0, 0, 0); stroke-width: 20px;">
+    <title>Paper</title>
+  </path>
+  <path d="M 277.916 195.28 L 358.027 275.391 L 277.916 275.391 L 277.916 195.28 Z" style="stroke: rgb(0, 0, 0); stroke-width: 20px; stroke-linejoin: bevel; fill: rgb(255, 255, 255);" transform="matrix(1, 0.000077, -0.000078, 1, 99.245209, -174.686401)" bx:shape="triangle 277.916 195.28 80.111 80.111 0 0 1@12d69134">
+    <title>Corner</title>
+  </path>
+  <path d="M -249 -299.486 L -219.572 -248.514 L -278.429 -248.514 L -249 -299.486 Z" style="" transform="matrix(-1, 0, 0, -1, 0, 0)" bx:shape="triangle -278.429 -299.486 58.857 50.972 0.5 0 1@4bed309d">
+    <title>Arrow</title>
+  </path>
+  <g transform="matrix(9.787908, 0, 0, 9.787908, 134.475355, 260.695675)" style="">
+    <defs/>
+    <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z" style="fill: rgb(0, 167, 76);"/>
+  </g>
+  <g transform="matrix(9.101086, 0, 0, 9.101086, 136.535826, 29.301071)" style="">
+    <defs/>
+    <g/>
+    <g>
+      <path d="M12,3c-4.97,0-9,4.03-9,9v7c0,1.1,0.9,2,2,2h4v-8H5v-1c0-3.87,3.13-7,7-7s7,3.13,7,7v1h-4v8h4c1.1,0,2-0.9,2-2v-7 C21,7.03,16.97,3,12,3z" style="fill: rgb(74, 74, 74);"/>
+    </g>
+  </g>
+</svg>

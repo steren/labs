@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Audio to Video</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Audio to Video">
+  <meta name="twitter:image" content="https://labs.steren.fr/2024/audio-to-video/title.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Audio to Video">
+  <meta property="og:image" content="https://labs.steren.fr/2024/audio-to-video/title.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Audio to Video",
+    "image": "https://labs.steren.fr/2024/audio-to-video/title.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Audio to Video: A Client-Side Web App</h2>
+      <time date="2024-09-22">2024-09-22</time>
+    </header>
+
+    <img class="icon" src="icon.svg" alt="Audio to Video icon" height="200"/>
+
+    <p>I recently ran into a need to convert an .mp3 file into a video format so I could upload it to a platform.  To solve this, I built <a href="https://audio-to-video.client-side.app/"><strong>Audio to Video</strong></a>, a client-side web app that performs this conversion entirely within your browser.  This blog post provides a quick overview of how it works.</p>
+    
+    <h3>The Goal</h3>
+    
+    <p>The goal was to create a tool that respects user privacy, is accessible, and offers good performance. It shouldn't require any server-side processing or additional software installations. Everything happens right in your browser.</p>
+    
+    <h3>The Tech</h3>
+    
+    <p>
+      <strong><a href="https://github.com/ffmpegwasm/ffmpeg.wasm">ffmpeg-wasm</a></strong>: This WebAssembly port of FFmpeg handles the core video processing tasks.  It allows for audio and video manipulation directly within the browser environment. The resulting video is displayed for preview and can be downloaded using a convenient button. <strong>Service Workers</strong> enable the app to function even offline.
+    </p>   
+    <h3>Check It Out!</h3>
+    
+    <ul>
+    <li>Sources at <a href="https://github.com/client-side-apps/audio-to-video">github.com/client-side-apps/audio-to-video</a></li>
+    <li>Try the app: <a href="https://audio-to-video.client-side.app/">audio-to-video.client-side.app/</a></li>
+    </ul>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>

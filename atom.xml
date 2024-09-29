@@ -13,11 +13,18 @@
     <uri>https://steren.fr</uri>
   </author>
   <icon>/icon.svg</icon>
-  <updated>2024-05-04T00:00:00Z</updated>
+  <updated>2024-09-22T00:00:00Z</updated>
 
   <entry>
+    <id>https://labs.steren.fr/2024/audio-to-video/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2024/audio-to-video/" />
+    <title>Audio to Video</title>
+    <updated>2024-09-22T00:00:00Z</updated>
+    <summary></summary>
+  </entry>   
+  <entry>
     <id>https://labs.steren.fr/2024/pdf-to-svg/</id>
-    <link rel="alternate" href="https://labs.steren.fr/2024/2024/pdf-to-svg/" />
+    <link rel="alternate" href="https://labs.steren.fr/2024/pdf-to-svg/" />
     <title>PDF to SVG</title>
     <updated>2024-05-04T00:00:00Z</updated>
     <summary></summary>
