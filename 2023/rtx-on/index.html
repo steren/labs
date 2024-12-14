@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>rtx-on.js</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="rtx-on.js">
+  <meta name="twitter:image" content="https://labs.steren.fr/2023/rtx-on/image.avif">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="rtx-on.js">
+  <meta property="og:image" content="https://labs.steren.fr/2023/rtx-on/image.avif">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "rtx-on.js",
+    "image": "https://labs.steren.fr/2023/rtx-on/image.avif"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>rtx-on.js</h2>
+      <time date="2023-06-12">2023-06-12</time>
+    </header>
+    
+    <p><i>“What if web pages looked more like real life?”</i></p>
+
+    <p>I've gone down the rabbit hole of rendering web pages using ray tracing, without sacrificing the interactivity and accessibility of the page and created <a href="https://rtx-on.steren.fr/">rtx-on.js</a>:</p>
+
+    <figure>
+      <img src="image.avif" width="1426" height="1129"/>
+      <figcaption>Screenshot of the effect on the <a href="https://rtx-on.steren.fr/">rtx-on.js demo website</a></figcaption>
+    </figure>
+
+    <p>
+      This is a "drop-in" library, by default, page elements with box shadows will be transformed into raised element and receive proper ray-traced shadows. 
+      I added options to customize the background element and the list of raised elements, as well as the ability to change the light position on click.
+      Implementing dark mode was easy: because the lighting is physically realistic, all I had to do was to dim the light intensity.
+    </p>
+
+    <p>
+      As you can see in the video below, the page stays fully interactive: the text can be selected, links are clickable, elements resize when the window is resized, and the page DOM can be inspected in DevTools.
+    </p>
+
+    <figure>
+      <video controls src="sterenfr-website-ray-tracing.mp4"></video>
+      <figcaption>Screen recording of the effect applied to <a href="https://steren.fr">my personal website</a></figcaption>
+    </figure>
+
+    <p>See the <a href="https://rtx-on.steren.fr/">rtx-on.js demo website</a> and more examples: <a href="https://rtx-on.steren.fr/examples/example.com">example.com</a> or <a href="https://rtx-on.steren.fr/examples/steren.fr.html">steren.fr</a>.</p>
+
+    <p>
+      For the ray tracer itself, I am using <a href="https://webgl-path-tracing.steren.fr/">webgl-path-tracing</a>, a WebGL path tracing library developed in 2010 by <a href="https://madebyevan.com/">Evan Wallace</a> that I enriched a bit (transformed into a module).
+      I had never done shader programming. I learnt a lot by reading and modifying Evan's code. I find it fascinating.
+    </p>
+
+    <p>Check out <a href="https://rtx-on.steren.fr/">rtx-on.js</a> and its <a href="https://github.com/steren/rtx-on">sources on GitHub</a></p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
