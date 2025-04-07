@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Automated End-to-End Testing with Chrome DevTools Recorder and Cloud Run</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A blog post explaining how to automate end-to-end tests using Chrome DevTools Recorder and Google Cloud Run.">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Automated E2E Testing with Chrome DevTools & Cloud Run">
+  <meta name="twitter:image" content="https://labs.steren.fr/2023/cloud-run-replay/title.jpg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Automated E2E Testing with Chrome DevTools & Cloud Run">
+  <meta property="og:image" content="https://labs.steren.fr/2023/cloud-run-replay/title.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Automated End-to-End Testing with Chrome DevTools Recorder and Cloud Run",
+    "headline": "Automated End-to-End Testing with Chrome DevTools Recorder and Cloud Run"
+    "image": "https://labs.steren.fr/2023/cloud-run-replay/title.jpg"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Automated End-to-End Testing with Chrome DevTools Recorder and Cloud Run</h2>
+      <time date="2023-03-07">2023-03-07</time>
+    </header>
+
+    <p>Ensuring critical user journeys work consistently is crucial for web applications. I recently explored how to leverage Chrome DevTools Recorder and Google Cloud Run to automate end-to-end testing. In this post (and the accompanying video!), I'll walk you through how you can set this up.</p>
+
+    <p>Here's a video walkthrough:</p>
+    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/_uWADFwJWg0?si=ibqIQl9ZAhOiclbZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+
+    <h3>The Goal</h3>
+    <p>To provide web developers with a simple way to record user flows directly in Chrome and reliably replay them as automated tests running in the cloud on Google Cloud Run.</p>
+
+    <h3>The Approach</h3>
+    <p>The solution involves a custom Chrome Extension that integrates with the Chrome DevTools Recorder.</p>
+    <ol>
+      <li><strong>Record:</strong> Use the standard <a href="https://developer.chrome.com/docs/devtools/recorder">Chrome DevTools Recorder</a> to capture a user journey (e.g., signup, checkout).</li>
+      <li><strong>Execute in Cloud Run:</strong> My extension adds a button to the Recorder panel. Clicking this sends the recording to a <a href="https://cloud.google.com/run/docs/create-jobs">Google Cloud Run job</a>.</li>
+      <li><strong>Cloud Replay:</strong> The Cloud Run job uses a containerized headless Chrome instance to execute the recorded steps.</li>
+      <li><strong>Scheduling & Alerting:</strong> You can schedule these Cloud Run jobs to run automatically (e.g., daily) and set up alerts based on logs to get notified if a journey fails.</li>
+    </ol>
+
+    <h3>The Tech</h3>
+    <ul>
+        <li><strong>Chrome DevTools Recorder:</strong> Captures user interactions.</li>
+        <li><strong>Custom Chrome Extension:</strong> Upload the recording in JSON format to Google Cloud Storage, then creates a Cloud Run job with a pre-built container pointing at the recording. See <a href="https://github.com/steren/cloud-run-replay/blob/main/chrome-extension/Replay.js">code</a></li>
+        <li><strong>Google Cloud Run:</strong> <a href="https://github.com/steren/cloud-run-replay/blob/main/replayer-container/replayer.js">Node.js code to execute the replay</a> with headless Chrome, packaged into a container image that executes to completion.</li>
+    </ul>
+
+    <h3>Check it out!</h3>
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=_uWADFwJWg0">YouTube video</a></li>
+      <li>Source code (Extension & Replayer Container): <a href="https://github.com/steren/cloud-run-replay/">github.com/steren/cloud-run-replay</a></li>
+    </p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
