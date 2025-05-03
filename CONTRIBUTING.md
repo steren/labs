@@ -10,5 +10,5 @@ Generate an icon in svg format named icon.svg in the same folder.
 Generate a social preview image in SVG format named title.svg in the same folder.
 The social media markup in the header of the new page should reference a title.png image.
 
-Reference the page at the top of the root index.html and atom.xml.
+Reference the page at the top of the root index.html and atom.xml (make sure to update the <updated> tag).
 The root index.html should use the icon.svg image.
