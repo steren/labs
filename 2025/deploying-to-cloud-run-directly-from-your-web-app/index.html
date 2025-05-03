@@ -54,7 +54,7 @@
 
     <p><a href="https://cloud.google.com/run">Google Cloud Run</a> makes it incredibly easy to deploy and scale containerized applications. Typically, you might use the <code>gcloud</code> command-line tool or the Google Cloud Console. But did you know it's possible to empower users to deploy applications <em>directly</em> from a web interface, using <strong>entirely client-side</strong> code? You can even try it yourself at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and find the full source code for the examples at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https//github.com/steren/deploy-cloud-run-webapp/</a>.</p>
 
-    <p>Imagine a scenario where users can configure an application or select a template within your web app and deploy it to their own Google Cloud project with a button click. This is achievable by using Google Cloud APIs directly from client-side JavaScript and using the user’s credentials via a login with Google, no server required.</p>
+    <p>Imagine a scenario where your users can vibe or write code in your web app and are looking for a serverless runtime to deploy it. You can allow them to deploy it to their own Google Cloud project with a button click. Another scenario would be if you offered a set of pre-defined templates (as containers). This is achievable by using Google Cloud APIs directly from client-side JavaScript and using the user’s credentials via a login with Google, no server required.</p>
 
     <p>In this post, we'll explore how to build client-side web apps that can:</p>
     <ol>
@@ -92,12 +92,12 @@
     <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/from-source">GitHub</a>)</strong></p>
     <h4>Steps:</h4>
     <ol>
-      <li><strong>Setup Prerequisites:</strong> Ensure required APIs (Cloud Run, Build, Artifact Registry, Storage) are enabled and that a Cloud Storage bucket and Artifact Registry repository exist, waiting for any creation LROs.</li>
-      <li><strong>Select Source Folder:</strong> Prompt the user to select a folder containing source code and a <code>Dockerfile</code>.</li>
+      <li><strong>Setup Prerequisites:</strong> Ensure required APIs (Cloud Run, Build, Artifact Registry, Storage) are enabled and that a Cloud Storage bucket and Artifact Registry repository exist, waiting for any creation Long Running Operation.</li>
+      <li><strong>Select Source Folder:</strong> Gather the user's source (for example by prompting them user to select a folder or just write code in an editor.</li>
       <li><strong>Process & Upload Source:</strong> Validate a <code>Dockerfile</code> exists, zip the folder contents in memory, and upload the zip archive to the Cloud Storage bucket.</li>
-      <li><strong>Trigger Cloud Build:</strong> Define and submit a Cloud Build job (<code>POST /builds</code>) pointing to the source zip, configured to build/push the image to Artifact Registry. Get the build LRO name.</li>
+      <li><strong>Trigger Cloud Build:</strong> Define and submit a Cloud Build job (<code>POST /builds</code>) pointing to the source zip, configured to build/push the image to Artifact Registry. Get the build Long Running Operation name.</li>
       <li><strong>Wait for Build:</strong> Poll the Cloud Build API (<code>GET /v1/{build_operation_name}</code>) until the build succeeds or fails. Retrieve the built image URI.</li>
-      <li><strong>Deploy to Cloud Run:</strong> Check if the target Cloud Run service exists (<code>GET</code>). Create (<code>POST</code>) or update (<code>PATCH</code>) the service using the built image URI. Get the Cloud Run LRO name.</li>
+      <li><strong>Deploy to Cloud Run:</strong> Check if the target Cloud Run service exists (<code>GET</code>). Create (<code>POST</code>) or update (<code>PATCH</code>) the service using the built image URI. Get the Cloud Run Long Running Operation name.</li>
       <li><strong>Wait for Deployment:</strong> Use the Cloud Run operation's <code>:wait</code> endpoint.</li>
       <li><strong>Get Service URL:</strong> Retrieve the final service details (<code>GET</code>) and display its URL.</li>
     </ol>
@@ -105,7 +105,7 @@
     <hr>
 
     <h3>Conclusion</h3>
-    <p>By leveraging Google Cloud APIs and client-side JavaScript, you can create powerful web applications that allow users to deploy containerized applications directly to their own Cloud Run environments. While the "deploy from source" workflow involves more steps (Storage, Build, Artifact Registry), it provides a seamless experience for users who just want to deploy their code without needing to handle containerization themselves. Remember to handle errors gracefully at each step and provide clear feedback to the user throughout the process.</p>
+    <p>By leveraging Google Cloud APIs and client-side JavaScript, you can offer a "one click" deployment experience from your client side web app to the user's Google Cloud project. While the "deploy from source" workflow involves more steps (Storage, Build, Artifact Registry), they can all be abstracted away from the user to provide a seamless deployment experience.</p>
     <p>Feel free to try out the live demo at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and check out the complete source code on GitHub at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https://github.com/steren/deploy-cloud-run-webapp/</a> to see these concepts in action!</p>
 
   </article>
