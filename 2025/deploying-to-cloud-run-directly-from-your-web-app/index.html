@@ -52,7 +52,7 @@
 
     <img src="title.svg" alt="Deploying to Cloud Run from a client-side web app"/>
 
-    <p><a href="https://cloud.google.com/run">Google Cloud Run</a> makes it incredibly easy to deploy and scale containerized applications. Typically, you might use the <code>gcloud</code> command-line tool or the Google Cloud Console. But did you know it's possible to empower users to deploy applications <em>directly</em> from a web interface, using <strong>entirely client-side</strong> code? You can even try it yourself at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and find the full source code for the examples at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https//github.com/steren/deploy-cloud-run-webapp/</a>.</p>
+    <p><a href="https://cloud.google.com/run">Google Cloud Run</a> makes it incredibly easy to deploy and scale containerized applications. Typically, you might use the <code>gcloud</code> command-line tool or the Google Cloud Console. But did you know it's possible to empower users to deploy applications <em>directly</em> from a web interface, using <strong>entirely client-side</strong> code? You can even try it yourself at <a href="https://deploy-cloud-run.steren.dev/">deploy-cloud-run.steren.dev</a> and find the full source code for the examples at <a href="https://github.com/steren/deploy-cloud-run-webapp/">github.com/steren/deploy-cloud-run-webapp</a>.</p>
 
     <p>Imagine a scenario where your users can vibe or write code in your web app and are looking for a serverless runtime to deploy it. You can allow them to deploy it to their own Google Cloud project with a button click. Another scenario would be if you offered a set of pre-defined templates (as containers). This is achievable by using Google Cloud APIs directly from client-side JavaScript and using the user’s credentials via a login with Google, no server required.</p>
 
@@ -79,7 +79,7 @@
 
     <h3>Scenario 1: Deploying a Pre-built Container</h3>
     <p>This is the simplest case. Assuming the user is authenticated (see Prerequisites), we just need their Project ID and the container image URL that you have pre-built for them and stored in <a href="https://hub.docker.com/">DockerHub</a> or a public Artifact Registry repository.</p>
-    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/hello">GitHub</a>)</strong></p>
+    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/hello/index.html#L60">GitHub</a>)</strong></p>
     <h4>Steps:</h4>
     <ol>
       <li><strong>Get project ID:</strong> The user provides their Google Cloud Project ID.</li>
@@ -89,7 +89,7 @@
 
     <h3>Scenario 2: Deploying from source code</h3>
     <p>This scenario builds the container image first. It assumes the user is authenticated and has provided their Project ID.</p>
-    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/from-source">GitHub</a>)</strong></p>
+    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/from-source/index.html#L61">GitHub</a>)</strong></p>
     <h4>Steps:</h4>
     <ol>
       <li><strong>Setup Prerequisites:</strong> Ensure required APIs (Cloud Run, Build, Artifact Registry, Storage) are enabled and that a Cloud Storage bucket and Artifact Registry repository exist, waiting for any creation Long Running Operation.</li>
@@ -106,7 +106,7 @@
 
     <h3>Conclusion</h3>
     <p>By leveraging Google Cloud APIs and client-side JavaScript, you can offer a "one click" deployment experience from your client side web app to the user's Google Cloud project. While the "deploy from source" workflow involves more steps (Storage, Build, Artifact Registry), they can all be abstracted away from the user to provide a seamless deployment experience.</p>
-    <p>Feel free to try out the live demo at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and check out the complete source code on GitHub at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https://github.com/steren/deploy-cloud-run-webapp/</a> to see these concepts in action!</p>
+    <p>Feel free to try out the live demo at <a href="https://deploy-cloud-run.steren.dev/">deploy-cloud-run.steren.dev</a> and check out the complete source code on GitHub at <a href="https://github.com/steren/deploy-cloud-run-webapp/">github.com/steren/deploy-cloud-run-webapp</a> to see these concepts in action!</p>
 
   </article>
 </main>
