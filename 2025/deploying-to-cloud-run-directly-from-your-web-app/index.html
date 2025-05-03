@@ -82,8 +82,8 @@
     <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/hello">GitHub</a>)</strong></p>
     <h4>Steps:</h4>
     <ol>
-      <li><strong>Get Input:</strong> The user provides their Google Cloud Project ID.</li>
-      <li><strong>Define & Deploy:</strong> The app defines the service configuration (image: <code>gcr.io/cloudrun/hello</code>, scaling, etc.) and makes a <code>POST</code> request to the Cloud Run API (<code>/services</code>) with the user's access token and config to start deployment, receiving an operation name.</li>
+      <li><strong>Get project ID:</strong> The user provides their Google Cloud Project ID.</li>
+      <li><strong>Deploy:</strong> The app defines the service configuration (image: <code>gcr.io/cloudrun/hello</code>, scaling, etc.) and makes a <code>POST</code> request to the Cloud Run API (<code>/services</code>) with the user's access token and config to start deployment, receiving an operation name.</li>
       <li><strong>Wait & Get URL:</strong> The app calls the operation's <code>:wait</code> endpoint. Once complete, it makes a <code>GET</code> request to the service endpoint to retrieve and display the public URL.</li>
     </ol>
 
