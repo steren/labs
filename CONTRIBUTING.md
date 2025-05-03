@@ -5,6 +5,7 @@ Use today's date.
 Create a new folder to host the page in the relevant yearly folder. (e.g. use 2025/a-new-post/ for a past named "A new post")
 
 Add an index.html file that uses the same template as the other pages.
+The <time> should use a date in the YYYY-MM-DD format.
 
 Generate an icon in svg format named icon.svg in the same folder.
 Generate a social preview image in SVG format named title.svg in the same folder.
