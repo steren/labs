@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Deploying to Cloud Run Directly From Your Web App</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How to build client-side web apps that deploy applications directly to Google Cloud Run using user credentials.">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Deploying to Cloud Run Directly From Your Web App">
+  <meta name="twitter:image" content="https://labs.steren.fr/2025/deploying-to-cloud-run-directly-from-your-web-app/title.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Deploying to Cloud Run Directly From Your Web App">
+  <meta property="og:image" content="https://labs.steren.fr/2025/deploying-to-cloud-run-directly-from-your-web-app/title.png">
+  <meta property="og:description" content="How to build client-side web apps that deploy applications directly to Google Cloud Run using user credentials.">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Deploying to Cloud Run Directly From Your Web App",
+    "headline": "Deploying to Cloud Run Directly From Your Web App",
+    "description": "How to build client-side web apps that deploy applications directly to Google Cloud Run using user credentials.",
+    "image": "https://labs.steren.fr/2025/deploying-to-cloud-run-directly-from-your-web-app/title.png",
+    "datePublished": "2025-04-15T00:00:00Z"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Deploying to Cloud Run Directly From Your Web App</h2>
+       <span>
+        <time datetime="2025-04-15T00:00:00Z">2025-04-15</time>
+      </span>
+    </header>
+
+    <img src="title.svg" alt="Deploying to Cloud Run Directly From Your Web App"/>
+
+    <p><a href="https://cloud.google.com/run">Google Cloud Run</a> makes it incredibly easy to deploy and scale containerized applications. Typically, you might use the <code>gcloud</code> command-line tool or the Google Cloud Console. But did you know it's possible to empower users to deploy applications <em>directly</em> from a web interface, using <strong>entirely client-side</strong> code? You can even try it yourself at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and find the full source code for the examples at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https//github.com/steren/deploy-cloud-run-webapp/</a>.</p>
+
+    <p>Imagine a scenario where users can configure an application or select a template within your web app and deploy it to their own Google Cloud project with a button click. This is achievable by using Google Cloud APIs directly from client-side JavaScript and using the user’s credentials via a login with Google, no server required.</p>
+
+    <p>In this post, we'll explore how to build client-side web apps that can:</p>
+    <ol>
+      <li>Deploy a simple, pre-built container image to Cloud Run.</li>
+      <li>Deploy an application from source code provided by the user, utilizing Cloud Build and Artifact Registry behind the scenes.</li>
+    </ol>
+
+    <h4>No dependency</h4>
+    <p>We will do all that from scratch, no Google Cloud client libraries required, simply using JavaScript's <code>fetch</code> function to make calls to Google Cloud’s REST APIs, including the user's access token in the <code>Authorization</code> header. Many of these API calls (like creating a service or starting a build) initiate operations that take time. The initial API response often returns an operation ID. We need to poll or use a dedicated <code>wait</code> endpoint to determine when the operation is complete.</p>
+
+    <h3>Prerequisites: Authenticating the current user and getting a token</h3>
+    <p>Before the web app can make calls to Google Cloud APIs on behalf of the user, it needs their permission. We achieve this using OAuth 2.0.</p>
+    <p>For purely client-side applications, I am just copy pasting a great pure JavaScript sample from the official <a href="https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow">OAuth 2.0 for Client-side Web Applications</a> docs.</p>
+    <p>The flow is the following:</p>
+    <ul>
+      <li>The user clicks a "Sign In" button.</li>
+      <li>The app redirects the user to Google's OAuth 2.0 endpoint, requesting the necessary scope. <div class="note"><strong>Note:</strong> Even with broad scopes like <code>cloud-platform</code>, the user's actions are still governed by their specific Google Cloud IAM permissions within the target project. The app cannot perform actions the user isn't authorized to do via IAM.</div></li>
+      <li>After the user grants permission, Google redirects back to your app with an access token in the URL fragment (<code>#</code>).</li>
+      <li>Your JavaScript code parses this fragment and securely stores the access token (e.g., in <code>localStorage</code>) for subsequent API calls.</li>
+      <li>This token needs to be included in the <code>Authorization: Bearer {token}</code> header of every API request to prove the user has authorized the action.</li>
+    </ul>
+
+    <h3>Scenario 1: Deploying a Pre-built Container</h3>
+    <p>This is the simplest case. Assuming the user is authenticated (see Prerequisites), we just need their Project ID and the container image URL that you have pre-built for them and stored in <a href="https://hub.docker.com/">DockerHub</a> or a public Artifact Registry repository.</p>
+    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/hello">GitHub</a>)</strong></p>
+    <h4>Steps:</h4>
+    <ol>
+      <li><strong>Get Input:</strong> The user provides their Google Cloud Project ID.</li>
+      <li><strong>Define & Deploy:</strong> The app defines the service configuration (image: <code>gcr.io/cloudrun/hello</code>, scaling, etc.) and makes a <code>POST</code> request to the Cloud Run API (<code>/services</code>) with the user's access token and config to start deployment, receiving an operation name.</li>
+      <li><strong>Wait & Get URL:</strong> The app calls the operation's <code>:wait</code> endpoint. Once complete, it makes a <code>GET</code> request to the service endpoint to retrieve and display the public URL.</li>
+    </ol>
+
+    <h3>Scenario 2: Deploying from source code</h3>
+    <p>This scenario builds the container image first. It assumes the user is authenticated and has provided their Project ID.</p>
+    <p><strong>(Source code: <a href="https://github.com/steren/deploy-cloud-run-webapp/tree/main/from-source">GitHub</a>)</strong></p>
+    <h4>Steps:</h4>
+    <ol>
+      <li><strong>Setup Prerequisites:</strong> Ensure required APIs (Cloud Run, Build, Artifact Registry, Storage) are enabled and that a Cloud Storage bucket and Artifact Registry repository exist, waiting for any creation LROs.</li>
+      <li><strong>Select Source Folder:</strong> Prompt the user to select a folder containing source code and a <code>Dockerfile</code>.</li>
+      <li><strong>Process & Upload Source:</strong> Validate a <code>Dockerfile</code> exists, zip the folder contents in memory, and upload the zip archive to the Cloud Storage bucket.</li>
+      <li><strong>Trigger Cloud Build:</strong> Define and submit a Cloud Build job (<code>POST /builds</code>) pointing to the source zip, configured to build/push the image to Artifact Registry. Get the build LRO name.</li>
+      <li><strong>Wait for Build:</strong> Poll the Cloud Build API (<code>GET /v1/{build_operation_name}</code>) until the build succeeds or fails. Retrieve the built image URI.</li>
+      <li><strong>Deploy to Cloud Run:</strong> Check if the target Cloud Run service exists (<code>GET</code>). Create (<code>POST</code>) or update (<code>PATCH</code>) the service using the built image URI. Get the Cloud Run LRO name.</li>
+      <li><strong>Wait for Deployment:</strong> Use the Cloud Run operation's <code>:wait</code> endpoint.</li>
+      <li><strong>Get Service URL:</strong> Retrieve the final service details (<code>GET</code>) and display its URL.</li>
+    </ol>
+
+    <hr>
+
+    <h3>Conclusion</h3>
+    <p>By leveraging Google Cloud APIs and client-side JavaScript, you can create powerful web applications that allow users to deploy containerized applications directly to their own Cloud Run environments. While the "deploy from source" workflow involves more steps (Storage, Build, Artifact Registry), it provides a seamless experience for users who just want to deploy their code without needing to handle containerization themselves. Remember to handle errors gracefully at each step and provide clear feedback to the user throughout the process.</p>
+    <p>Feel free to try out the live demo at <a href="https://deploy-cloud-run.steren.dev/">https://deploy-cloud-run.steren.dev/</a> and check out the complete source code on GitHub at <a href="https://github.com/steren/deploy-cloud-run-webapp/">https://github.com/steren/deploy-cloud-run-webapp/</a> to see these concepts in action!</p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
