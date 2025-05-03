@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>A Python Script to Deploy to Cloud Run</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Python script to automate deploying applications to Google Cloud Run.">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="A Python Script to Deploy to Cloud Run">
+  <meta name="twitter:image" content="https://labs.steren.fr/2025/python-script-to-deploy-to-cloud-run/title.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="A Python Script to Deploy to Cloud Run">
+  <meta property="og:image" content="https://labs.steren.fr/2025/python-script-to-deploy-to-cloud-run/title.png">
+  <meta property="og:description" content="A Python script to automate deploying applications to Google Cloud Run.">
+
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "A Python Script to Deploy to Cloud Run",
+    "headline": "A Python Script to Deploy to Cloud Run",
+    "description": "A Python script to automate deploying applications to Google Cloud Run.",
+    "image": "https://labs.steren.fr/2025/python-script-to-deploy-to-cloud-run/title.png",
+    "datePublished": "2025-05-03T00:00:00Z"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>A Python Script to Deploy to Cloud Run</h2>
+      <span>
+        <time datetime="2025-05-03T00:00:00Z">2025/05/03</time>
+      </span>
+    </header>
+
+    <img src="title.svg" alt="A Python Script to Deploy to Cloud Run"/>
+
+    <p>Here are the steps to programatically deploy an application packaged in a local 'sources' folder to Google Cloud Run using Python. (<a href="https://github.com/steren/cloud-run-python-deploy">see full code</a>)</p>
+    <ol>
+      <li><strong>Validate project:</strong> Set the GCP project to deploy to (the script doesn't create one, it could)</li>
+      <li><strong>Ensure Storage bucket:</strong> We need to upload source code in a Google Cloud Storage bucket, so we first need to check if a bucket exists, creating it if necessary.</li>
+      <li><strong>Zip and upload source code:</strong> Zips a local folder and uploads the resulting zip file to the storage bucket.</li>
+      <li><strong>Ensure Artifact Registry:</strong> The source will need to be built into a container image, so we need to check if a Google Artifact Registry repository exists, creating it if necessary.</li>
+      <li><strong>Build container image:</strong> Trigger a Google Cloud Build job to transform the uploaded source zip file into a Docker container image and push it to the Artifact Registry.</li>
+      <li><strong>Deploy to Cloud Run:</strong> Finally, create, or update if it already exists, the newly built container image to a Google Cloud Run service.</li>
+    </ol>
+
+    <p>The complete Python script is available on GitHub: <a href="https://github.com/steren/cloud-run-python-deploy">steren/cloud-run-python-deploy</a>.</p>
+    
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
