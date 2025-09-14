@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Instant Deploy to Cloud Run</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Labs">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Instant Deploy to Cloud Run">
+  <meta name="twitter:image" content="https://labs.steren.fr/2025/instant-deploy-cloud-run/title.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Instant Deploy to Cloud Run">
+  <meta property="og:image" content="https://labs.steren.fr/2025/instant-deploy-cloud-run/title.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Instant Deploy to Cloud Run",
+    "image": "https://labs.steren.fr/2025/instant-deploy-cloud-run/title.png"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>The Modern FTP: Instant Deploys to Cloud Run</h2>
+      <time date="2025-02-19">2025-02-19</time>
+    </header>
+
+    <img src="title.png" alt="Instant Deploy to Cloud Run icon"/>
+
+    <p>What's the modern equivalent of FTPing your files to your server? Copying them to Cloud Storage and have Cloud Run load the app straight from the bucket.</p>
+    
+    <p>I prototyped it today.</p>
+
+    <h3>The Idea</h3>
+    
+    <p>The idea is to load your app straight from Cloud Storage, instead of packaging it in the deployed container image. The Cloud Run service is configured to use one of Cloud Run's official Node.js base image and it mounts the Cloud Storage bucket in the location where it expects the app to be.</p>
+    
+    <p>Deployments are instant (since you skip building your repo into a container image).</p>
+
+    <h3>How it works</h3>
+    <ol>
+        <li>A generic, pre-built Cloud Run runtime image (e.g., the Node.js runtime) is used.</li>
+        <li>Your application source code is uploaded to a Cloud Storage bucket.</li>
+        <li>The Cloud Run service is configured to mount the Cloud Storage bucket as a volume at the location where the runtime expects the application files (e.g. <code>/usr/src/app</code>).</li>
+    </ol>
+
+    <p>With this setup, "deploying" is as simple as updating the files in the Cloud Storage bucket. The changes are reflected instantly without needing to build and deploy a new container image.</p>
+    
+    <h3>Check it out!</h3>
+    
+    <p>
+      Source code: <a href="https://github.com/steren/cloud-run-instant-deploy">github.com/steren/cloud-run-instant-deploy</a>
+    </p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>

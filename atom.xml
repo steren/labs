@@ -13,7 +13,7 @@
     <uri>https://steren.fr</uri>
   </author>
   <icon>/icon.svg</icon>
-  <updated>2025-04-15T00:00:00Z</updated>
+  <updated>2025-02-19T00:00:00Z</updated>
 
   <entry>
     <title>Deploying to Cloud Run Directly From Your Web App</title>
@@ -28,6 +28,14 @@
     <link href="https://labs.steren.fr/2025/python-script-to-deploy-to-cloud-run/"/>
     <updated>2025-05-03T00:00:00Z</updated>
     <id>https://labs.steren.fr/2025/python-script-to-deploy-to-cloud-run/</id>
+    <summary></summary>
+  </entry>
+
+  <entry>
+    <title>The Modern FTP: Instant Deploys to Cloud Run</title>
+    <link href="https://labs.steren.fr/2025/instant-deploy-cloud-run/"/>
+    <updated>2025-02-19T00:00:00Z</updated>
+    <id>https://labs.steren.fr/2025/instant-deploy-cloud-run/</id>
     <summary></summary>
   </entry>
 
