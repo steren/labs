@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Adding WebMCP to my Secret Santa website</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Adding WebMCP to my Secret Santa website.">
+  <meta name="author" content="Steren">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Adding WebMCP to my Secret Santa website">
+  <meta name="twitter:image" content="https://labs.steren.fr/2026/webmcp-secret-santa/title.png">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Adding WebMCP to my Secret Santa website">
+  <meta property="og:image" content="https://labs.steren.fr/2026/webmcp-secret-santa/title.png">
+  <meta property="og:description" content="Adding WebMCP to my Secret Santa website.">
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Adding WebMCP to my Secret Santa website",
+    "headline": "Adding WebMCP to my Secret Santa website",
+    "description": "Adding WebMCP to my Secret Santa website.",
+    "image": "https://labs.steren.fr/2026/webmcp-secret-santa/title.png",
+    "datePublished": "2026-02-13T00:00:00Z"
+  }
+  </script>
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Adding WebMCP to my Secret Santa website</h2>
+      <span>
+        <time datetime="2026-02-13T00:00:00Z">2026-02-13</time>
+      </span>
+    </header>
+
+    <h3>What is WebMCP?</h3>
+    <p>WebMCP sits in a very interesting spot: It's not a spec for HTTP APIs, like MCP servers are. It's a way to help browsers with agentic capabilities use webapps more reliably (instead of asking them to understand the pixels on the screen or DOM).</p>
+
+    <p>As a developer, you can reuse your existing JS logic, and transform it into WebMCP tools in just a few lines of JS. You can even transform any HTML form into a WebMCP tool by just adding new attributes.</p>
+
+    <h3>Adding WebMCP to my secret santa website</h3>
+    <p>I added WebMCP to my secret santa website in one prompt:</p>
+    <blockquote>"Read <a href="https://docs.google.com/document/d/1rtU1fRPS0bMqd9abMG_hc6K9OAI6soUy3Kh00toAgyk/edit?tab=t.0">WebMCP Early Preview .md</a> and implement two tools: one to create an event, one to confirm and send emails."</blockquote>
+
+    <video controls src="WebMCP.mp4" style="max-width: 100%; margin: 2em 0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);"></video>
+
+    <p>All it had to do was re-use my existing client-side javascript logic to take inputs from agent provided parameters instead of the page elements. The agent detects these tools when visiting the page and can autonomously organize a secret santa.</p>
+
+    <p><strong>Give it a try:</strong> You can see it in action at <a href="https://group-secret-santa.com/">group-secret-santa.com</a> (requires a WebMCP-enabled browser).</p>
+
+    <p>You can read more in the <a href="https://docs.google.com/document/d/1rtU1fRPS0bMqd9abMG_hc6K9OAI6soUy3Kh00toAgyk/edit?tab=t.0">WebMCP Early Preview</a> documentation.</p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
