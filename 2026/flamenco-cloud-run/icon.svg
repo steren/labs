@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <rect width="200" height="200" fill="#1a1a2e"/>
+  <!-- Cloud shape -->
+  <ellipse cx="100" cy="110" rx="70" ry="35" fill="#2d6a9f"/>
+  <ellipse cx="70" cy="100" rx="40" ry="30" fill="#2d6a9f"/>
+  <ellipse cx="130" cy="98" rx="38" ry="28" fill="#2d6a9f"/>
+  <ellipse cx="100" cy="88" rx="50" ry="30" fill="#3a86c8"/>
+  <!-- Flame / render icon -->
+  <path d="M100 130 C85 115 80 100 90 85 C88 95 95 98 95 90 C98 100 108 95 105 80 C115 90 120 110 100 130Z" fill="#ff6b35"/>
+  <path d="M100 125 C90 113 88 103 95 93 C94 100 99 102 99 96 C101 103 107 100 105 89 C111 97 113 112 100 125Z" fill="#ffa500"/>
+  <path d="M100 118 C94 109 93 103 97 97 C97 102 100 103 100 99 C101 104 105 102 104 95 C108 101 109 111 100 118Z" fill="#ffe066"/>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <!-- Background grid lines -->
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="#1e2a3a" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#1e2a3a" stroke-width="1"/>
+
+  <!-- Cloud shape left -->
+  <ellipse cx="200" cy="480" rx="120" ry="55" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="150" cy="460" rx="70" ry="50" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="255" cy="455" rx="65" ry="45" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="200" cy="440" rx="90" ry="48" fill="#1f4776" opacity="0.9"/>
+
+  <!-- Cloud shape right -->
+  <ellipse cx="1000" cy="480" rx="120" ry="55" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="950" cy="460" rx="70" ry="50" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="1055" cy="455" rx="65" ry="45" fill="#1a3a5c" opacity="0.8"/>
+  <ellipse cx="1000" cy="440" rx="90" ry="48" fill="#1f4776" opacity="0.9"/>
+
+  <!-- Flame icon centered -->
+  <path d="M580 320 C550 285 542 250 562 215 C558 240 572 248 572 228 C578 252 600 240 594 204 C620 228 630 278 580 320Z" fill="#ff6b35"/>
+  <path d="M580 313 C556 283 552 258 568 232 C566 252 578 258 578 240 C580 260 598 252 596 224 C618 246 622 292 580 313Z" fill="#ffa500"/>
+  <path d="M580 300 C562 274 560 255 572 235 C572 250 580 254 580 242 C582 256 594 250 593 232 C610 250 613 276 580 300Z" fill="#ffe066"/>
+
+  <!-- Run graph lines (suggesting Cloud Run scaling) -->
+  <polyline points="640,320 660,315 700,310 760,295 820,260 860,230 880,290 900,320" fill="none" stroke="#4db8ff" stroke-width="3" opacity="0.6"/>
+  <polyline points="640,320 660,318 700,318 760,318 820,318 860,318 880,318 900,320" fill="none" stroke="#4db8ff" stroke-width="1" stroke-dasharray="4,4" opacity="0.3"/>
+
+  <!-- Title text -->
+  <text x="600" y="120" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="62" font-weight="700" fill="#ffffff" text-anchor="middle">Flamenco Render Farm</text>
+  <text x="600" y="185" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="50" font-weight="400" fill="#4db8ff" text-anchor="middle">on Google Cloud Run</text>
+
+  <!-- Subtitle -->
+  <text x="600" y="560" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="28" fill="#8b9ab0" text-anchor="middle">Scale from 0 to 100 workers in seconds</text>
+
+  <!-- labs.steren.fr -->
+  <text x="600" y="605" font-family="Roboto, Helvetica, Arial, sans-serif" font-size="22" fill="#4a5568" text-anchor="middle">labs.steren.fr</text>
+</svg>
