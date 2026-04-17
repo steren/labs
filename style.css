@@ -26,6 +26,12 @@ body{
   font-size:1rem;
 }
 
+@media (max-width: 600px) {
+  body {
+    margin: 1.2em 0.5em;
+  }
+}
+
 header, footer, main {	
   max-width: var(--width);	
   margin: 0 auto;	
