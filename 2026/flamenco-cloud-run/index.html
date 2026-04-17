@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Flamenco Render Farm on Google Cloud Run</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How I deployed a Blender render farm to Google Cloud Run worker pools, scaling from 0 to 100 workers in seconds using Flamenco and Terraform.">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Flamenco Render Farm on Google Cloud Run">
+  <meta name="twitter:image" content="https://labs.steren.fr/2026/flamenco-cloud-run/flamenco-jobs.jpg">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Flamenco Render Farm on Google Cloud Run">
+  <meta property="og:image" content="https://labs.steren.fr/2026/flamenco-cloud-run/flamenco-jobs.jpg">
+  <meta property="og:description" content="How I deployed a Blender render farm to Google Cloud Run worker pools, scaling from 0 to 100 workers in seconds using Flamenco and Terraform.">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Flamenco Render Farm on Google Cloud Run",
+    "headline": "Flamenco Render Farm on Google Cloud Run",
+    "description": "How I deployed a Blender render farm to Google Cloud Run worker pools, scaling from 0 to 100 workers in seconds using Flamenco and Terraform.",
+    "image": "https://labs.steren.fr/2026/flamenco-cloud-run/flamenco-jobs.jpg",
+    "datePublished": "2026-03-09T00:00:00Z"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Flamenco Render Farm on Google Cloud Run</h2>
+      <span>
+        <time datetime="2026-03-09T00:00:00Z">2026-03-09</time>
+      </span>
+    </header>
+
+    <img src="flamenco-jobs.jpg" alt="Flamenco Render Farm on Google Cloud Run"/>
+
+    <p>I deployed a <a href="https://www.blender.org/">Blender</a> render farm to Google Cloud Run worker pools. Each worker renders a frame of a video scene. I can go from 0 to 100 and back to 0 workers — even with GPUs — in just a few seconds as needed.</p>
+
+    <h3>What is Flamenco?</h3>
+    <p><a href="https://flamenco.blender.org/">Flamenco</a> is an open-source render farm manager developed by the <a href="https://www.blender.org/foundation/">Blender Foundation</a>. It coordinates distributed rendering jobs across a fleet of workers: you submit a job (a Blender scene), and Flamenco splits it into tasks — one per frame — distributing them across all available workers. A web-based manager UI lets you monitor jobs, inspect task status, and see rendered previews in real time.</p>
+
+    <h3>Architecture on Cloud Run</h3>
+    <p>Flamenco has two components: a <strong>Manager</strong> and one or more <strong>Workers</strong>. I deployed each as a Cloud Run service using <a href="https://github.com/steren/flamenco-cloud-run">Terraform infrastructure-as-code</a>:</p>
+
+    <ul>
+      <li><strong>Flamenco Manager</strong> — a standard Cloud Run service that scales between 0 and 1 instances. It serves the web UI, receives job submissions, and dispatches tasks to workers. It scales to zero when idle so you pay nothing when not rendering.</li>
+      <li><strong>Flamenco Worker Pool</strong> — a Cloud Run worker pool with up to 10 instances per deploy (8 vCPU, 32 GB RAM each). Workers register with the Manager on startup, poll for tasks, run Blender to render frames, and write output to Cloud Storage.</li>
+      <li><strong>Cloud Storage bucket</strong> — shared storage mounted into both the Manager and Workers, used for Blender job files, render outputs, and Flamenco configuration.</li>
+    </ul>
+
+    <p>The Terraform config provisions all of this — Cloud Run services, the storage bucket, a dedicated service account with <code>objectAdmin</code> permissions — in one <code>terraform apply</code>.</p>
+
+    <h3>Workers spin up instantly</h3>
+    <p>The key advantage of using Cloud Run worker pools is the elastic scaling. When a job is submitted, I can scale the worker pool from 0 to 100 instances in seconds. Once the render is complete, workers go idle and the pool scales back down. The Cloud Console shows this clearly:</p>
+
+    <figure>
+      <img src="cloud-run-worker-pool.png" alt="Google Cloud Console showing the flamenco-worker-pool scaling from 0 to ~100 instances and back to 0 over a few minutes"/>
+      <figcaption>The worker pool spun up to ~100 instances during a render job, then scaled back to 0.</figcaption>
+    </figure>
+
+    <h3>Flamenco in action</h3>
+    <p>Here is the Flamenco Manager web UI showing workers coming online. Each Cloud Run instance registers as a worker named <code>localhost</code>, transitioning from <em>offline</em> to <em>awake</em> within seconds of the pool scaling up:</p>
+
+    <figure>
+      <img src="flamenco-workers.jpg" alt="Flamenco Workers UI showing many workers transitioning from offline to awake status"/>
+      <figcaption>Workers spinning up — each Cloud Run instance appears as a Flamenco worker ready to render.</figcaption>
+    </figure>
+
+    <p>Once workers are awake, Flamenco distributes frame render tasks across them in parallel. The Jobs view shows active and completed tasks, with a live preview of the latest rendered frame:</p>
+
+    <figure>
+      <img src="flamenco-jobs.jpg" alt="Flamenco Jobs UI showing render tasks being distributed across workers with a 3D preview"/>
+      <figcaption>Flamenco dispatching render tasks across workers — each task renders one frame of the Blender scene.</figcaption>
+    </figure>
+
+    <h3>Deploy it yourself</h3>
+    <p>The full infrastructure-as-code is on GitHub at <a href="https://github.com/steren/flamenco-cloud-run">github.com/steren/flamenco-cloud-run</a>. To deploy your own Flamenco render farm:</p>
+
+    <ol>
+      <li>Install the <a href="https://developer.hashicorp.com/terraform/downloads">Terraform CLI</a> and <a href="https://cloud.google.com/sdk/docs/install">Google Cloud CLI</a>.</li>
+      <li>Create a Google Cloud project and enable the Cloud Run, Cloud Storage, and IAM APIs.</li>
+      <li>Clone the repo and run <code>terraform init</code>.</li>
+      <li>Create a <code>terraform.tfvars</code> with your <code>project_id</code>.</li>
+      <li>Run <code>terraform apply</code> — it provisions the bucket, service account, Manager, and Worker pool.</li>
+    </ol>
+
+    <p>Pre-built container images are available at <code>steren/flamenco-manager:latest</code> and <code>steren/flamenco-worker:latest</code>, or you can build your own with the included <code>build-and-push.sh</code> script.</p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
