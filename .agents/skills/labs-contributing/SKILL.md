@@ -19,11 +19,13 @@ This skill provides the official guidelines and step-by-step workflow for adding
 - Add an `index.html` file inside that folder.
 - Ensure the `index.html` uses the same template/structure as the other existing pages on the blog.
 - The `<time>` tag within the page must use the `YYYY-MM-DD` format.
+- **Accessibility**: Any `<img>` tags within the blog post must have a descriptive `alt=` attribute.
 
 ### 3. Asset Generation (Icons & Previews)
-- **icon.svg**: Generate an icon in SVG format named `icon.svg` in the new post's folder.
-- **title.svg**: Generate a social preview image in SVG format named `title.svg` in the same folder.
-- **Social Media Markup**: The `<head>` section of the new page must contain social media markup (e.g., Open Graph, Twitter cards) referencing a `title.png` image (even though the generated preview is `title.svg`).
+- **icon.svg**: Generate an icon in SVG format named `icon.svg` in the new post's folder. Make sure the SVG includes a solid background (e.g., using a `<rect width="100%" height="100%" fill="...">` as the base layer) with no transparency so it is always compatible and readable on both black and white pages.
+- **title.svg**: Generate a social preview image in SVG format named `title.svg` in the same folder. If applicable, embed the `icon.svg` content and add a title. Make sure it also includes a solid background `<rect>` with no transparency. Ensure that the text on the right does not overlap with the diagram on the left; use newlines (`<text>` tags on different `y` coordinates) or scale down the diagram as needed.
+- **title.png**: Generate a PNG version of `title.svg` using the `sips` command on macOS: `sips -s format png title.svg --out title.png`. Because of the solid background in the SVG, this will result in an opaque PNG.
+- **Social Media Markup**: The `<head>` section of the new page must contain social media markup (e.g., Open Graph, Twitter cards) referencing the generated `title.png` image.
 
 ### 4. Updating Indexes and Feeds
 - **Root index.html**:
