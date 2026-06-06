@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" style="background-color: #f8f9fa;">
+  <style>
+    .bg { fill: #ffffff; }
+    .text { fill: #333; font-size: 18px; font-family: monospace; }
+    .text-title { fill: #333; font-size: 20px; font-family: monospace; font-weight: bold; }
+    .box { stroke: #333; stroke-width: 3; fill: none; rx: 8px; }
+    .vol { stroke: #333; stroke-width: 3; stroke-dasharray: 8,8; fill: none; rx: 8px; }
+    .arrow { stroke: #333; stroke-width: 3; fill: none; }
+    .arrowhead { fill: #333; }
+    .label { font-size: 16px; fill: #666; font-family: monospace; }
+    .st0 { fill: none; }
+    .st1 { fill: #4285f4; }
+    .st2 { fill: #34a853; }
+    .st3 { fill: #fbbc04; }
+    .st4 { fill: #ea4335; }
+  </style>
+
+  <!-- Full Background to prevent transparency in PNG conversion -->
+  <rect x="0" y="0" width="1200" height="630" fill="#f8f9fa" />
+
+  <!-- Left Side: Icon -->
+  <g transform="translate(60, 75) scale(0.8)">
+    <rect x="-40" y="-40" width="610" height="600" class="bg" />
+
+    <!-- Cloud Run Instance -->
+    <rect class="box" x="150" y="10" width="400" height="420" />
+    <g transform="translate(160, 20) scale(0.07)">
+      <path class="st3" d="M144.4,272c-6.4,0-12.4-3.8-14.9-10.1L55.4,75.9c-3.3-8.2.7-17.5,8.9-20.8,8.2-3.3,17.5.7,20.8,8.9l74.2,186c3.3,8.2-.7,17.5-8.9,20.8-1.9.8-3.9,1.1-5.9,1.1h-.1Z"/>
+      <g id="b">
+        <path class="st4" d="M256,272c-6.4,0-12.4-3.8-14.9-10.1l-74.1-186c-2.6-6.6-.6-14.1,5-18.5s13.4-4.5,19.2-.4l260.1,186c7.2,5.1,8.9,15.1,3.7,22.3s-15.1,8.9-22.3,3.7L216.9,114.7l54,135.3c3.3,8.2-.7,17.5-8.9,20.8-1.9.8-4,1.1-5.9,1.1h-.1Z"/>
+      </g>
+      <path class="st2" d="M127.2,256l-72,180c-3.3,8.2.7,17.5,8.9,20.8,3.1,1.2,4,1.1,5.9,1.1,6.3,0,12.4-3.8,14.9-10.1l74.4-186c.8-2,1.1-4,1.1-5.9h-33.2Z"/>
+      <path class="st1" d="M414.5,256l-197.7,141.2,54.1-135.3c.8-2,1.1-4,1.1-5.9h-33.2l-72,180c-2.6,6.6-.6,14.1,5,18.5,2.9,2.3,6.4,3.4,9.9,3.4s6.5-1,9.3-3l260.4-186c4.4-3.1,6.7-8,6.7-13h-43.6Z"/>
+    </g>
+    <text class="text-title" x="205" y="45">Cloud Run Instance</text>
+
+    <!-- HTTP Traffic -> main-app -->
+    <text class="text" x="-35" y="105">[ HTTP Traffic ]</text>
+    <path class="arrow" d="M 145 100 L 305 100" />
+    <polygon class="arrowhead" points="305,95 315,100 305,105" />
+    
+    <rect class="box" x="310" y="75" width="140" height="50" />
+    <text class="text" x="380" y="105" text-anchor="middle" font-weight="bold">main-app</text>
+
+    <!-- Reads/Writes arrow -->
+    <path class="arrow" d="M 380 125 L 380 185" />
+    <polygon class="arrowhead" points="375,185 380,195 385,185" />
+    <text class="label" x="390" y="165">(Reads/Writes)</text>
+
+    <!-- Shared Ephemeral Disk Vol -->
+    <rect class="vol" x="170" y="195" width="360" height="80" />
+    <text class="text" x="350" y="230" text-anchor="middle" font-weight="bold">Shared Ephemeral Disk Vol</text>
+    <text class="label" x="350" y="255" text-anchor="middle">(/data, ephemeral emptyDir)</text>
+
+    <!-- Syncs Dir arrow -->
+    <path class="arrow" d="M 380 275 L 380 325" />
+    <polygon class="arrowhead" points="375,275 380,265 385,275" />
+    <polygon class="arrowhead" points="375,325 380,335 385,325" />
+    <text class="label" x="270" y="305">(Syncs Dir)</text>
+
+    <!-- gcs-sidecar -->
+    <rect class="box" x="310" y="335" width="140" height="50" />
+    <text class="text" x="380" y="365" text-anchor="middle" font-weight="bold">gcs-sidecar</text>
+
+    <!-- HTTPS API arrow -->
+    <path class="arrow" d="M 380 385 L 380 445" />
+    <polygon class="arrowhead" points="375,445 380,455 385,445" />
+    <text class="label" x="390" y="425">(HTTPS API)</text>
+
+    <!-- Google Cloud Storage -->
+    <rect class="box" x="280" y="455" width="200" height="70" />
+    <g transform="translate(290, 465) scale(0.09)">
+      <path class="st2" d="M442,277.9H70c-8.8,0-16,7.2-16,16v148.1c0,8.8,7.2,16,16,16h107.2c1.5.5,3.1.7,4.8.7s3.3-.3,4.8-.7h255.2c8.8,0,16-7.2,16-16v-148.1c0-8.8-7.2-16-16-16ZM86,309.9h80v116.1h-80v-116.1ZM426,425.9h-228v-116.1h228v116.1Z"/>
+      <path class="st3" d="M442,54H70c-8.8,0-16,7.2-16,16v148.8c0,8.8,7.2,16,16,16h372c8.8,0,16-7.2,16-16V70c0-8.8-7.2-16-16-16ZM86,86h80v116.8h-80v-116.8ZM426,202.8h-228v-116.8h228v116.8Z"/>
+      <path class="st4" d="M442,234.8h-16V86H54v-16c0-8.8,7.2-16,16-16h372c8.8,0,16,7.2,16,16v148.8c0,8.8-7.2,16-16,16Z"/>
+      <path class="st1" d="M442,457.9h-16v-148.1H54v-16c0-8.8,7.2-16,16-16h372c8.8,0,16,7.2,16,16v148.1c0,8.8-7.2,16-16,16Z"/>
+      <circle class="st4" cx="349" cy="144.4" r="37"/>
+      <circle class="st1" cx="349" cy="367.9" r="37"/>
+    </g>
+    <text class="text" x="400" y="485" text-anchor="middle" font-weight="bold">Google Cloud</text>
+    <text class="text" x="400" y="505" text-anchor="middle" font-weight="bold">Storage</text>
+  </g>
+
+  <!-- Right Side: Text -->
+  <text x="850" y="280" font-family="sans-serif" font-size="64" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">Cloud Run GCS</text>
+  <text x="850" y="360" font-family="sans-serif" font-size="64" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="middle">Directory Sync</text>
+  <text x="850" y="450" font-family="sans-serif" font-size="32" fill="#666" text-anchor="middle">A sidecar container</text>
+  <text x="850" y="495" font-family="sans-serif" font-size="32" fill="#666" text-anchor="middle">for Google Cloud Run</text>
+</svg>

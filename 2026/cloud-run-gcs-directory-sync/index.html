@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cloud Run GCS Directory Sync</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A sidecar container for Google Cloud Run that synchronizes an ephemeral disk shared volume with Google Cloud Storage (GCS).">
+  <meta name="author" content="Steren">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Cloud Run GCS Directory Sync">
+  <meta name="twitter:image" content="https://labs.steren.fr/2026/cloud-run-gcs-directory-sync/title.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Cloud Run GCS Directory Sync">
+  <meta property="og:image" content="https://labs.steren.fr/2026/cloud-run-gcs-directory-sync/title.png">
+  <meta property="og:description" content="A sidecar container for Google Cloud Run that synchronizes an ephemeral disk shared volume with Google Cloud Storage (GCS).">
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Cloud Run GCS Directory Sync",
+    "headline": "Cloud Run GCS Directory Sync",
+    "description": "A sidecar container for Google Cloud Run that synchronizes an ephemeral disk shared volume with Google Cloud Storage (GCS).",
+    "image": "https://labs.steren.fr/2026/cloud-run-gcs-directory-sync/title.png",
+    "datePublished": "2026-06-06T00:00:00Z"
+  }
+  </script>
+
+</head>
+<body>
+<header>
+<h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Cloud Run GCS Directory Sync</h2>
+      <span>
+        <time datetime="2026-06-06T00:00:00Z">2026-06-06</time>
+      </span>
+    </header>
+
+    <p>I have built a <a href="https://github.com/steren/cloud-run-gcs-directory-sync">Cloud Run GCS Directory Sync sidecar</a>. It is a lightweight, robust, and highly optimized Google Cloud Run sidecar container that synchronizes an ephemeral disk shared volume (<code>emptyDir</code>) with Google Cloud Storage (GCS).</p>
+
+    <p>This is a prototype of a persistent filesystem with full POSIX compliance that delivers the exact same performance characteristics as a local disk, since it reads and writes directly to local ephemeral <code>/data</code> mounts.</p>
+
+    <figure>
+      <img src="icon.svg" alt="Architecture diagram of Cloud Run GCS Directory Sync"/>
+      <figcaption>Architecture of Cloud Run GCS Directory Sync</figcaption>
+    </figure>
+
+    <h3>How it works</h3>
+    <p>This sidecar implements a highly responsive bidirectional and event-driven synchronization pattern designed for stateless containers that need access to persistent, shared file systems:</p>
+
+    <ul>
+      <li><strong>On Startup</strong>: It downloads all files from a specified GCS bucket/prefix into the shared directory. It blocks the main application's startup until the initial download is 100% complete using a startup probe.</li>
+      <li><strong>On File System Changes</strong>: It uses an event-driven <code>fsnotify</code> file system watcher to track file creation, modification, deletion, and renaming events in real time, executing a debounced upload sync within 2 seconds of filesystem inactivity.</li>
+      <li><strong>Periodically</strong>: It periodically scans the local shared directory as a robust fallback and uploads new or modified files to GCS using file size and MD5 hash comparisons to perform high-performance delta uploads.</li>
+      <li><strong>On Shutdown</strong>: It traps termination signals sent by Cloud Run, pauses active ticker runs, and executes a final, comprehensive upload sync before gracefully exiting.</li>
+    </ul>
+
+    <h3>Design constraints</h3>
+    <p>There are some important constraints to be aware of when using this prototype:</p>
+    <ul>
+        <li><strong>Strict Single-Instance Scaling:</strong> The Cloud Run resource attaching to this disk MUST be configured with a maximum of 1 active instance (<code>maxScale: "1"</code>). This system is designed as a single-writer/single-reader environment.</li>
+        <li><strong>Best-Effort Synchronization:</strong> Data persistence is not absolutely guaranteed. Edge cases can occur, leading to instances where local files are not synced up to Google Cloud Storage.</li>
+    </ul>
+
+    <p>For more details, deployment instructions, and the source code, check out the <a href="https://github.com/steren/cloud-run-gcs-directory-sync">GitHub repository</a>.</p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a></p>
+</footer>
+</body>
+</html>
