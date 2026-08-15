@@ -58,9 +58,6 @@ body{
   body {
     margin: 1.2em 0;
   }
-  main {
-    --size: calc((100vw - 32px) / 3);
-  }
 }
 
 header {
@@ -71,65 +68,84 @@ h1 {
   view-transition-name: title;
 }
 
-/* Hexagons, following guidance from https://css-tricks.com/hexagons-and-beyond-flexible-responsive-grid-patterns-sans-media-queries/ */
+/* Honeycomb.
+
+   The hexagons sit on a lattice of half-columns, each one 3/4 of a cell wide.
+   Every other half-column is pushed down by half a row, and that offset is
+   what makes them interlock. Because the number of half-columns is even,
+   "every other half-column" is exactly :nth-child(even) -- one selector, no
+   float + shape-outside trick and no per-row rules.
+
+   Everything below is derived from --columns and --gap, so there is a single
+   source of truth for the geometry. */
 main {
-  /* Adaptive size to avoid media queries */
-  --size: calc(clamp(100px, 100vw / 6, 300px));
-  --ratio: calc(1.732 / 2);
-
-  /* clip-path */
-  --vc: calc(0.5 * var(--size) * var(--ratio)); 
-  
-  /*margin */
-  --margin-vertical: 4px;
-  --margin-horizontal: calc(2 * var(--margin-vertical) + 0.25 * var(--size));
-  /* for the float*/
-  --float: calc(2*var(--size)*var(--ratio) + 4*var(--margin-vertical)  - 2*var(--vc) - 2px);
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, calc(var(--size) + 2*var(--margin-horizontal)));
-  justify-content: center;
-  
+  /* size the honeycomb against its own box rather than 100vw, which would
+     include the scrollbar */
+  container-type: inline-size;
 }
 
 .pages {
-  font-size: 0; /* disable white space between inline block element */
-  grid-column: 1/-1;
+  /* Half-columns. MUST stay even, or the :nth-child(even) offset stops
+     lining up with the lattice. Half of it is the hexagons per row. */
+  --columns: 6;
+  --gap: 8px;
+  --max-cell: 300px;
+
+  /* A lattice cell is one hexagon plus the gap around it. A band of
+     --columns half-columns is (0.75 * --columns + 0.25) cells wide: each
+     half-column takes 3/4 of a cell, and the last hexagon overhangs by the
+     remaining 1/4. */
+  --cell: min(
+    calc((100cqi + var(--gap)) / (0.75 * var(--columns) + 0.25)),
+    var(--max-cell)
+  );
+  --hex-width: calc(var(--cell) - var(--gap));
+  --hex-height: calc(var(--hex-width) * cos(30deg));
+  --half-column: calc(0.75 * var(--cell));
+  --row: calc(var(--cell) * cos(30deg));
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), var(--half-column));
+  grid-auto-rows: var(--row);
+  list-style: none;
+  /* hexagons overhang their own track on the right, and the pushed-down ones
+     overhang the last row: reserve exactly that much so nothing is clipped */
+  padding: 0 calc(var(--hex-width) - var(--half-column))
+           calc(var(--hex-height) - var(--row) / 2) 0;
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .pages li {
-  width: var(--size);
-  margin: var(--margin-vertical) var(--margin-horizontal);
-  height: calc(var(--size)*var(--ratio)); 
-  display: inline-block;
-  font-size: initial;
-  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);;
-  margin-bottom: calc(var(--margin-vertical) - var(--vc)); 
+  width: var(--hex-width);
+  height: var(--hex-height);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
 }
 
-.pages::before {
-  content: "";
-  width: calc(var(--size)/2 + var(--margin-horizontal));
-  float: left;
-  height: 135%;
-  shape-outside: repeating-linear-gradient(#0000 0 calc(var(--float) - 2px), #000  0 var(--float));
+/* interlock: every other half-column drops by half a row */
+.pages li:nth-child(even) {
+  margin-block-start: calc(var(--row) / 2);
 }
 
-/* End Hexagons */
-
-.pages {
-  padding: 0;
-  margin: 0;
+/* fewer, bigger hexagons on narrow screens. Kept below the 600px body-margin
+   breakpoint so the two never fight over the same widths. */
+@container (width < 560px) {
+  .pages {
+    --columns: 4;
+  }
 }
+
+/* End Honeycomb */
 
 .pages li {
   background-color: #FFFFFF;
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity 0.3s, scale 0.3s;
 }
 
 .pages li:hover {
   opacity: 0.7;
-  transform: scale(1.05);
+  scale: 1.05;
+  z-index: 1;
 }
 
 .pages figure {
@@ -139,10 +155,10 @@ main {
 }
 
 .pages img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  float: left;
 }
 
 .pages figcaption {
