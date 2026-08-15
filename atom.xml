@@ -86,7 +86,7 @@
   <entry>
     <id>https://labs.steren.fr/2023/cloud-run-replay/</id>
     <link rel="alternate" href="https://labs.steren.fr/2023/cloud-run-replay/" />
-    <title>Automated E2E Testing with Chrome DevTools & Cloud Run</title>
+    <title>Automated E2E Testing with Chrome DevTools &amp; Cloud Run</title>
     <updated>2023-03-07T00:00:00Z</updated>
     <summary>Automate end-to-end tests using Chrome DevTools Recorder and Google Cloud Run.</summary>
   </entry>
@@ -418,8 +418,8 @@
     <updated>2011-05-07T00:00:00Z</updated>
   </entry>
   <entry>
-    <id>https://labs.steren.fr/2011/04/18/bokeh/</id>
-    <link rel="alternate" href="https://labs.steren.fr/2011/04/18/bokeh/" />
+    <id>https://labs.steren.fr/2011/bokeh/</id>
+    <link rel="alternate" href="https://labs.steren.fr/2011/bokeh/" />
     <title>Bokeh</title>
     <updated>2011-04-18T00:00:00Z</updated>
   </entry>
