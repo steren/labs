@@ -60,18 +60,18 @@
     <p>So there is now a native one, at <a href="https://github.com/steren/attractors-android">github.com/steren/attractors-android</a>.</p>
 
     <figure>
-      <video controls muted playsinline preload="metadata" src="painting.mp4"></video>
+      <video controls muted playsinline preload="metadata" src="painting.mp4" width="400" height="888"></video>
       <figcaption>A piece painting itself, recorded off the device at twice speed, ending on the home screen paging so the parallax shows.</figcaption>
     </figure>
 
     <figure>
-      <img src="light.jpg" alt="A phone home screen, pale blue themed icons over cream trails swirling on teal."/>
-      <img src="dark.jpg" alt="The same home screen in the dark theme, dark teal icons over pale blue trails on black."/>
+      <img src="light.jpg" alt="A phone home screen, pale blue themed icons over cream trails swirling on teal." width="480" height="1067"/>
+      <img src="dark.jpg" alt="The same home screen in the dark theme, dark teal icons over pale blue trails on black." width="480" height="1067"/>
       <figcaption>The light and dark themes. The icons are themed ones, tinted from the colors the wallpaper hands the system, so they and the piece behind them come from the same place.</figcaption>
     </figure>
 
     <figure>
-      <img src="text.jpg" alt="The same home screen with the word NINIS spelled out in trails in the middle of the piece."/>
+      <img src="text.jpg" alt="The same home screen with the word NINIS spelled out in trails in the middle of the piece." width="480" height="1067"/>
       <figcaption>Particles can be made to flow around a shape, which is how the letters appear. This one is set to <em>NINIS</em>, after the save the date.</figcaption>
     </figure>
 
@@ -95,7 +95,7 @@
       <p>Then it stops. After 45 seconds the render loop is torn down and the wallpaper costs no CPU at all until a new piece is due six hours later, which is where it spends nearly all of its life. Nothing is painted while it cannot be seen, a finished piece is kept on disk so that a reboot costs a file read rather than a repaint, and there is no alarm, job or wake lock anywhere — whether a new piece is due is worked out when the wallpaper becomes visible. In battery saver the frame interval stretches to 250ms, so only the frames get rarer: the piece still takes its 45 seconds to arrive, it is just watched less often.</p>
 
       <figure>
-        <img src="settings.jpg" alt="The wallpaper's settings screen, with sections for Look, Painting and Battery."/>
+        <img src="settings.jpg" alt="The wallpaper's settings screen, with sections for Look, Painting and Battery." width="480" height="1067"/>
         <figcaption>All of it is adjustable, including the frame rate and how often a new piece is painted.</figcaption>
       </figure>
 

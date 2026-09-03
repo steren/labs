@@ -15,11 +15,11 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
   <meta name="twitter:title" content="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
-  <meta name="twitter:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta name="twitter:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/proton-spin-curve.png">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js">
-  <meta property="og:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta property="og:image" content="https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/proton-spin-curve.png">
 
   <script type="application/ld+json">
   {
@@ -27,7 +27,7 @@
     "@type": "Article",
     "author": "Steren Giannini",
     "name": "MRI proton spin: 3D animated mathematical curve in the browser using MathBox.js",
-    "image": "https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+    "image": "https://labs.steren.fr/2013/12/10/mri-principle-3d-curve-browser/proton-spin-curve.png"
   }
   </script>
 
@@ -43,7 +43,7 @@
         <time datetime="2013-12-10T13:16:22+02:00">2013/12/10</time>
       </span>
     </header>
-    <img src="../../screen-shot-2015-03-01-at-8-16-34-pm.png%3Fw=966&amp;h=800&amp;crop=1" alt=""/>
+    <img src="proton-spin-curve.png" alt="" width="966" height="800"/>
     <p>My partner is defending her thesis today and she needed some help to produce visuals for the presentation. The goal was to illustrate the relaxation of the spin of a proton that received a radio-frequential impulsion in a constant magnetic field, which is the principle at the root of Magnetic Resonance Imagery.</p>
     <p>The visualisation needed to be animated and in 3D. I thought it would be a good use case for <a href="https://github.com/unconed/MathBox.js/">MathBox.js</a>, a JavaScript library built on top of <a href="http://threejs.org/">three.js</a>, which is built on top of WebGL and developed by <a href="http://acko.net/">Steven Wittens</a>.</p>
     <p>This library is designed for mathematical visualisations. You focus on curve expressions and not on geometrical primitives, the engine is then evaluating and interpolating them on every frame to draw them. It works in 2D, 3D space and is not restricted to cartesian space.</p>
@@ -57,8 +57,8 @@ Or simply watch this youtube video:</p>
     <p><strong>Using chrome as my code editor</strong><br/>
 I wanted to experiment with something that I think will happen more and more in the future: This short project was entirely developed inside the browser.</p>
     <p>
-      <a href="../../screen-shot-2013-12-08-at-17-37-17.png">
-        <img src="../../screen-shot-2013-12-08-at-17-37-17.png%3Fw=300&amp;h=191" alt="Code in Chrome dev tools"/>
+      <a href="code-in-chrome-devtools-full.png">
+        <img src="code-in-chrome-devtools.png" alt="Code in Chrome dev tools" width="300" height="191"/>
       </a>
     </p>
     <p>I had to create the local git repository and its submodules, but then I did not use an other editor than the “Source” tab of Chrome’s Dev Tools. This is possible thanks to Chrome’s “<a href="https://developers.google.com/chrome-developer-tools/docs/settings#workspace">Workspaces</a>” that allow it to map the current page source to a specific folder of your computer. It is then possible to edit and save the resources that are usually read-only. This workflow is more streamlined, than the regular workflow of debugging in the Dev Tools, then going back to the editor, find the line to change, save, go back to Chrome and reload. Here, you do not leave the browser’s window and can edit and save the JavaScript file at the same time of debugging.</p>

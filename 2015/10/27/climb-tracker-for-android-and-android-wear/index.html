@@ -15,11 +15,11 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
   <meta name="twitter:title" content="Climb Tracker for Android and Android wear">
-  <meta name="twitter:image" content="https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/../../feature-graphic.jpg%3Fw=1024___IMAGE___amp;h=500___IMAGE___amp;crop=1">
+  <meta name="twitter:image" content="https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/climb-tracker-feature-graphic.jpg">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Climb Tracker for Android and Android wear">
-  <meta property="og:image" content="https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/../../feature-graphic.jpg%3Fw=1024___IMAGE___amp;h=500___IMAGE___amp;crop=1">
+  <meta property="og:image" content="https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/climb-tracker-feature-graphic.jpg">
 
   <script type="application/ld+json">
   {
@@ -27,7 +27,7 @@
     "@type": "Article",
     "author": "Steren Giannini",
     "name": "Climb Tracker for Android and Android wear",
-    "image": "https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/../../feature-graphic.jpg%3Fw=1024___IMAGE___amp;h=500___IMAGE___amp;crop=1"
+    "image": "https://labs.steren.fr/2015/10/27/climb-tracker-for-android-and-android-wear/climb-tracker-feature-graphic.jpg"
   }
   </script>
 
@@ -43,7 +43,7 @@
         <time datetime="2015-10-27T10:11:16+02:00">2015/10/27</time>
       </span>
     </header>
-    <img src="../../feature-graphic.jpg%3Fw=1024&amp;h=500&amp;crop=1" alt=""/>
+    <img src="climb-tracker-feature-graphic.jpg" alt="" width="1024" height="500"/>
     <p>Here is how I used <strong>Android Wear</strong> and <strong><a href="https://www.firebase.com/">Firebase</a></strong> to build from scratch an indoor climb tracker.</p>
     <p>Install it <a href="https://play.google.com/store/apps/details?id=fr.steren.climbtracker">on Google Play</a>, read the <a href="https://github.com/google/climb-tracker">code on GitHub</a>.</p>
     <p>I learnt a few things from <a href="../../../../2014/05/05/indoor-climbing-tracker/index.html">a first prototype I did</a>:</p>
@@ -54,7 +54,7 @@
       <li>The gym’s routes are changing every few months, too quickly to maintain a database.</li>
     </ul>
     <p>
-      <img src="../../watch3_framed.png%3Fw=290&amp;h=300" alt="watch3_framed"/>
+      <img src="climb-tracker-watch.png" alt="The Climb Tracker watch app showing &quot;6+ climbed&quot;" width="290" height="300"/>
     </p>
     <p>So I decided simplify the app to its bare minimum by focusing on this scenario:</p>
     <blockquote>
@@ -63,21 +63,21 @@
     </blockquote>
     <p>Yes, the main scenario uses an wearable device: climbing with a smartwatch is not a problem, it’s always available and does not require to manipulate a phone.</p>
     <p>
-      <img src="../../screenshot-phone1_framed.png%3Fw=597&amp;h=1024" alt="Screenshot-phone1_framed"/>
+      <img src="climb-tracker-phone.png" alt="The Climb Tracker phone app listing recorded climbs" width="597" height="1023"/>
     </p>
     <p>Also, it’s designed <strong>offline first</strong>: The watch does not require a phone to be nearby, or any internet connection. Once it gets close to its phone, data is transferred from the watch to the phone (once again, no internet required). The data is then stored locally on the phone and when connectivity is available, is synced to a server.</p>
     <p>I then added the ability to add a climb from a phone, as I suppose that the intersection between climbers and Android phone owners is bigger than between climbers and Android wear owners 🙂</p>
     <p>The grading system can be selected from the Settings menu and the user’s position is recorded when saving the climb, for potential future use.</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-543">
-      <a href="../../climb-tracker-architecture.png">
-        <img src="../../climb-tracker-architecture.png%3Fw=1200" alt="Climb Tracker architecture"/>
+      <a href="climb-tracker-architecture-full.png">
+        <img src="climb-tracker-architecture.png" alt="Climb Tracker architecture" width="721" height="313"/>
       </a>
       <figcaption>The Climb Tracker technical architecture</figcaption>
     </figure>
     <p>Technically, it is a native Android app, mostly because I needed to use the <strong>Wear SDK</strong>, but also because I wanted a reliable app experience and not struggle to imitate a native look and feel using web technologies. Transmitting data from the wearable to the phone uses the Android Wear <a href="https://github.com/google/climb-tracker/blob/master/wear/src/main/java/fr/steren/climbtracker/ClimbConfirmation.java#L102">DataApi</a>.</p>
     <p>The rest of the app is using the <strong>Firebase</strong> SDK with <a href="https://www.firebase.com/docs/android/guide/offline-capabilities.html">offline mode enabled</a>: Firebase is deciding by itself when to sync the data with its server. I did not write any line of data sync or server-side code. And I loved it.</p>
     <p>The app is following the latest permissions guidelines: asking them when opening the application, and being flexible regarding the location permission: if not granted, the location is not recorded but the app keeps working.</p>
-    <p><a href="https://play.google.com/store/apps/details?id=fr.steren.climbtracker"><img src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" alt="Get it on Google Play"/></a><br/>
+    <p><a href="https://play.google.com/store/apps/details?id=fr.steren.climbtracker"><img src="https://developer.android.com/images/brand/en_generic_rgb_wo_45.png" alt="Get it on Google Play" width="129" height="45"/></a><br/>
 The app is <a href="https://play.google.com/store/apps/details?id=fr.steren.climbtracker">released on Google Play</a>. It is open source and released <a href="https://github.com/google/climb-tracker">on GitHub</a>. Of course, I accept suggestions, bugfixes and pull-requests.</p>
     <p>For example, would you like to <a href="https://github.com/google/climb-tracker/blob/master/mobile/src/main/res/values/strings.xml">translate it in your language</a>?</p>
   </article>

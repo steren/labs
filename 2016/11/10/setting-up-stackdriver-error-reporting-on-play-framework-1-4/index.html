@@ -15,11 +15,11 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
   <meta name="twitter:title" content="Setting up Stackdriver Error Reporting on Play Framework 1.4">
-  <meta name="twitter:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta name="twitter:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/play-error-reporting.png">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Setting up Stackdriver Error Reporting on Play Framework 1.4">
-  <meta property="og:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1">
+  <meta property="og:image" content="https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/play-error-reporting.png">
 
   <script type="application/ld+json">
   {
@@ -27,7 +27,7 @@
     "@type": "Article",
     "author": "Steren Giannini",
     "name": "Setting up Stackdriver Error Reporting on Play Framework 1.4",
-    "image": "https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/../../play-error-reporting-1.png%3Fw=1200___IMAGE___amp;h=800___IMAGE___amp;crop=1"
+    "image": "https://labs.steren.fr/2016/11/10/setting-up-stackdriver-error-reporting-on-play-framework-1-4/play-error-reporting.png"
   }
   </script>
 
@@ -43,7 +43,7 @@
         <time datetime="2016-11-10T14:13:44+02:00">2016/11/10</time>
       </span>
     </header>
-    <img src="../../play-error-reporting-1.png%3Fw=1200&amp;h=800&amp;crop=1" alt=""/>
+    <img src="play-error-reporting.png" alt="" width="1200" height="800"/>
     <p>Here is how I setup <a href="https://cloud.google.com/error-reporting/">Stackdriver Error Reporting</a> for my application running <a href="https://www.playframework.com">Play Framework</a> 1.4:</p>
     <p>My goal was to capture any Java exception in my production application and report it to Stackdriver Error Reporting for automatic exception monitoring and alerting.</p>
     <p>I use the very simple Stackdriver Error Reporting <a href="https://cloud.google.com/error-reporting/reference/rest/v1beta1/projects.events/report">report API</a>: just send error stack traces using an HTTP POST request and an API key.</p>
@@ -52,7 +52,7 @@
     <script src="https://gist.github.com/steren/9753aa84d6a3059a360f7a77a20e2999.js"></script>
     <p>A short amount of time after deploying this code, I started receiving alerts that new errors were occurring in my production application:</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-939">
-      <img src="../../screen-shot-2016-11-10-at-1-04-09-pm.png%3Fw=1200" alt="screen-shot-2016-11-10-at-1-04-09-pm"/>
+      <img src="stackdriver-error-reporting.png" alt="Stackdriver Error Reporting listing two errors from the Play Framework app" width="1200" height="480"/>
       <figcaption>Screenshot of Stackdriver Error Reporting: 2 different errors occurred in my Play Framework app in the last 6 hours. The first one happened 42 times.</figcaption>
     </figure>
     <p>I was not aware of these application errors, now I have better visibility into their impact and will be able to prioritize what to fix.</p>

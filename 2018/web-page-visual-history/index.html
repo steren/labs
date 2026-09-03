@@ -55,7 +55,7 @@
     <h3>How?</h3>
     <p>Every 5 minutes, the <code>task-scheduler</code> microservice runs, queries the Cloud Datastore database for webpages ot screenshot. For each webpage, it sends a message to a Pub/Sub topic. This topic is responsible for pushing these messages to the <code>screenshot</code> microservice. This <code>screenshot</code> service receives the message as a regular HTTP POST request, screenshots requested webpage and stores the result in a Cloud Storage bucket. The creation of a new file in the bucket triggers the a Cloud Function (<code>image-diff</code>). The <code>image-diff</code> function compares the new image with a reference image from the references folder. If a difference is found, it stores the image in a keyframe folder and updates the reference image.</p>
 
-    <img src="nodejs-microservices-demo-arch.webp" alt="Architecture of the web page visual history demo"/>
+    <img src="nodejs-microservices-demo-arch.webp" alt="Architecture of the web page visual history demo" width="2586" height="1028"/>
 
     <p>The <code>frontend</code> service is a web frontend that allows to browse the data: Its main page lists the currently tracked webpages, clicking on a webpage shows all the saved keyframes for this webpage. Users can start tracking a new webpage by entering its URL, which will add a new entity to the Cloud Datastore database.</p>
 

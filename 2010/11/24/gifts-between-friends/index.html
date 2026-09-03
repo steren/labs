@@ -15,11 +15,11 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
   <meta name="twitter:title" content="Gifts between us">
-  <meta name="twitter:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1">
+  <meta name="twitter:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/gifts-between-us-home-cover.png">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="Gifts between us">
-  <meta property="og:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1">
+  <meta property="og:image" content="https://labs.steren.fr/2010/11/24/gifts-between-friends/gifts-between-us-home-cover.png">
 
   <script type="application/ld+json">
   {
@@ -27,7 +27,7 @@
     "@type": "Article",
     "author": "Steren Giannini",
     "name": "Gifts between us",
-    "image": "https://labs.steren.fr/2010/11/24/gifts-between-friends/../../capture-2.png%3Fw=894___IMAGE___amp;h=730___IMAGE___amp;crop=1"
+    "image": "https://labs.steren.fr/2010/11/24/gifts-between-friends/gifts-between-us-home-cover.png"
   }
   </script>
 
@@ -43,20 +43,20 @@
         <time datetime="2010-11-24T14:45:49+02:00">2010/11/24</time>
       </span>
     </header>
-    <img src="../../capture-2.png%3Fw=894&amp;h=730&amp;crop=1" alt=""/>
+    <img src="gifts-between-us-home-cover.png" alt="" width="894" height="730"/>
     <p>I’ve been building a new small website in a couple of evenings with the help of Xavier : <a href="http://www.gifts-between-us.com">www.gifts-between-us.com</a> (<a href="http://www.cadeaux-entre-nous.fr">www.cadeaux-entre-nous.fr</a> for the French version).</p>
     <p>Xavier needed it to organize a present distribution with his family for Christmas. The idea is simple: in a group of person (family, co-workers) everyone will have to give a present to another person. What makes this fun is that you don’t know from who you are getting yours.</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-171">
-      <a href="../../capture-2.png">
-        <img title="Home page, Gifts between us" src="../../capture-2.png%3Fw=300&amp;h=244" alt=""/>
+      <a href="gifts-between-us-home-full.png">
+        <img title="Home page, Gifts between us" src="gifts-between-us-home.png" alt="" width="300" height="245"/>
       </a>
       <figcaption>The Gifts between us Home page</figcaption>
     </figure>
     <p>We first hacked a first version in a small amount of hours using the <a href="http://www.playframework.org/">Play! framework</a>. I could try the very easy to use <a href="http://www.playframework.org/documentation/1.1/emails">Mailer function from the framework</a>. So easy to use.</p>
     <p>I did not found a very elegant method to define present targets. At first, users could only offer one present to the other, so I randomized the user list and then used a circular permutation to determine who offer to who. But then we decided that users could offer more than one gift. I couldn’t think rapidely of an algorithm that makes sure the gift repartition seams random, that everyone gets the same number of present and that I don’t offer one to myself. So I implemented a strategy that if it cannot find a solution once, try again.</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-170">
-      <a href="../../capture-1.png">
-        <img title="Choose page, Gifts beween us" src="../../capture-1.png%3Fw=300&amp;h=242" alt=""/>
+      <a href="gifts-between-us-pick-full.png">
+        <img title="Choose page, Gifts beween us" src="gifts-between-us-pick.png" alt="" width="300" height="243"/>
       </a>
       <figcaption>The “Pick a paper” page</figcaption>
     </figure>

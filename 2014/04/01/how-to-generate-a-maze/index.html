@@ -15,11 +15,11 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:creator" content="@steren">
   <meta name="twitter:title" content="How to generate a maze?">
-  <meta name="twitter:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1">
+  <meta name="twitter:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/maze-example-cover.png">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="How to generate a maze?">
-  <meta property="og:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1">
+  <meta property="og:image" content="https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/maze-example-cover.png">
 
   <script type="application/ld+json">
   {
@@ -27,7 +27,7 @@
     "@type": "Article",
     "author": "Steren Giannini",
     "name": "How to generate a maze?",
-    "image": "https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=410___IMAGE___amp;h=411___IMAGE___amp;crop=1"
+    "image": "https://labs.steren.fr/2014/04/01/how-to-generate-a-maze/maze-example-cover.png"
   }
   </script>
 
@@ -47,8 +47,8 @@
     <p>We had with Anne a 5 hours train trip and took the time to think about how we would proceed if we had to generate a maze.</p>
     <p>First, we had to think about our problem: there are plenty of types of mazes. We decided that we would only consider mazes on a cartesian grid (no circle or bended walls). It can be different to start with a fixed start and end or just to fix the start, we decided to only fix the starting point, and to consider that the end would be the point the farest from this starting point.</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-467">
-      <a href="../../../05/screen-shot-2014-03-18-at-00-26-43.png">
-        <img src="../../../05/screen-shot-2014-03-18-at-00-26-43.png%3Fw=300&amp;h=300" alt="An example of generated maze."/>
+      <a href="maze-example-full.png">
+        <img src="maze-example.png" alt="An example of generated maze." width="300" height="301"/>
       </a>
       <figcaption>An example of generated maze.</figcaption>
     </figure>
@@ -62,8 +62,8 @@ For each “tunnel end”, we also keep in memory the distance from the starting
     <p>But what makes a maze interesting? As a human, a maze will be difficult if when you encounter an intersection, your brain cannot easily determine on which direction to go. For example if you clearly see that going left will end up in a dead end in a few blocks, then you will chose right.<br/>
 To achieve this, we adjusted some parameters in order for the maze to generate long and not obvious branches. We had to set the probability to split to a low amount, and had to keep in memory the overall tunnel growing direction and to make it prevail when selecting a direction in order to prevent the tunnel to collapse on itself too often.</p>
     <figure data-shortcode="caption" aria-describedby="caption-attachment-468">
-      <a href="../../../05/screenshot.png">
-        <img src="../../../05/screenshot.png%3Fw=1024&amp;h=639" alt="Screenshot of the maze generator app."/>
+      <a href="maze-generator-app-full.png">
+        <img src="maze-generator-app.png" alt="Screenshot of the maze generator app." width="1024" height="640"/>
       </a>
       <figcaption>Screenshot of the maze generator app.</figcaption>
     </figure>
