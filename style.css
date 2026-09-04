@@ -38,6 +38,10 @@ header {
 img, video {
   display: block;
   max-width: 100%;
+  /* width:auto so the intrinsic width/height attributes don't fight max-height:
+     without it a tall image keeps its attribute width while max-height clamps
+     the height, and the image is squashed. */
+  width: auto;
   height: auto;
   max-height: var(--width);
   margin: 0 auto;
