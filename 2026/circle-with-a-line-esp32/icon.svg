@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>Circle with a Line on ESP32</title>
+  <defs>
+    <radialGradient id="vignette-light" cx="50%" cy="50%" r="72%">
+      <stop offset="45%" stop-color="#12767A" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#052326" stop-opacity="0.72"/>
+    </radialGradient>
+    <radialGradient id="vignette-dark" cx="50%" cy="50%" r="72%">
+      <stop offset="45%" stop-color="#1A3588" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#050B24" stop-opacity="0.78"/>
+    </radialGradient>
+  </defs>
+  <style>
+    .field { fill: #12767A; }
+    .vignette { fill: url(#vignette-light); }
+    .track-fill { fill: #08383E; }
+    .track-stroke { fill: none; stroke: #08383E; }
+    .tile { fill: #1E9494; }
+    .gap { fill: #12767A; }
+    .glow-stroke { fill: none; stroke: #9D914C; }
+    .glow-fill { fill: #9D914C; }
+    .line-stroke { fill: none; stroke: #FFE05C; }
+    .line-fill { fill: #FFE05C; }
+    .beacon { fill: #8EC9C8; }
+    @media (prefers-color-scheme: dark) {
+      .field { fill: #2448B0; }
+      .vignette { fill: url(#vignette-dark); }
+      .track-fill { fill: #101E5A; }
+      .track-stroke { fill: none; stroke: #101E5A; }
+      .tile { fill: #3662CE; }
+      .gap { fill: #2448B0; }
+      .glow-stroke { fill: none; stroke: #9E8B5B; }
+      .glow-fill { fill: #9E8B5B; }
+      .line-stroke { fill: none; stroke: #FFE05C; }
+      .line-fill { fill: #FFE05C; }
+      .beacon { fill: #A4BEFA; }
+    }
+  </style>
+
+  <!-- Solid opaque background with soft edge vignette -->
+  <rect width="512" height="512" class="field"/>
+  <rect width="512" height="512" class="vignette"/>
+
+  <!-- Panel channel grid (3x3, vertices at 124, 212, 300, 388) -->
+  <rect x="113" y="113" width="286" height="286" class="track-fill"/>
+  <!-- Exit cap sticking out top-right -->
+  <line x1="388" y1="124" x2="388" y2="94" class="track-stroke" stroke-width="22" stroke-linecap="round"/>
+  <!-- Start circle backdrop at bottom-left -->
+  <circle cx="124" cy="388" r="30" class="track-fill"/>
+
+  <!-- 3x3 Tiles (66x66, rx=6) -->
+  <g class="tile">
+    <rect x="135" y="135" width="66" height="66" rx="6"/>
+    <rect x="223" y="135" width="66" height="66" rx="6"/>
+    <rect x="311" y="135" width="66" height="66" rx="6"/>
+
+    <rect x="135" y="223" width="66" height="66" rx="6"/>
+    <rect x="223" y="223" width="66" height="66" rx="6"/>
+    <rect x="311" y="223" width="66" height="66" rx="6"/>
+
+    <rect x="135" y="311" width="66" height="66" rx="6"/>
+    <rect x="223" y="311" width="66" height="66" rx="6"/>
+    <rect x="311" y="311" width="66" height="66" rx="6"/>
+  </g>
+
+  <!-- Channel gap on bottom-right edge -->
+  <rect x="331" y="376" width="26" height="24" class="gap"/>
+
+  <!-- Clue: white rounded square in (0,0) -->
+  <rect x="150" y="150" width="36" height="36" rx="9" fill="#F4F8FF"/>
+
+  <!-- Clue: black rounded square in (2,2) -->
+  <rect x="326" y="326" width="36" height="36" rx="9" fill="#14161C"/>
+
+  <!-- Clue: two orange triangles in (1,1) -->
+  <g fill="#FFB410">
+    <polygon points="244,248 234,264 254,264"/>
+    <polygon points="268,248 258,264 278,264"/>
+  </g>
+
+  <!-- Clue: hexagon beacon waiting ahead on the top channel -->
+  <polygon class="beacon" points="366,124 361.5,131.8 352.5,131.8 348,124 352.5,116.2 361.5,116.2"/>
+
+  <!-- Active golden-yellow path mid-trace with warm halo -->
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path class="glow-stroke" d="M 124 388 L 212 388 L 212 212 L 300 212 L 300 124 L 326 124" stroke-width="22"/>
+    <circle cx="124" cy="388" r="28" class="glow-fill"/>
+    <path class="line-stroke" d="M 124 388 L 212 388 L 212 212 L 300 212 L 300 124 L 326 124" stroke-width="16"/>
+    <circle cx="124" cy="388" r="24" class="line-fill"/>
+  </g>
+</svg>

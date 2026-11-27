@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Circle with a Line on ESP32</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <meta name="color-scheme" content="light dark">
+  <meta name="view-transition" content="same-origin">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A Witness-inspired line-drawing puzzle game for the Waveshare ESP32-S3 1.8&quot; AMOLED touch board, written from scratch in plain C.">
+  <meta name="author" content="Steren">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@steren">
+  <meta name="twitter:title" content="Circle with a Line on ESP32">
+  <meta name="twitter:image" content="https://labs.steren.fr/2026/circle-with-a-line-esp32/title.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Circle with a Line on ESP32">
+  <meta property="og:image" content="https://labs.steren.fr/2026/circle-with-a-line-esp32/title.png">
+  <meta property="og:description" content="A Witness-inspired line-drawing puzzle game for the Waveshare ESP32-S3 1.8&quot; AMOLED touch board, written from scratch in plain C.">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "author": "Steren Giannini",
+    "name": "Circle with a Line on ESP32",
+    "headline": "Circle with a Line on ESP32",
+    "description": "A Witness-inspired line-drawing puzzle game for the Waveshare ESP32-S3 1.8\" AMOLED touch board, written from scratch in plain C.",
+    "image": "https://labs.steren.fr/2026/circle-with-a-line-esp32/title.png",
+    "datePublished": "2026-11-26T00:00:00Z"
+  }
+  </script>
+</head>
+<body>
+<header>
+  <h1><a href="/" rel="home">Steren's labs</a></h1>
+</header>
+<main role="main">
+  <article>
+    <header>
+      <h2>Circle with a Line on ESP32</h2>
+      <span>
+        <time datetime="2026-11-26T00:00:00Z">2026-11-26</time>
+      </span>
+    </header>
+
+    <p><a href="https://store.steampowered.com/app/210970/The_Witness/">The Witness</a> is one of my favorite games of all time, and I have been obsessed with its puzzles ever since playing it. Inspired by <a href="https://x.com/steveruizok/status/2085480605278515656">this post from Steve Ruiz</a>, I vibe coded a standalone line-drawing puzzle game for a pocket-sized <a href="https://www.waveshare.com/esp32-s3-touch-amoled-1.8.htm">Waveshare ESP32-S3 1.8" AMOLED touch board</a>, written in plain C. The code is at <a href="https://github.com/steren/circle-with-a-line-esp32">github.com/steren/circle-with-a-line-esp32</a>.</p>
+
+    <p>Everything in the repository (the procedural puzzle generator, the vector graphics, and the synthesized audio) has been prompted from scratch with no external game libraries.</p>
+
+    <p>There is something genuinely incredible about holding a piece of hardware that boots straight into your app instantly and is dedicated to just one thing. No long OS boot sequence, no launcher: just a single-purpose puzzle object in your hand, all for $30 and a few tokens.</p>
+
+    <figure>
+      <video controls playsinline preload="metadata" poster="demo-poster.jpg" src="demo.mp4" width="720" height="720"></video>
+      <figcaption>Playing Circle with a Line on the Waveshare ESP32-S3 1.8" AMOLED board.</figcaption>
+    </figure>
+
+    <h3>The game</h3>
+
+    <p>The entire screen is the panel: no menus, counters, or text chrome. Each level glows in one of six saturated color themes (teal, cobalt, violet, bronze, moss, raspberry) softly vignetted toward the edges, like a backlit acrylic panel. Drag a line from the circle along the channels to the exit, and let the board tell you when you got it right.</p>
+
+    <figure>
+      <img src="05_triangles_squares.png" alt="Violet 3x4 vertical rectangular puzzle panel with orange triangles and black and white rounded squares." width="368" height="448"/>
+      <img src="06_stars_squares.png" alt="Bronze 3x3 puzzle panel mid-trace with black and white geometric symbols on the tiles." width="368" height="448"/>
+      <figcaption>Backlit panels on the 368×448 screen: a vertical 3×4 violet board (left) and a 3×3 bronze board mid-trace (right).</figcaption>
+    </figure>
+
+    <p>There are 50 levels across 7 chapters, scaling from 2×2 grids up to 5×5, and vertical ones that perfectly fit the screen aspect ratio. True to <em>The Witness</em>, each chapter introduces a new rule gently on small boards before combining it with earlier ones, with no tutorial text so you discover how everything works by playing.</p>
+
+    <figure>
+      <img src="10_wrong_answer.png" alt="Cobalt 5x5 puzzle panel flashing red after a wrong submission." width="368" height="448"/>
+      <figcaption>A late 5×5 panel flashing red on a wrong answer.</figcaption>
+    </figure>
+
+    <h3>How it works</h3>
+
+    <p>I have no idea, but here's what my agent says:</p>
+
+    <blockquote>
+      <p>The firmware is written in plain C on ESP-IDF and FreeRTOS, with no external game, graphics, or audio libraries. It renders directly into an RGB565 framebuffer in PSRAM and flushes it over QSPI to the AMOLED display, reads capacitive touch and side buttons over I2C, streams sound over I2S to the onboard audio codec, and saves progress in flash.</p>
+
+      <p>Puzzles are generated on the fly rather than hard-coded: the generator traces a random valid path, derives clues from it, and strips them back while a solver verifies the solution stays unique. On the ESP32-S3, a background task on the second CPU core keeps fresh puzzles ready ahead of you, falling back on a pre-computed bank of 2,000 puzzles if you jump straight into one of the slower 5×5 boards.</p>
+
+      <p>All sound effects are synthesized in real time at 16 kHz for the tiny onboard speaker, the game core compiles natively on a PC for automated testing and rendering, and at boot the firmware probes the touch controller over I2C to detect Waveshare's V1 vs. V2 hardware revision automatically.</p>
+    </blockquote>
+
+    <h3>Try it</h3>
+
+    <p>I really recommend tinkering with these tiny ESP32 display boards, they are inexpensive and surprisingly fun to build for. Order a <a href="https://www.waveshare.com/esp32-s3-touch-amoled-1.8.htm">Waveshare ESP32-S3 1.8" AMOLED board</a>, and if you have one on your desk, clone <a href="https://github.com/steren/circle-with-a-line-esp32">circle-with-a-line-esp32</a> and flash the game with <code>make game-flash</code>.</p>
+
+  </article>
+</main>
+<footer>
+  <a href="/" title="Steren's labs">labs home</a>
+  -
+  <a href="https://twitter.com/intent/follow?screen_name=steren&user_id=21694917" rel=nofollow target=_blank title="Follow me on Twitter">@steren</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <title>Circle with a Line on ESP32</title>
+  <defs>
+    <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
+      <stop offset="45%" stop-color="#12767A" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#052326" stop-opacity="0.72"/>
+    </radialGradient>
+    <clipPath id="panel-clip">
+      <rect width="400" height="400" rx="24"/>
+    </clipPath>
+  </defs>
+  <style>
+    .font-title { font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 56px; font-weight: 700; fill: #F7F6F5; }
+    .font-accent { font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 56px; font-weight: 700; fill: #FFE05C; }
+    .font-sub { font-family: Roboto, Helvetica, Arial, sans-serif; font-size: 28px; fill: #A9BCC4; }
+  </style>
+
+  <!-- Solid opaque background -->
+  <rect width="1200" height="630" fill="#121212"/>
+
+  <!-- Left: glowing AMOLED panel mockup -->
+  <g transform="translate(95, 115)">
+    <g clip-path="url(#panel-clip)">
+      <g transform="scale(0.78125)">
+        <rect width="512" height="512" fill="#12767A"/>
+        <rect width="512" height="512" fill="url(#vignette)"/>
+
+        <rect x="113" y="113" width="286" height="286" fill="#08383E"/>
+        <line x1="388" y1="124" x2="388" y2="94" stroke="#08383E" stroke-width="22" stroke-linecap="round"/>
+        <circle cx="124" cy="388" r="30" fill="#08383E"/>
+
+        <g fill="#1E9494">
+          <rect x="135" y="135" width="66" height="66" rx="6"/>
+          <rect x="223" y="135" width="66" height="66" rx="6"/>
+          <rect x="311" y="135" width="66" height="66" rx="6"/>
+
+          <rect x="135" y="223" width="66" height="66" rx="6"/>
+          <rect x="223" y="223" width="66" height="66" rx="6"/>
+          <rect x="311" y="223" width="66" height="66" rx="6"/>
+
+          <rect x="135" y="311" width="66" height="66" rx="6"/>
+          <rect x="223" y="311" width="66" height="66" rx="6"/>
+          <rect x="311" y="311" width="66" height="66" rx="6"/>
+        </g>
+
+        <rect x="331" y="376" width="26" height="24" fill="#12767A"/>
+        <rect x="150" y="150" width="36" height="36" rx="9" fill="#F4F8FF"/>
+        <rect x="326" y="326" width="36" height="36" rx="9" fill="#14161C"/>
+        <g fill="#FFB410">
+          <polygon points="244,248 234,264 254,264"/>
+          <polygon points="268,248 258,264 278,264"/>
+        </g>
+        <polygon fill="#8EC9C8" points="366,124 361.5,131.8 352.5,131.8 348,124 352.5,116.2 361.5,116.2"/>
+
+        <g fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <path stroke="#9D914C" d="M 124 388 L 212 388 L 212 212 L 300 212 L 300 124 L 326 124" stroke-width="22"/>
+          <circle cx="124" cy="388" r="28" fill="#9D914C"/>
+          <path stroke="#FFE05C" d="M 124 388 L 212 388 L 212 212 L 300 212 L 300 124 L 326 124" stroke-width="16"/>
+          <circle cx="124" cy="388" r="24" fill="#FFE05C"/>
+        </g>
+      </g>
+    </g>
+    <rect width="400" height="400" rx="24" fill="none" stroke="#2D3338" stroke-width="4"/>
+  </g>
+
+  <!-- Right: Title and description -->
+  <text x="560" y="268" class="font-title">Circle with a Line</text>
+  <text x="560" y="338" class="font-accent">on ESP32</text>
+
+  <text x="560" y="418" class="font-sub">A Witness-inspired line-drawing puzzle</text>
+  <text x="560" y="458" class="font-sub">game in plain C for a 1.8" AMOLED board.</text>
+</svg>
